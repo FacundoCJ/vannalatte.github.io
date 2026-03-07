@@ -437,7 +437,7 @@
         <!-- Barra superior con texto -->
         <div class="top-bar">
             <div class="top-bar-content">
-                🛒 Obtén la tuya ya! | Envíos a todo Perú 🇵🇪
+            Obtén la tuya ya!
             </div>
         </div>
         <nav>
@@ -624,7 +624,7 @@
             }
 
             // Construir mensaje del pedido
-            let mensaje = "🛍️ *NUEVO PEDIDO - Vannalatte*\n\n";
+            let mensaje = " *NUEVO PEDIDO - Vannalatte*\n\n";
             mensaje += "*DETALLE DE PRODUCTOS:*\n";
             
             let totalGeneral = 0;
@@ -635,10 +635,10 @@
                 mensaje += `• ${item.nombre} (${item.presentacion}) x ${item.cantidad} = S/ ${subtotal.toFixed(2)}\n`;
             });
             
-            mensaje += `\n💰 *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
+            mensaje += `\n *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
             
             // Agregar datos de contacto (opcional)
-            mensaje += `\n\n📱 _Por favor, indícame tu dirección y forma de pago_`;
+            mensaje += `\n\n Por favor, indícame tu dirección y forma de pago`;
             
             // Abrir WhatsApp
             window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
@@ -658,4 +658,5 @@
         });
     </script>
 </body>
+
 </html>
