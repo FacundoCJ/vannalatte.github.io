@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Vannalatte</title>
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ebe5df;
+            color: #4e342e;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, .logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+        }
+        
+        /* Barra superior */
+        .top-bar {
+            background-color: #c68642;
+            padding: 10px 0;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+        
+        .top-bar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        /* Header */
+        header {
+            background-color: #4e342e;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #c68642;
+        }
+        
+        .nav-links a.active {
+            color: #c68642;
+            border-bottom: 2px solid #c68642;
+            padding-bottom: 5px;
+        }
+        
+        /* Icono carrito */
+        .carrito-link {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+        
+        .carrito-contador {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #c24a34;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+        }
+        
+        /* Hero pequeño */
+        .page-hero {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            margin-top: 120px;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Contenedor principal */
+        .carrito-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+            min-height: 50vh;
+        }
+        
+        /* Carrito vacío */
+        .carrito-vacio {
+            text-align: center;
+            padding: 4rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .carrito-vacio p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .carrito-vacio .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #c24a34;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        /* Tabla del carrito */
+        .carrito-tabla {
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .carrito-header {
+            display: grid;
+            grid-template-columns: 100px 2fr 1fr 1fr 1fr 50px;
+            padding: 1.5rem;
+            background-color: #4e342e;
+            color: white;
+            font-weight: 600;
+            gap: 1rem;
+        }
+        
+        .carrito-item {
+            display: grid;
+            grid-template-columns: 100px 2fr 1fr 1fr 1fr 50px;
+            padding: 1.5rem;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #ebe5df;
+        }
+        
+        .carrito-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-imagen {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
+        
+        .item-nombre {
+            font-weight: 600;
+            color: #4e342e;
+        }
+        
+        .item-presentacion {
+            color: #c68642;
+            font-size: 0.9rem;
+        }
+        
+        .item-precio {
+            font-weight: 600;
+            color: #c24a34;
+        }
+        
+        .item-cantidad {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cantidad-btn {
+            background-color: #ebe5df;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4e342e;
+            transition: background-color 0.3s;
+        }
+        
+        .cantidad-btn:hover {
+            background-color: #c68642;
+            color: white;
+        }
+        
+        .cantidad-numero {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .item-subtotal {
+            font-weight: 700;
+            color: #4e342e;
+        }
+        
+        .item-eliminar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #c24a34;
+            transition: transform 0.3s;
+        }
+        
+        .item-eliminar:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Resumen del carrito */
+        .carrito-resumen {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .resumen-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 2px solid #ebe5df;
+            font-size: 1.3rem;
+        }
+        
+        .total-precio {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #c24a34;
+        }
+        
+        /* Botones de acción */
+        .carrito-acciones {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: #c24a34;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #a63d2a;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: #4e342e;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #3b2823;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #c24a34;
+            color: #c24a34;
+        }
+        
+        .btn-outline:hover {
+            background-color: #c24a34;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+            margin-top: 2rem;
+        }
+        
+        .contacto-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contacto-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .copyright {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links a:not(.carrito-link) {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .carrito-header {
+                display: none;
+            }
+            
+            .carrito-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .item-imagen {
+                margin: 0 auto;
+            }
+            
+            .item-cantidad {
+                justify-content: center;
+            }
+            
+            .carrito-acciones {
+                justify-content: center;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .top-bar {
+                font-size: 0.85rem;
+                padding: 6px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Barra superior con texto -->
+        <div class="top-bar">
+            <div class="top-bar-content">
+                🛒 Obtén la tuya ya! | Envíos a todo Perú 🇵🇪
+            </div>
+        </div>
+        <nav>
+            <div class="logo">Vannalatte</div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="recetas.html">Recetas</a>
+                <a href="sobre-mi.html">Sobre mí</a>
+                <!-- Carrito -->
+                <a href="carrito.html" class="carrito-link active">
+                    🛒
+                    <span class="carrito-contador">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Carrito de Compras</h1>
+        <p>Revisa tus productos antes de finalizar</p>
+    </section>
+
+    <div class="carrito-container" id="carrito-container">
+        <!-- El contenido se cargará dinámicamente con JavaScript -->
+    </div>
+
+    <footer>
+        <div class="logo" style="margin-bottom: 1rem;">Vannalatte</div>
+        <div class="contacto-info">
+            <p>📧 vannalatte@gmail.com</p>
+            <p>📱 @vannalatte</p>
+            <p>📞 +51 951 499 437</p>
+        </div>
+        <p class="copyright">© 2024 Vannalatte - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // FUNCIONES DEL CARRITO
+        // ============================================
+
+        // Obtener carrito
+        function obtenerCarrito() {
+            const carrito = localStorage.getItem('vannalatte-carrito');
+            return carrito ? JSON.parse(carrito) : [];
+        }
+
+        // Guardar carrito
+        function guardarCarrito(carrito) {
+            localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+            mostrarCarrito(); // Actualizar la vista
+        }
+
+        // Actualizar contador del carrito
+        function actualizarContadorCarrito() {
+            const carrito = obtenerCarrito();
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            
+            document.querySelectorAll('.carrito-contador').forEach(el => {
+                el.textContent = totalItems;
+                el.style.display = totalItems > 0 ? 'flex' : 'none';
+            });
+        }
+
+        // Mostrar el carrito en la página
+        function mostrarCarrito() {
+            const carrito = obtenerCarrito();
+            const container = document.getElementById('carrito-container');
+            
+            if (carrito.length === 0) {
+                // Mostrar carrito vacío
+                container.innerHTML = `
+                    <div class="carrito-vacio">
+                        <p>🛒 Tu carrito está vacío</p>
+                        <p style="font-size: 1rem; margin-bottom: 2rem;">Agrega algunos productos del catálogo</p>
+                        <a href="catalogo.html" class="btn btn-primary">Ver Catálogo</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Calcular total general
+            const totalGeneral = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+
+            // Generar HTML del carrito
+            let html = `
+                <div class="carrito-tabla">
+                    <div class="carrito-header">
+                        <div>Producto</div>
+                        <div>Descripción</div>
+                        <div>Precio</div>
+                        <div>Cantidad</div>
+                        <div>Subtotal</div>
+                        <div></div>
+                    </div>
+            `;
+
+            // Agregar cada producto
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                html += `
+                    <div class="carrito-item" data-id="${item.id}">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="item-imagen">
+                        <div>
+                            <div class="item-nombre">${item.nombre}</div>
+                            <div class="item-presentacion">${item.presentacion}</div>
+                        </div>
+                        <div class="item-precio">S/ ${item.precio.toFixed(2)}</div>
+                        <div class="item-cantidad">
+                            <button class="cantidad-btn" onclick="cambiarCantidad('${item.id}', -1)">−</button>
+                            <span class="cantidad-numero">${item.cantidad}</span>
+                            <button class="cantidad-btn" onclick="cambiarCantidad('${item.id}', 1)">+</button>
+                        </div>
+                        <div class="item-subtotal">S/ ${subtotal.toFixed(2)}</div>
+                        <button class="item-eliminar" onclick="eliminarProducto('${item.id}')">🗑️</button>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+
+            // Resumen y botones
+            html += `
+                <div class="carrito-resumen">
+                    <div class="resumen-total">
+                        <span>TOTAL:</span>
+                        <span class="total-precio">S/ ${totalGeneral.toFixed(2)}</span>
+                    </div>
+                </div>
+
+                <div class="carrito-acciones">
+                    <button class="btn btn-outline" onclick="vaciarCarrito()">Vaciar Carrito</button>
+                    <a href="catalogo.html" class="btn btn-secondary">Seguir Comprando</a>
+                    <button class="btn btn-primary" onclick="finalizarCompra()">Finalizar Compra por WhatsApp</button>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        // Cambiar cantidad de un producto
+        function cambiarCantidad(id, cambio) {
+            let carrito = obtenerCarrito();
+            const producto = carrito.find(item => item.id == id);
+            
+            if (producto) {
+                producto.cantidad += cambio;
+                
+                if (producto.cantidad <= 0) {
+                    // Eliminar si cantidad es 0
+                    carrito = carrito.filter(item => item.id != id);
+                }
+                
+                guardarCarrito(carrito);
+            }
+        }
+
+        // Eliminar producto específico
+        function eliminarProducto(id) {
+            let carrito = obtenerCarrito();
+            carrito = carrito.filter(item => item.id != id);
+            guardarCarrito(carrito);
+        }
+
+        // Vaciar todo el carrito
+        function vaciarCarrito() {
+            if (confirm('¿Estás seguro de vaciar el carrito?')) {
+                localStorage.removeItem('vannalatte-carrito');
+                actualizarContadorCarrito();
+                mostrarCarrito();
+            }
+        }
+
+        // Finalizar compra por WhatsApp
+        function finalizarCompra() {
+            const carrito = obtenerCarrito();
+            const numero = "51951499437"; // Tu número de WhatsApp
+            
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+
+            // Construir mensaje del pedido
+            let mensaje = "🛍️ *NUEVO PEDIDO - Vannalatte*\n\n";
+            mensaje += "*DETALLE DE PRODUCTOS:*\n";
+            
+            let totalGeneral = 0;
+            
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                totalGeneral += subtotal;
+                mensaje += `• ${item.nombre} (${item.presentacion}) x ${item.cantidad} = S/ ${subtotal.toFixed(2)}\n`;
+            });
+            
+            mensaje += `\n💰 *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
+            
+            // Agregar datos de contacto (opcional)
+            mensaje += `\n\n📱 _Por favor, indícame tu dirección y forma de pago_`;
+            
+            // Abrir WhatsApp
+            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+            
+            // Opcional: preguntar si quiere vaciar el carrito después del pedido
+            if (confirm('¿Quieres vaciar el carrito después de enviar el pedido?')) {
+                localStorage.removeItem('vannalatte-carrito');
+                actualizarContadorCarrito();
+                mostrarCarrito();
+            }
+        }
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            mostrarCarrito();
+            actualizarContadorCarrito();
+        });
+    </script>
+</body>
+</html>
