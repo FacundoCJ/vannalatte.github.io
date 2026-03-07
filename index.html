@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vannalatte - Mantequillas de Maní Artesanales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ebe5df;
+            color: #4e342e;
+        }
+        
+        /* HEADER - barra delgada color #c68642 */
+        header {
+            background-color: #c68642;
+            padding: 0.8rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #4e342e;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #c24a34;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #4e342e;
+        }
+        
+        /* SECCIÓN PRODUCTOS DESLIZABLES */
+        .productos-section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #4e342e;
+        }
+        
+        /* CARRUSEL HORIZONTAL */
+        .carrusel-container {
+            position: relative;
+            width: 100%;
+            margin: 2rem 0;
+        }
+        
+        .carrusel {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0.5rem 2rem 0.5rem;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #c68642 #ebe5df;
+        }
+        
+        .carrusel::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .carrusel::-webkit-scrollbar-track {
+            background: #ebe5df;
+            border-radius: 10px;
+        }
+        
+        .carrusel::-webkit-scrollbar-thumb {
+            background: #c68642;
+            border-radius: 10px;
+        }
+        
+        .producto-card {
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .producto-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .producto-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .producto-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .producto-info {
+            padding: 1.5rem;
+        }
+        
+        .producto-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #4e342e;
+        }
+        
+        .producto-descripcion {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .producto-precio {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #c68642;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-wsp {
+            background-color: #c24a34;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn-wsp:hover {
+            background-color: #4e342e;
+        }
+        
+        /* FLECHAS DE NAVEGACIÓN DEL CARRUSEL */
+        .carrusel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #c68642;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .carrusel-btn:hover {
+            opacity: 1;
+            background: #4e342e;
+        }
+        
+        .carrusel-btn.prev {
+            left: -20px;
+        }
+        
+        .carrusel-btn.next {
+            right: -20px;
+        }
+        
+        /* SECCIÓN SIMPLE Y SALUDABLE */
+        .simple-saludable {
+            background: #c68642;
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+        
+        .simple-saludable h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .simple-saludable p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        .contacto-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .contacto-info p {
+            color: #ebe5df;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #c68642;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .producto-card {
+                min-width: 250px;
+            }
+            
+            .carrusel-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Vannalatte</div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="recetas.html">Recetas</a>
+                <a href="sobre-mi.html">Sobre mí</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Obten la tuya ya!</h1>
+            <p>Mantequillas orgánicas con ingredientes naturales</p>
+            <a href="catalogo.html" class="btn">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS DESTACADOS CON CARRUSEL -->
+    <section class="productos-section">
+        <h2 class="section-title">Nuestras Mantequillas</h2>
+        <p style="text-align: center; margin-bottom: 1rem; color: #4e342e;">Hecha en casa, inspirada en la tradición</p>
+        
+        <div class="carrusel-container">
+            <button class="carrusel-btn prev" onclick="desplazarCarrusel(-300)">&#10094;</button>
+            <button class="carrusel-btn next" onclick="desplazarCarrusel(300)">&#10095;</button>
+            
+            <div class="carrusel" id="carrusel-productos">
+                <!-- Los productos se cargarán aquí con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN SIMPLE Y SALUDABLE -->
+    <section class="simple-saludable">
+        <h2>Simple y saludable</h2>
+        <p>Menos ingredientes, mejor nutrición. Mantequillas artesanales con lo mejor de la naturaleza.</p>
+        <a href="catalogo.html" class="btn" style="background: #4e342e;">Comprar ahora</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">Vannalatte - Mantequillas de Maní Artesanales</p>
+        <div class="contacto-info">
+            <p>📧 vannalatte@gmail.com</p>
+            <p>📱 @vannalatte</p>
+            <p>📞 +51 951 499 437</p>
+        </div>
+        <p class="copyright">© 2024 Vannalatte - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Función para comprar por WhatsApp
+        function comprarWhatsApp(producto, precio, presentacion) {
+            const numero = "51951499437";
+            const mensaje = `Hola, quiero comprar: ${producto} - ${presentacion} - Precio: S/ ${precio}`;
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            const url = `https://wa.me/${numero}?text=${mensajeCodificado}`;
+            window.open(url, '_blank');
+        }
+
+        // Función para desplazar el carrusel
+        function desplazarCarrusel(cantidad) {
+            const carrusel = document.getElementById('carrusel-productos');
+            carrusel.scrollBy({
+                left: cantidad,
+                behavior: 'smooth'
+            });
+        }
+
+        // Datos de productos
+        const productos = [
+            {
+                nombre: "Mantequilla de chocomaní",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
+                imagen: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                nombre: "Mantequilla de maní clásica",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
+                imagen: "https://images.unsplash.com/photo-1626094309830-ff817e136d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                nombre: "Mantequilla de maní la favorita",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
+                imagen: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                nombre: "Mantequilla de chocomaní",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
+                imagen: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                nombre: "Mantequilla de maní clásica",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
+                imagen: "https://images.unsplash.com/photo-1626094309830-ff817e136d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                nombre: "Mantequilla de maní la favorita",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
+                imagen: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            }
+        ];
+
+        // Cargar productos en el carrusel
+        const carrusel = document.getElementById('carrusel-productos');
+        if (carrusel) {
+            productos.forEach(producto => {
+                const card = document.createElement('div');
+                card.className = 'producto-card';
+                card.innerHTML = `
+                    <div class="producto-img">
+                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                    </div>
+                    <div class="producto-info">
+                        <h3>${producto.nombre} - ${producto.presentacion}</h3>
+                        <p class="producto-descripcion">Ingredientes: ${producto.ingredientes.join(', ')}</p>
+                        <p class="producto-precio">S/ ${producto.precio.toFixed(2)}</p>
+                        <button class="btn-wsp" onclick="comprarWhatsApp('${producto.nombre}', ${producto.precio}, '${producto.presentacion}')">
+                            Comprar por WhatsApp
+                        </button>
+                    </div>
+                `;
+                carrusel.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
