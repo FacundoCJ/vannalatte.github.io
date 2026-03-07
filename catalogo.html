@@ -75,6 +75,7 @@
         .nav-links {
             display: flex;
             gap: 2.5rem;
+            align-items: center;
         }
         
         .nav-links a {
@@ -96,13 +97,39 @@
             padding-bottom: 5px;
         }
         
+        /* Icono carrito */
+        .carrito-link {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+        
+        .carrito-contador {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #c24a34;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+        }
+        
         /* Hero pequeño */
         .page-hero {
             background-color: #4e342e;
             color: white;
             text-align: center;
             padding: 8rem 5% 4rem;
-            margin-top: 120px; /* Ajustado por barra + header */
+            margin-top: 120px;
         }
         
         .page-hero h1 {
@@ -230,7 +257,7 @@
             margin: 1rem 0;
         }
         
-        .btn-wsp {
+        .btn-carrito {
             background-color: #c24a34;
             color: white;
             border: none;
@@ -245,7 +272,7 @@
             margin-top: auto;
         }
         
-        .btn-wsp:hover {
+        .btn-carrito:hover {
             background-color: #a63d2a;
         }
         
@@ -282,7 +309,7 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-links a:not(.carrito-link) {
                 display: none;
             }
             
@@ -316,7 +343,7 @@
         <!-- Barra superior con texto -->
         <div class="top-bar">
             <div class="top-bar-content">
-                Obtén la tuya ya!
+                🛒 Obtén la tuya ya! | Envíos a todo Perú 🇵🇪
             </div>
         </div>
         <nav>
@@ -326,6 +353,11 @@
                 <a href="catalogo.html" class="active">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
+                <!-- Carrito -->
+                <a href="carrito.html" class="carrito-link">
+                    🛒
+                    <span class="carrito-contador">0</span>
+                </a>
             </div>
         </nav>
     </header>
@@ -360,14 +392,64 @@
     </footer>
 
     <script>
-        // Función para comprar por WhatsApp
-        function comprarWhatsApp(producto, presentacion, precio) {
-            const numero = "51951499437";
-            const mensaje = `Hola, quiero comprar: ${producto} ${presentacion} - S/ ${precio}`;
-            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+        // ============================================
+        // FUNCIONES DEL CARRITO
+        // ============================================
+
+        function obtenerCarrito() {
+            const carrito = localStorage.getItem('vannalatte-carrito');
+            return carrito ? JSON.parse(carrito) : [];
         }
 
-        // Datos de productos con las imágenes reales
+        function guardarCarrito(carrito) {
+            localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+        }
+
+        function agregarAlCarrito(producto, event) {
+            let carrito = obtenerCarrito();
+            
+            const existente = carrito.find(item => 
+                item.nombre === producto.nombre && 
+                item.presentacion === producto.presentacion
+            );
+            
+            if (existente) {
+                existente.cantidad += 1;
+            } else {
+                carrito.push({
+                    ...producto,
+                    cantidad: 1,
+                    id: Date.now() + Math.random()
+                });
+            }
+            
+            guardarCarrito(carrito);
+            
+            // Feedback visual
+            const btn = event.target;
+            const textoOriginal = btn.textContent;
+            btn.textContent = '✅ Añadido';
+            btn.style.backgroundColor = '#4CAF50';
+            setTimeout(() => {
+                btn.textContent = textoOriginal;
+                btn.style.backgroundColor = '#c24a34';
+            }, 1000);
+        }
+
+        function actualizarContadorCarrito() {
+            const carrito = obtenerCarrito();
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            
+            document.querySelectorAll('.carrito-contador').forEach(el => {
+                el.textContent = totalItems;
+                el.style.display = totalItems > 0 ? 'flex' : 'none';
+            });
+        }
+
+        // ============================================
+        // DATOS DE PRODUCTOS
+        // ============================================
         const productos = [
             // 250gr
             {
@@ -428,6 +510,8 @@
             productosFiltrados.forEach(producto => {
                 const card = document.createElement('div');
                 card.className = 'producto-card';
+                // Convertir producto a string para pasarlo a la función
+                const productoStr = JSON.stringify(producto).replace(/"/g, '&quot;');
                 card.innerHTML = `
                     <div class="producto-img">
                         <img src="${producto.imagen}" alt="${producto.nombre}">
@@ -437,8 +521,8 @@
                         <div class="producto-presentacion">${producto.presentacion}</div>
                         <div class="producto-ingredientes">${producto.ingredientes}</div>
                         <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
-                        <button class="btn-wsp" onclick="comprarWhatsApp('${producto.nombre}', '${producto.presentacion}', ${producto.precio})">
-                            Comprar por WhatsApp
+                        <button class="btn-carrito" onclick='agregarAlCarrito(${productoStr}, event)'>
+                            Añadir al carrito
                         </button>
                     </div>
                 `;
@@ -446,9 +530,8 @@
             });
         }
 
-        // Función para filtrar productos (usada por los tabs)
+        // Función para filtrar productos
         function filtrarProductos(filtro) {
-            // Actualizar clase active de los tabs
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.textContent.toLowerCase().includes(filtro) || 
@@ -460,8 +543,73 @@
             mostrarProductos(filtro);
         }
 
-        // Mostrar todos los productos al cargar la página
+        // Inicializar
         mostrarProductos('todos');
+        document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
     </script>
+    <script>
+    // ============================================
+    // FUNCIONES DEL CARRITO (compartidas)
+    // ============================================
+
+    // Obtener carrito actual
+    function obtenerCarrito() {
+        const carrito = localStorage.getItem('vannalatte-carrito');
+        return carrito ? JSON.parse(carrito) : [];
+    }
+
+    // Guardar carrito
+    function guardarCarrito(carrito) {
+        localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
+        actualizarContadorCarrito();
+    }
+
+    // Agregar al carrito
+    function agregarAlCarrito(producto) {
+        let carrito = obtenerCarrito();
+        
+        // Buscar si ya existe (mismo nombre y presentación)
+        const existente = carrito.find(item => 
+            item.nombre === producto.nombre && 
+            item.presentacion === producto.presentacion
+        );
+        
+        if (existente) {
+            existente.cantidad += 1;
+        } else {
+            carrito.push({
+                ...producto,
+                cantidad: 1,
+                id: Date.now() + Math.random() // ID único
+            });
+        }
+        
+        guardarCarrito(carrito);
+        
+        // Feedback visual
+        const btn = event.target;
+        const textoOriginal = btn.textContent;
+        btn.textContent = '✅ Añadido';
+        btn.style.backgroundColor = '#4CAF50';
+        setTimeout(() => {
+            btn.textContent = textoOriginal;
+            btn.style.backgroundColor = '#c24a34';
+        }, 1000);
+    }
+
+    // Actualizar contador del carrito
+    function actualizarContadorCarrito() {
+        const carrito = obtenerCarrito();
+        const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+        
+        document.querySelectorAll('.carrito-contador').forEach(el => {
+            el.textContent = totalItems;
+            el.style.display = totalItems > 0 ? 'flex' : 'none';
+        });
+    }
+
+    // Llamar al cargar la página
+    document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
+</script>
 </body>
 </html>
