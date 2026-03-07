@@ -437,44 +437,51 @@
             window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
 
-        // Datos de productos (según PDF)
-        const productos = [
-            {
-                nombre: "Mantequilla de chocomaní",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
-                imagen: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                nombre: "Mantequilla de maní clásica",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
-                imagen: "https://images.unsplash.com/photo-1626094309830-ff817e136d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
-                imagen: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                nombre: "Mantequilla de chocomaní",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
-                imagen: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                nombre: "Mantequilla de maní clásica",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
-                imagen: "https://images.unsplash.com/photo-1626094309830-ff817e136d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            }
-        ];
+// Datos de productos con las imágenes que me enviaste
+const productos = [
+    {
+        nombre: "Mantequilla de chocomaní",
+        presentacion: "250gr",
+        precio: 19.00,
+        ingredientes: ["Maní tostado", "Cacao", "Edulcorante"],
+        imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
+    },
+    {
+        nombre: "Mantequilla de maní clásica",
+        presentacion: "250gr",
+        precio: 19.00,
+        ingredientes: ["Maní tostado"],
+        imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
+    },
+    {
+        nombre: "Mantequilla de maní la favorita",
+        presentacion: "250gr",
+        precio: 19.00,
+        ingredientes: ["Maní tostado", "Sal de maras", "Edulcorante"],
+        imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
+    },
+    {
+        nombre: "Mantequilla de chocomaní",
+        presentacion: "400gr",
+        precio: 30.00,
+        ingredientes: ["Maní tostado", "Cacao", "Edulcorante"],
+        imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
+    },
+    {
+        nombre: "Mantequilla de maní clásica",
+        presentacion: "400gr",
+        precio: 30.00,
+        ingredientes: ["Maní tostado"],
+        imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
+    },
+    {
+        nombre: "Mantequilla de maní la favorita",
+        presentacion: "400gr",
+        precio: 30.00,
+        ingredientes: ["Maní tostado", "Sal de maras", "Edulcorante"],
+        imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
+    }
+];
 
         // Cargar productos en el carrusel
         const track = document.getElementById('carrusel-track');
@@ -512,4 +519,5 @@
         });
     </script>
 </body>
+
 </html>
