@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Vannalatte</title>
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ebe5df;
+            color: #4e342e;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, .logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+        }
+        
+        /* Header */
+        header {
+            background-color: #4e342e;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .top-bar {
+            height: 4px;
+            background-color: #c68642;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #c68642;
+        }
+        
+        .nav-links a.active {
+            color: #c68642;
+            border-bottom: 2px solid #c68642;
+            padding-bottom: 5px;
+        }
+        
+        /* Hero pequeño */
+        .page-hero {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            margin-top: 76px;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Contenedor principal */
+        .catalogo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+        
+        /* Filtros o tabs (250gr / 400gr) */
+        .product-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4e342e;
+            cursor: pointer;
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background-color: #c68642;
+            color: white;
+        }
+        
+        .tab-btn:hover {
+            background-color: #4e342e;
+            color: white;
+        }
+        
+        /* Grid de productos */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .producto-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .producto-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .producto-img {
+            height: 300px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .producto-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .producto-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .producto-nombre {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: #4e342e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .producto-presentacion {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #c68642;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .producto-ingredientes {
+            font-family: 'Poppins', sans-serif;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .producto-precio {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #c24a34;
+            margin: 1rem 0;
+        }
+        
+        .btn-wsp {
+            background-color: #c24a34;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            margin-top: auto;
+        }
+        
+        .btn-wsp:hover {
+            background-color: #a63d2a;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+        
+        .contacto-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contacto-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .copyright {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .product-tabs {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .tab-btn {
+                width: 200px;
+            }
+            
+            .productos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar"></div>
+        <nav>
+            <div class="logo">Vannalatte</div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html" class="active">Catálogo</a>
+                <a href="recetas.html">Recetas</a>
+                <a href="sobre-mi.html">Sobre mí</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Nuestras Mantequillas</h1>
+        <p>Hechas en casa, inspiradas en la tradición</p>
+    </section>
+
+    <div class="catalogo-container">
+        <!-- Tabs para filtrar por presentación -->
+        <div class="product-tabs">
+            <button class="tab-btn active" onclick="filtrarProductos('todos')">Todos</button>
+            <button class="tab-btn" onclick="filtrarProductos('250gr')">250gr</button>
+            <button class="tab-btn" onclick="filtrarProductos('400gr')">400gr</button>
+        </div>
+
+        <!-- Grid de productos -->
+        <div class="productos-grid" id="productos-grid">
+            <!-- Los productos se cargarán aquí -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="logo" style="margin-bottom: 1rem;">Vannalatte</div>
+        <div class="contacto-info">
+            <p>📧 vannalatte@gmail.com</p>
+            <p>📱 @vannalatte</p>
+            <p>📞 +51 951 499 437</p>
+        </div>
+        <p class="copyright">© 2024 Vannalatte - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Función para comprar por WhatsApp
+        function comprarWhatsApp(producto, presentacion, precio) {
+            const numero = "51951499437";
+            const mensaje = `Hola, quiero comprar: ${producto} ${presentacion} - S/ ${precio}`;
+            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+        }
+
+        // Datos de productos con las imágenes reales
+        const productos = [
+            // 250gr
+            {
+                nombre: "Mantequilla de chocomaní",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: "MANÍ TOSTADO, CACAO, EDULCORANTE",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní clásica",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: "MANÍ TOSTADO",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní la favorita",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: "MANÍ TOSTADO, SAL DE MARAS, EDULCORANTE",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
+            },
+            // 400gr
+            {
+                nombre: "Mantequilla de chocomaní",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: "MANÍ TOSTADO, CACAO, EDULCORANTE",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní clásica",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: "MANÍ TOSTADO",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní la favorita",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: "MANÍ TOSTADO, SAL DE MARAS, EDULCORANTE",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
+            }
+        ];
+
+        // Cargar productos
+        const grid = document.getElementById('productos-grid');
+        
+        function mostrarProductos(filtro = 'todos') {
+            grid.innerHTML = '';
+            
+            const productosFiltrados = filtro === 'todos' 
+                ? productos 
+                : productos.filter(p => p.presentacion === filtro);
+            
+            productosFiltrados.forEach(producto => {
+                const card = document.createElement('div');
+                card.className = 'producto-card';
+                card.innerHTML = `
+                    <div class="producto-img">
+                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                    </div>
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">${producto.nombre}</h3>
+                        <div class="producto-presentacion">${producto.presentacion}</div>
+                        <div class="producto-ingredientes">${producto.ingredientes}</div>
+                        <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
+                        <button class="btn-wsp" onclick="comprarWhatsApp('${producto.nombre}', '${producto.presentacion}', ${producto.precio})">
+                            Comprar por WhatsApp
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Función para filtrar productos (usada por los tabs)
+        function filtrarProductos(filtro) {
+            // Actualizar clase active de los tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(filtro) || 
+                    (filtro === 'todos' && btn.textContent === 'Todos')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            mostrarProductos(filtro);
+        }
+
+        // Mostrar todos los productos al cargar la página
+        mostrarProductos('todos');
+    </script>
+</body>
+</html>
