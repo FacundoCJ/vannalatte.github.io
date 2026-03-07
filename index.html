@@ -75,6 +75,7 @@
         .nav-links {
             display: flex;
             gap: 2.5rem;
+            align-items: center;
         }
         
         .nav-links a {
@@ -90,6 +91,32 @@
             color: #c68642;
         }
         
+        /* Icono carrito */
+        .carrito-link {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+        
+        .carrito-contador {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #c24a34;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(78, 46, 46, 0.7), rgba(78, 46, 46, 0.7)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
@@ -101,7 +128,7 @@
             justify-content: center;
             text-align: center;
             color: white;
-            margin-top: 120px; /* Ajustado por la barra + header */
+            margin-top: 120px;
         }
         
         .hero-content h1 {
@@ -256,7 +283,7 @@
             margin-bottom: 1rem;
         }
         
-        .btn-wsp {
+        .btn-carrito {
             background-color: #c24a34;
             color: white;
             border: none;
@@ -270,7 +297,7 @@
             transition: background-color 0.3s;
         }
         
-        .btn-wsp:hover {
+        .btn-carrito:hover {
             background-color: #a63d2a;
         }
         
@@ -362,7 +389,7 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-links a:not(.carrito-link) {
                 display: none;
             }
             
@@ -394,7 +421,7 @@
         <!-- Barra superior con texto -->
         <div class="top-bar">
             <div class="top-bar-content">
-                Obtén la tuya ya!
+            Obtén la tuya ya!
             </div>
         </div>
         <nav>
@@ -404,6 +431,11 @@
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
+                <!-- Carrito -->
+                <a href="carrito.html" class="carrito-link">
+                    🛒
+                    <span class="carrito-contador">0</span>
+                </a>
             </div>
         </nav>
     </header>
@@ -452,14 +484,64 @@
     </footer>
 
     <script>
-        // Función para comprar por WhatsApp
-        function comprarWhatsApp(producto, presentacion, precio) {
-            const numero = "51951499437";
-            const mensaje = `Hola, quiero comprar: ${producto} ${presentacion} - S/ ${precio}`;
-            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+        // ============================================
+        // FUNCIONES DEL CARRITO
+        // ============================================
+
+        function obtenerCarrito() {
+            const carrito = localStorage.getItem('vannalatte-carrito');
+            return carrito ? JSON.parse(carrito) : [];
         }
 
-        // Datos de productos
+        function guardarCarrito(carrito) {
+            localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+        }
+
+        function agregarAlCarrito(producto, event) {
+            let carrito = obtenerCarrito();
+            
+            const existente = carrito.find(item => 
+                item.nombre === producto.nombre && 
+                item.presentacion === producto.presentacion
+            );
+            
+            if (existente) {
+                existente.cantidad += 1;
+            } else {
+                carrito.push({
+                    ...producto,
+                    cantidad: 1,
+                    id: Date.now() + Math.random()
+                });
+            }
+            
+            guardarCarrito(carrito);
+            
+            // Feedback visual
+            const btn = event.target;
+            const textoOriginal = btn.textContent;
+            btn.textContent = '✅ Añadido';
+            btn.style.backgroundColor = '#4CAF50';
+            setTimeout(() => {
+                btn.textContent = textoOriginal;
+                btn.style.backgroundColor = '#c24a34';
+            }, 1000);
+        }
+
+        function actualizarContadorCarrito() {
+            const carrito = obtenerCarrito();
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            
+            document.querySelectorAll('.carrito-contador').forEach(el => {
+                el.textContent = totalItems;
+                el.style.display = totalItems > 0 ? 'flex' : 'none';
+            });
+        }
+
+        // ============================================
+        // DATOS DE PRODUCTOS
+        // ============================================
         const productos = [
             {
                 nombre: "Mantequilla de chocomaní",
@@ -495,13 +577,6 @@
                 precio: 30.00,
                 ingredientes: ["Maní tostado"],
                 imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: ["Maní tostado", "Sal de maras", "Edulcorante"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
             }
         ];
 
@@ -520,8 +595,8 @@
                     <div class="producto-presentacion">${producto.presentacion}</div>
                     <div class="producto-ingredientes">${producto.ingredientes.join(' • ')}</div>
                     <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
-                    <button class="btn-wsp" onclick="comprarWhatsApp('${producto.nombre}', '${producto.presentacion}', ${producto.precio})">
-                        Comprar por WhatsApp
+                    <button class="btn-carrito" onclick="agregarAlCarrito(${JSON.stringify(producto).replace(/"/g, '&quot;')}, event)">
+                        Añadir al carrito
                     </button>
                 </div>
             `;
@@ -541,7 +616,73 @@
                 track.scrollBy({ left: 320, behavior: 'smooth' });
             });
         }
+
+        // Inicializar contador
+        document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
     </script>
+    <script>
+    // ============================================
+    // FUNCIONES DEL CARRITO (compartidas)
+    // ============================================
+
+    // Obtener carrito actual
+    function obtenerCarrito() {
+        const carrito = localStorage.getItem('vannalatte-carrito');
+        return carrito ? JSON.parse(carrito) : [];
+    }
+
+    // Guardar carrito
+    function guardarCarrito(carrito) {
+        localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
+        actualizarContadorCarrito();
+    }
+
+    // Agregar al carrito
+    function agregarAlCarrito(producto) {
+        let carrito = obtenerCarrito();
+        
+        // Buscar si ya existe (mismo nombre y presentación)
+        const existente = carrito.find(item => 
+            item.nombre === producto.nombre && 
+            item.presentacion === producto.presentacion
+        );
+        
+        if (existente) {
+            existente.cantidad += 1;
+        } else {
+            carrito.push({
+                ...producto,
+                cantidad: 1,
+                id: Date.now() + Math.random() // ID único
+            });
+        }
+        
+        guardarCarrito(carrito);
+        
+        // Feedback visual
+        const btn = event.target;
+        const textoOriginal = btn.textContent;
+        btn.textContent = '✅ Añadido';
+        btn.style.backgroundColor = '#4CAF50';
+        setTimeout(() => {
+            btn.textContent = textoOriginal;
+            btn.style.backgroundColor = '#c24a34';
+        }, 1000);
+    }
+
+    // Actualizar contador del carrito
+    function actualizarContadorCarrito() {
+        const carrito = obtenerCarrito();
+        const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+        
+        document.querySelectorAll('.carrito-contador').forEach(el => {
+            el.textContent = totalItems;
+            el.style.display = totalItems > 0 ? 'flex' : 'none';
+        });
+    }
+
+    // Llamar al cargar la página
+    document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
+</script>
 </body>
 </html>
-
