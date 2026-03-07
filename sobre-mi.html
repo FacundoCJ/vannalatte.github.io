@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí - Vannalatte</title>
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ebe5df;
+            color: #4e342e;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, .logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+        }
+        
+        /* Header */
+        header {
+            background-color: #4e342e;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .top-bar {
+            height: 4px;
+            background-color: #c68642;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #c68642;
+        }
+        
+        .nav-links a.active {
+            color: #c68642;
+            border-bottom: 2px solid #c68642;
+            padding-bottom: 5px;
+        }
+        
+        /* Hero pequeño */
+        .page-hero {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            margin-top: 76px;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Contenedor principal */
+        .sobre-mi-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+        
+        /* Tarjeta de perfil */
+        .profile-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, #c68642 0%, #4e342e 100%);
+            height: 200px;
+            position: relative;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            background-color: #ebe5df;
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-image .placeholder {
+            font-size: 5rem;
+            color: #c68642;
+            opacity: 0.3;
+        }
+        
+        .profile-content {
+            padding: 120px 3rem 3rem;
+            text-align: center;
+        }
+        
+        .profile-name {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: #4e342e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #c68642;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #ebe5df;
+        }
+        
+        .profile-story {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: #4e342e;
+            line-height: 1.8;
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .profile-story::before {
+            content: '"';
+            font-family: 'Merriweather', serif;
+            font-size: 5rem;
+            color: #c68642;
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -30px;
+        }
+        
+        .profile-story::after {
+            content: '"';
+            font-family: 'Merriweather', serif;
+            font-size: 5rem;
+            color: #c68642;
+            opacity: 0.2;
+            position: absolute;
+            bottom: -50px;
+            right: -30px;
+        }
+        
+        /* Sección de valores */
+        .valores-section {
+            margin: 4rem 0;
+        }
+        
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .valor-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .valor-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .valor-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .valor-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: #4e342e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .valor-card p {
+            font-family: 'Poppins', sans-serif;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+            margin-top: 2rem;
+        }
+        
+        .contacto-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contacto-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .copyright {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-name {
+                font-size: 2rem;
+            }
+            
+            .profile-content {
+                padding: 100px 1.5rem 2rem;
+            }
+            
+            .profile-story::before,
+            .profile-story::after {
+                display: none;
+            }
+            
+            .valores-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar"></div>
+        <nav>
+            <div class="logo">Vannalatte</div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="recetas.html">Recetas</a>
+                <a href="sobre-mi.html" class="active">Sobre mí</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Sobre Mí</h1>
+        <p>La historia detrás de Vannalatte</p>
+    </section>
+
+    <div class="sobre-mi-container">
+        <!-- Tarjeta de perfil -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <!-- Aquí puedes poner una foto si tienes, por ahora un ícono -->
+                    <div class="placeholder">👩‍🍳</div>
+                </div>
+            </div>
+            
+            <div class="profile-content">
+                <h2 class="profile-name">Silvana Sillau</h2>
+                <div class="profile-title">Psicoterapeuta de niños y adolescentes · Amante de la cocina</div>
+                
+                <div class="profile-story">
+                    <p>Hace 6 años descubrí cuanto me gustaba hacer postres y al mismo tiempo recordé que mi babu (abuela) hacía pasteles y bizcochos. Realmente muchos secretos de mis postres los aprendí de ella, pero sobre todo la perseverancia y dedicación por lo que uno hace.</p>
+                    <p style="margin-top: 1.5rem;">Cada pedacito de postre tiene una cucharadita de amor casero. Eso es lo que encontrarás en Vannalatte: productos hechos con dedicación, pensando en quienes buscan algo rico pero también saludable.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Valores -->
+        <div class="valores-section">
+            <h2 style="text-align: center; font-size: 2rem; color: #4e342e; margin-bottom: 1rem;">Mis valores</h2>
+            <p style="text-align: center; font-family: 'Poppins', sans-serif; color: #666; max-width: 600px; margin: 0 auto 2rem;">
+                Lo que hace especial a Vannalatte
+            </p>
+            
+            <div class="valores-grid">
+                <div class="valor-card">
+                    <div class="valor-icon">🌱</div>
+                    <h3>Ingredientes naturales</h3>
+                    <p>Solo maní tostado, cacao, sal de maras y edulcorante. Nada más.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">❤️</div>
+                    <h3>Hecho con amor</h3>
+                    <p>Cada frasco tiene esa cucharadita de amor casero que aprendí de mi babu.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">🏠</div>
+                    <h3>Tradición familiar</h3>
+                    <p>Recetas inspiradas en los secretos de mi abuela, adaptadas para hoy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contacto rápido -->
+        <div style="text-align: center; margin: 4rem 0;">
+            <h2 style="font-size: 2rem; color: #4e342e; margin-bottom: 1rem;">¿Quieres saber más?</h2>
+            <p style="margin-bottom: 2rem; font-family: 'Poppins', sans-serif;">Escríbeme directamente por WhatsApp</p>
+            <a href="https://wa.me/51951499437?text=Hola%20Silvana%2C%20quiero%20saber%20m%C3%A1s%20sobre%20tus%20productos" 
+               class="btn" 
+               style="display: inline-block; padding: 12px 35px; background-color: #c24a34; color: white; text-decoration: none; border-radius: 50px; font-weight: 600;">
+                Contactar por WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="logo" style="margin-bottom: 1rem;">Vannalatte</div>
+        <div class="contacto-info">
+            <p>📧 vannalatte@gmail.com</p>
+            <p>📱 @vannalatte</p>
+            <p>📞 +51 951 499 437</p>
+        </div>
+        <p class="copyright">© 2024 Vannalatte - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
