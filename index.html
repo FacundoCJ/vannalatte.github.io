@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vannalatte - Mantequillas de Maní Artesanales</title>
+    <title>Vannalatte - Mantequillas Artesanales</title>
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -12,53 +18,69 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: #ebe5df;
             color: #4e342e;
+            line-height: 1.6;
         }
         
-        /* HEADER - barra delgada color #c68642 */
+        h1, h2, h3, h4, .logo, .section-title {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+        }
+        
+        /* Header */
         header {
-            background-color: #c68642;
-            padding: 0.8rem 5%;
+            background-color: #4e342e;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Barra delgada decorativa */
+        .top-bar {
+            height: 4px;
+            background-color: #c68642;
         }
         
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            padding: 1rem 5%;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
             color: white;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         .nav-links a {
-            text-decoration: none;
             color: white;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
             font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
         }
         
         .nav-links a:hover {
-            color: #4e342e;
+            color: #c68642;
         }
         
-        /* HERO SECTION */
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(78, 46, 46, 0.7), rgba(78, 46, 46, 0.7)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             height: 80vh;
@@ -67,89 +89,103 @@
             justify-content: center;
             text-align: center;
             color: white;
-            margin-top: 60px;
+            margin-top: 76px; /* altura del header */
         }
         
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
         }
         
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 12px 35px;
             background-color: #c24a34;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
             border: none;
             cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
         }
         
         .btn:hover {
-            background-color: #4e342e;
+            background-color: #a63d2a;
+            transform: translateY(-2px);
         }
         
-        /* SECCIÓN PRODUCTOS DESLIZABLES */
+        /* Sección Mantequillas con carrusel */
         .productos-section {
-            padding: 4rem 5%;
-            max-width: 1200px;
+            padding: 5rem 5%;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
             color: #4e342e;
+            margin-bottom: 1rem;
         }
         
-        /* CARRUSEL HORIZONTAL */
+        .section-subtitle {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: #4e342e;
+            margin-bottom: 3rem;
+        }
+        
+        /* Carrusel */
         .carrusel-container {
             position: relative;
             width: 100%;
-            margin: 2rem 0;
+            overflow: hidden;
+            padding: 1rem 0;
         }
         
-        .carrusel {
+        .carrusel-track {
             display: flex;
-            overflow-x: auto;
             gap: 2rem;
-            padding: 1rem 0.5rem 2rem 0.5rem;
+            overflow-x: auto;
             scroll-behavior: smooth;
             scrollbar-width: thin;
             scrollbar-color: #c68642 #ebe5df;
+            padding: 1rem 0.5rem;
         }
         
-        .carrusel::-webkit-scrollbar {
+        .carrusel-track::-webkit-scrollbar {
             height: 8px;
         }
         
-        .carrusel::-webkit-scrollbar-track {
+        .carrusel-track::-webkit-scrollbar-track {
             background: #ebe5df;
             border-radius: 10px;
         }
         
-        .carrusel::-webkit-scrollbar-thumb {
+        .carrusel-track::-webkit-scrollbar-thumb {
             background: #c68642;
             border-radius: 10px;
         }
         
         .producto-card {
             min-width: 300px;
+            max-width: 350px;
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             flex-shrink: 0;
         }
@@ -167,6 +203,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .producto-card:hover .producto-img img {
+            transform: scale(1.05);
         }
         
         .producto-info {
@@ -174,21 +215,32 @@
         }
         
         .producto-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
             color: #4e342e;
+            margin-bottom: 0.5rem;
         }
         
-        .producto-descripcion {
+        .producto-presentacion {
+            font-family: 'Poppins', sans-serif;
+            color: #c68642;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .producto-ingredientes {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
             color: #666;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
         }
         
         .producto-precio {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #c68642;
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #c24a34;
             margin-bottom: 1rem;
         }
         
@@ -196,101 +248,107 @@
             background-color: #c24a34;
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
             font-size: 1rem;
-            font-weight: bold;
-            transition: background 0.3s;
+            transition: background-color 0.3s;
         }
         
         .btn-wsp:hover {
-            background-color: #4e342e;
+            background-color: #a63d2a;
         }
         
-        /* FLECHAS DE NAVEGACIÓN DEL CARRUSEL */
-        .carrusel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background: #c68642;
+        /* Flechas de navegación carrusel */
+        .carrusel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .carrusel-arrow {
+            background-color: #4e342e;
             color: white;
-            border: none;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1.5rem;
+            transition: background-color 0.3s;
         }
         
-        .carrusel-btn:hover {
-            opacity: 1;
-            background: #4e342e;
+        .carrusel-arrow:hover {
+            background-color: #c68642;
         }
         
-        .carrusel-btn.prev {
-            left: -20px;
-        }
-        
-        .carrusel-btn.next {
-            right: -20px;
-        }
-        
-        /* SECCIÓN SIMPLE Y SALUDABLE */
-        .simple-saludable {
-            background: #c68642;
+        /* Sección Simple y saludable */
+        .simple-section {
+            background-color: #4e342e;
             color: white;
-            padding: 4rem 5%;
             text-align: center;
+            padding: 5rem 5%;
         }
         
-        .simple-saludable h2 {
+        .simple-section h2 {
+            font-family: 'Merriweather', serif;
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
         
-        .simple-saludable p {
+        .simple-section p {
+            font-family: 'Poppins', sans-serif;
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            opacity: 0.9;
         }
         
-        /* FOOTER */
+        .simple-section .btn {
+            background-color: #c68642;
+        }
+        
+        .simple-section .btn:hover {
+            background-color: #b57535;
+        }
+        
+        /* Footer */
         footer {
-            background: #4e342e;
+            background-color: #4e342e;
             color: white;
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 3rem 5%;
         }
         
         .contacto-info {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
+            gap: 3rem;
+            margin: 2rem 0;
             flex-wrap: wrap;
+            font-family: 'Poppins', sans-serif;
         }
         
         .contacto-info p {
-            color: #ebe5df;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .copyright {
-            margin-top: 2rem;
+            font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
-            color: #c68642;
+            opacity: 0.7;
+            margin-top: 2rem;
         }
         
-        /* RESPONSIVE */
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -300,18 +358,23 @@
                 font-size: 2rem;
             }
             
-            .producto-card {
-                min-width: 250px;
+            .hero-content p {
+                font-size: 1rem;
             }
             
-            .carrusel-btn {
-                display: none;
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .producto-card {
+                min-width: 260px;
             }
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="top-bar"></div>
         <nav>
             <div class="logo">Vannalatte</div>
             <div class="nav-links">
@@ -323,7 +386,7 @@
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Obten la tuya ya!</h1>
@@ -332,31 +395,32 @@
         </div>
     </section>
 
-    <!-- PRODUCTOS DESTACADOS CON CARRUSEL -->
+    <!-- Sección Mantequillas con Carrusel -->
     <section class="productos-section">
         <h2 class="section-title">Nuestras Mantequillas</h2>
-        <p style="text-align: center; margin-bottom: 1rem; color: #4e342e;">Hecha en casa, inspirada en la tradición</p>
+        <p class="section-subtitle">Hecha en casa, inspirada en la tradición</p>
         
         <div class="carrusel-container">
-            <button class="carrusel-btn prev" onclick="desplazarCarrusel(-300)">&#10094;</button>
-            <button class="carrusel-btn next" onclick="desplazarCarrusel(300)">&#10095;</button>
-            
-            <div class="carrusel" id="carrusel-productos">
-                <!-- Los productos se cargarán aquí con JavaScript -->
+            <div class="carrusel-track" id="carrusel-track">
+                <!-- Los productos se cargarán con JavaScript -->
             </div>
+        </div>
+        
+        <div class="carrusel-controls">
+            <button class="carrusel-arrow" id="arrow-left">←</button>
+            <button class="carrusel-arrow" id="arrow-right">→</button>
         </div>
     </section>
 
-    <!-- SECCIÓN SIMPLE Y SALUDABLE -->
-    <section class="simple-saludable">
+    <!-- Sección Simple y saludable -->
+    <section class="simple-section">
         <h2>Simple y saludable</h2>
-        <p>Menos ingredientes, mejor nutrición. Mantequillas artesanales con lo mejor de la naturaleza.</p>
-        <a href="catalogo.html" class="btn" style="background: #4e342e;">Comprar ahora</a>
+        <p>Menos ingredientes, mejor nutrición</p>
+        <a href="catalogo.html" class="btn">Comprar ahora</a>
     </section>
 
-    <!-- FOOTER -->
     <footer>
-        <p style="font-size: 1.2rem; margin-bottom: 1rem;">Vannalatte - Mantequillas de Maní Artesanales</p>
+        <div class="logo" style="margin-bottom: 1rem;">Vannalatte</div>
         <div class="contacto-info">
             <p>📧 vannalatte@gmail.com</p>
             <p>📱 @vannalatte</p>
@@ -367,24 +431,13 @@
 
     <script>
         // Función para comprar por WhatsApp
-        function comprarWhatsApp(producto, precio, presentacion) {
+        function comprarWhatsApp(producto, presentacion, precio) {
             const numero = "51951499437";
-            const mensaje = `Hola, quiero comprar: ${producto} - ${presentacion} - Precio: S/ ${precio}`;
-            const mensajeCodificado = encodeURIComponent(mensaje);
-            const url = `https://wa.me/${numero}?text=${mensajeCodificado}`;
-            window.open(url, '_blank');
+            const mensaje = `Hola, quiero comprar: ${producto} ${presentacion} - S/ ${precio}`;
+            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
 
-        // Función para desplazar el carrusel
-        function desplazarCarrusel(cantidad) {
-            const carrusel = document.getElementById('carrusel-productos');
-            carrusel.scrollBy({
-                left: cantidad,
-                behavior: 'smooth'
-            });
-        }
-
-        // Datos de productos
+        // Datos de productos (según PDF)
         const productos = [
             {
                 nombre: "Mantequilla de chocomaní",
@@ -420,38 +473,43 @@
                 precio: 30.00,
                 ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
                 imagen: "https://images.unsplash.com/photo-1626094309830-ff817e136d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
-                imagen: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
             }
         ];
 
         // Cargar productos en el carrusel
-        const carrusel = document.getElementById('carrusel-productos');
-        if (carrusel) {
-            productos.forEach(producto => {
-                const card = document.createElement('div');
-                card.className = 'producto-card';
-                card.innerHTML = `
-                    <div class="producto-img">
-                        <img src="${producto.imagen}" alt="${producto.nombre}">
-                    </div>
-                    <div class="producto-info">
-                        <h3>${producto.nombre} - ${producto.presentacion}</h3>
-                        <p class="producto-descripcion">Ingredientes: ${producto.ingredientes.join(', ')}</p>
-                        <p class="producto-precio">S/ ${producto.precio.toFixed(2)}</p>
-                        <button class="btn-wsp" onclick="comprarWhatsApp('${producto.nombre}', ${producto.precio}, '${producto.presentacion}')">
-                            Comprar por WhatsApp
-                        </button>
-                    </div>
-                `;
-                carrusel.appendChild(card);
-            });
-        }
+        const track = document.getElementById('carrusel-track');
+        
+        productos.forEach(producto => {
+            const card = document.createElement('div');
+            card.className = 'producto-card';
+            card.innerHTML = `
+                <div class="producto-img">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                </div>
+                <div class="producto-info">
+                    <h3>${producto.nombre}</h3>
+                    <div class="producto-presentacion">${producto.presentacion}</div>
+                    <div class="producto-ingredientes">${producto.ingredientes.join(' • ')}</div>
+                    <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
+                    <button class="btn-wsp" onclick="comprarWhatsApp('${producto.nombre}', '${producto.presentacion}', ${producto.precio})">
+                        Comprar por WhatsApp
+                    </button>
+                </div>
+            `;
+            track.appendChild(card);
+        });
+
+        // Funcionalidad del carrusel
+        const arrowLeft = document.getElementById('arrow-left');
+        const arrowRight = document.getElementById('arrow-right');
+
+        arrowLeft.addEventListener('click', () => {
+            track.scrollBy({ left: -320, behavior: 'smooth' });
+        });
+
+        arrowRight.addEventListener('click', () => {
+            track.scrollBy({ left: 320, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
