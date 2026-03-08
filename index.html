@@ -344,19 +344,16 @@
             font-family: 'Merriweather', serif;
         }
         
-        /* Sección Simple y saludable */
+        /* Sección Simple y saludable - AHORA OCUPA TODO EL ANCHO */
         .simple-saludable-section {
             display: flex;
-            align-items: center;
-            max-width: 1400px;
-            margin: 4rem auto;
+            width: 100%;
             background-color: #4e342e;
-            border-radius: 20px;
-            overflow: hidden;
         }
         
         .simple-saludable-image {
             flex: 1;
+            width: 50%;
         }
         
         .simple-saludable-image img {
@@ -368,22 +365,28 @@
         
         .simple-saludable-content {
             flex: 1;
+            width: 50%;
+            background-color: #4e342e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             padding: 4rem;
-            color: white;
         }
         
         .simple-saludable-content h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-family: 'Merriweather', serif;
-            color: white;
+            color: #ebe5df; /* Color beige */
         }
         
         .simple-saludable-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             font-family: 'Poppins', sans-serif;
-            opacity: 0.9;
+            color: #ebe5df; /* Color beige */
         }
         
         .simple-saludable-content .btn {
@@ -436,9 +439,13 @@
                 flex-direction: column;
             }
             
+            .simple-saludable-image,
             .simple-saludable-content {
-                padding: 2rem;
-                text-align: center;
+                width: 100%;
+            }
+            
+            .simple-saludable-content {
+                padding: 3rem 2rem;
             }
             
             .nuestras-mantequillas-section h2 {
@@ -506,7 +513,7 @@
         <button class="btn-subrayado" onclick="window.location.href='catalogo.html'">Comprar ahora →</button>
     </section>
 
-    <!-- Sección Simple y saludable -->
+    <!-- Sección Simple y saludable - AHORA A TODO LO ANCHO -->
     <section class="simple-saludable-section">
         <div class="simple-saludable-image">
             <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequillas.PNG" alt="Mantequillas">
@@ -672,4 +679,3 @@
     </script>
 </body>
 </html>
-
