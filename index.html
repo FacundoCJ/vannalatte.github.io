@@ -38,7 +38,7 @@
             width: 100%;
         }
         
-        /* Header - MÁS ANGOSTO */
+        /* Header */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -52,16 +52,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 5%;
-            max-width: 1100px;
+            padding: 1rem 2%;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
-        /* Logo blanco - izquierda */
+        /* Logo blanco - izquierda PEGADO AL BORDE */
         .logo-link {
             display: block;
             width: 200px;
             flex-shrink: 0;
+            margin-left: 0;
         }
         
         .logo-img {
@@ -100,7 +101,7 @@
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-right: 20px;
+            margin-right: 2rem;
             display: flex;
             align-items: center;
         }
@@ -118,7 +119,7 @@
             right: -8px;
             background-color: #c24a34;
             color: white;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             min-width: 28px;
             height: 28px;
@@ -465,7 +466,7 @@
             background-color: #a63d2a;
         }
         
-        /* Sección de Servicios (3 columnas) - LOGOS GRANDES */
+        /* Sección de Servicios (3 columnas) - LOGOS GRANDES CON TÍTULO Y SUBTÍTULO A LA DERECHA */
         .servicios-section {
             background-color: #4e342e;
             padding: 5rem 2%;
@@ -477,38 +478,38 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
         
         .servicio-item {
             display: flex;
-            flex-direction: column;
             align-items: flex-start;
+            gap: 1.5rem;
         }
         
-        .servicio-item.izquierda {
-            align-items: flex-start;
+        .servicio-item:first-child {
+            justify-content: flex-start;
         }
         
-        .servicio-item.centro {
-            align-items: center;
+        .servicio-item:nth-child(2) {
+            justify-content: center;
         }
         
-        .servicio-item.derecha {
-            align-items: flex-end;
+        .servicio-item:last-child {
+            justify-content: flex-end;
         }
         
         .servicio-icono {
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 4px solid white;
             border-radius: 50%;
             padding: 30px;
-            margin-bottom: 1.5rem;
         }
         
         .servicio-icono img {
@@ -523,38 +524,26 @@
             flex-direction: column;
         }
         
-        .servicio-contenido.izquierda {
-            text-align: left;
-        }
-        
-        .servicio-contenido.centro {
-            text-align: center;
-        }
-        
-        .servicio-contenido.derecha {
-            text-align: right;
-        }
-        
         .servicio-contenido h3 {
             font-family: 'Merriweather', serif;
             font-size: 2rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             color: white;
         }
         
         .servicio-contenido p {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: white;
             opacity: 0.9;
             line-height: 1.5;
-            max-width: 350px;
+            max-width: 300px;
         }
         
-        /* Footer - CONTACTOS MÁS ABAJO Y MÁS CERCA DEL LOGO */
+        /* Footer - LOGO GRANDE Y CONTACTOS MÁS ABAJO Y MÁS CERCA */
         footer {
             background-color: #ebe5df;
-            padding: 3rem 2%;
+            padding: 3rem 2% 2rem;
             width: 100%;
         }
         
@@ -570,6 +559,8 @@
         .footer-logo {
             width: 600px;
             flex-shrink: 0;
+            margin-left: 0;
+            margin-bottom: 1rem;
         }
         
         .footer-logo img {
@@ -581,9 +572,9 @@
         .footer-contacto {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
-            margin-bottom: 0;
-            margin-left: 0.2rem;
+            gap: 0.5rem;
+            margin-left: 0.5rem;
+            margin-bottom: 2rem;
         }
         
         .contacto-item {
@@ -629,6 +620,7 @@
         @media (max-width: 768px) {
             nav {
                 padding: 0.8rem 2%;
+                max-width: 100%;
             }
             
             .logo-link {
@@ -636,11 +628,15 @@
             }
             
             .nav-links {
-                gap: 1.2rem;
+                gap: 1.5rem;
             }
             
             .nav-links a {
                 font-size: 0.9rem;
+            }
+            
+            .carrito-link {
+                margin-right: 1rem;
             }
             
             .carrito-link img {
@@ -695,21 +691,16 @@
                 gap: 3rem;
             }
             
-            .servicio-item.izquierda,
-            .servicio-item.centro,
-            .servicio-item.derecha {
+            .servicio-item {
+                justify-content: flex-start !important;
+                flex-direction: row;
                 align-items: center;
-            }
-            
-            .servicio-contenido.izquierda,
-            .servicio-contenido.centro,
-            .servicio-contenido.derecha {
-                text-align: center;
             }
             
             .servicio-icono {
                 width: 120px;
                 height: 120px;
+                padding: 25px;
             }
             
             .servicio-contenido h3 {
@@ -717,23 +708,26 @@
             }
             
             .servicio-contenido p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .footer-container {
                 flex-direction: column;
                 align-items: center;
-                gap: 2rem;
+                text-align: center;
+                gap: 1rem;
                 min-height: auto;
             }
             
             .footer-logo {
                 width: 400px;
+                margin-bottom: 0.5rem;
             }
             
             .footer-contacto {
                 align-items: center;
                 margin-left: 0;
+                margin-bottom: 1rem;
             }
             
             .contacto-item {
@@ -753,10 +747,10 @@
         Obtén la tuya ya!
     </div>
 
-    <!-- Header - MÁS ANGOSTO -->
+    <!-- Header -->
     <header>
         <nav>
-            <!-- Logo izquierda -->
+            <!-- Logo izquierda - PEGADO AL BORDE -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
@@ -836,37 +830,32 @@
     <!-- Espacio beige -->
     <div class="espacio-beige"></div>
 
-    <!-- Sección de Servicios - 3 COLUMNAS CON ALINEACIONES ESPECÍFICAS -->
+    <!-- Sección de Servicios - LOGOS GRANDES CON TÍTULO Y SUBTÍTULO A LA DERECHA -->
     <section class="servicios-section">
         <div class="servicios-container">
-            <!-- Envío rápido - PEGADO A LA IZQUIERDA -->
-            <div class="servicio-item izquierda">
+            <div class="servicio-item">
                 <div class="servicio-icono">
                     <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-pedidos.png" alt="Envío rápido">
                 </div>
-                <div class="servicio-contenido izquierda">
+                <div class="servicio-contenido">
                     <h3>Envío rápido</h3>
                     <p>Llegamos a todo el Perú.<br>Trabajamos con Olva,<br>Rappi e Indrive</p>
                 </div>
             </div>
-            
-            <!-- Saludable - EN EL MEDIO -->
-            <div class="servicio-item centro">
+            <div class="servicio-item">
                 <div class="servicio-icono">
                     <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/hojas.png" alt="Saludable">
                 </div>
-                <div class="servicio-contenido centro">
+                <div class="servicio-contenido">
                     <h3>Saludable</h3>
-                    <p>Trabajamos con productos<br>100% naturales y sin<br>conservantes</p>
+                    <p>Trabajamos con productos<br>100% naturales y<br>libres de conservantes</p>
                 </div>
             </div>
-            
-            <!-- Pedidos - PEGADO A LA DERECHA -->
-            <div class="servicio-item derecha">
+            <div class="servicio-item">
                 <div class="servicio-icono">
                     <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/gente-mundo.png" alt="Pedidos">
                 </div>
-                <div class="servicio-contenido derecha">
+                <div class="servicio-contenido">
                     <h3>Pedidos</h3>
                     <p>Por Whatsapp e<br>Instagram</p>
                 </div>
@@ -874,7 +863,7 @@
         </div>
     </section>
 
-    <!-- Footer - CONTACTOS MÁS ABAJO Y MÁS CERCA DEL LOGO -->
+    <!-- Footer - LOGO GRANDE Y CONTACTOS MÁS ABAJO Y MÁS CERCA -->
     <footer>
         <div class="footer-container">
             <div class="footer-logo">
@@ -1016,7 +1005,7 @@
         const productosCarruselTrack = document.getElementById('productos-track');
         
         let productosPosition = 0;
-        const cardWidth = 370;
+        const cardWidth = 370; // ancho de tarjeta + gap
         
         function moverCarruselProductos(direccion) {
             const maxScroll = productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth;
