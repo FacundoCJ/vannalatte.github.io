@@ -52,12 +52,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2%;
-            max-width: 850px;
+            padding: 1rem 0;
+            max-width: 900px;
             margin: 0 auto;
+            width: 100%;
         }
         
-        /* Logo blanco - izquierda PEGADO AL BORDE */
+        /* Logo blanco - PEGADO AL BORDE IZQUIERDO */
         .logo-link {
             display: block;
             width: 200px;
@@ -95,20 +96,20 @@
             color: #c68642;
         }
         
-        /* Carrito a la derecha - PEGADO 90% AL BORDE */
+        /* Carrito - PEGADO AL BORDE DERECHO Y MÁS GRANDE */
         .carrito-link {
             position: relative;
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-right: 0.5rem;
+            margin-right: 0;
             display: flex;
             align-items: center;
         }
         
         .carrito-link img {
-            width: 65px;
-            height: 65px;
+            width: 75px;
+            height: 75px;
             object-fit: contain;
             filter: brightness(0) invert(1);
         }
@@ -466,7 +467,7 @@
             background-color: #a63d2a;
         }
         
-        /* Sección de Servicios (3 columnas) - LOGOS GRANDES CON TÍTULO Y SUBTÍTULO A LA DERECHA */
+        /* Sección de Servicios (3 columnas) */
         .servicios-section {
             background-color: #4e342e;
             padding: 5rem 2%;
@@ -540,7 +541,7 @@
             max-width: 300px;
         }
         
-        /* Footer - LOGO Y CONTACTOS PERFECTAMENTE ALINEADOS */
+        /* Footer - LOGO MÁS PEQUEÑO Y CONTACTOS PEGADOS */
         footer {
             background-color: #ebe5df;
             padding: 2rem 2%;
@@ -553,11 +554,11 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            min-height: 300px;
+            min-height: 200px;
         }
         
         .footer-logo {
-            width: 600px;
+            width: 350px;
             flex-shrink: 0;
             margin-left: 0;
             display: flex;
@@ -585,22 +586,21 @@
             color: #4e342e;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: color 0.3s;
             white-space: nowrap;
             line-height: 1.2;
         }
         
-        /* Ajuste específico para que el segundo contacto esté perfectamente alineado */
         .contacto-item:nth-child(2) {
             margin-top: 0;
             margin-bottom: 0;
         }
         
         .contacto-item img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             object-fit: contain;
             filter: brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(500%) hue-rotate(330deg);
         }
@@ -643,13 +643,9 @@
                 font-size: 0.9rem;
             }
             
-            .carrito-link {
-                margin-right: 0.3rem;
-            }
-            
             .carrito-link img {
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
             }
             
             .hero {
@@ -728,8 +724,7 @@
             }
             
             .footer-logo {
-                width: 400px;
-                display: block;
+                width: 280px;
             }
             
             .footer-contacto {
@@ -739,13 +734,13 @@
             }
             
             .contacto-item {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 justify-content: center;
             }
             
             .contacto-item img {
-                width: 40px;
-                height: 40px;
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
@@ -759,7 +754,7 @@
     <!-- Header -->
     <header>
         <nav>
-            <!-- Logo izquierda - PEGADO AL BORDE (100%) -->
+            <!-- Logo izquierda - PEGADO AL BORDE IZQUIERDO -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
@@ -771,7 +766,7 @@
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
-            <!-- Carrito - PEGADO 90% AL BORDE -->
+            <!-- Carrito - PEGADO AL BORDE DERECHO Y MÁS GRANDE -->
             <a href="carrito.html" class="carrito-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
                 <span class="carrito-contador">0</span>
@@ -809,7 +804,7 @@
         <button class="btn-subrayado" onclick="window.location.href='catalogo.html'">Comprar ahora →</button>
     </section>
 
-    <!-- Sección Simple y saludable - OCUPA TODO EL ANCHO -->
+    <!-- Sección Simple y saludable -->
     <section class="simple-saludable-section">
         <div class="simple-saludable-image">
             <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequillas.PNG" alt="Mantequillas">
@@ -821,10 +816,10 @@
         </div>
     </section>
 
-    <!-- Espacio beige pequeño -->
+    <!-- Espacio beige -->
     <div class="espacio-beige"></div>
 
-    <!-- Carrusel de videos de testimonios -->
+    <!-- Carrusel de videos -->
     <section class="videos-carrusel-section">
         <div class="carrusel-wrapper">
             <button class="carrusel-arrow arrow-left" id="videos-arrow-left">←</button>
@@ -839,7 +834,7 @@
     <!-- Espacio beige -->
     <div class="espacio-beige"></div>
 
-    <!-- Sección de Servicios - LOGOS GRANDES CON TÍTULO Y SUBTÍTULO A LA DERECHA -->
+    <!-- Sección de Servicios -->
     <section class="servicios-section">
         <div class="servicios-container">
             <div class="servicio-item">
@@ -872,7 +867,7 @@
         </div>
     </section>
 
-    <!-- Footer - LOGO Y CONTACTOS PERFECTAMENTE ALINEADOS -->
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-logo">
@@ -896,13 +891,11 @@
     </footer>
 
     <script>
-        // Función para copiar correo
         function copiarCorreo() {
             navigator.clipboard.writeText('vannalatte@gmail.com');
             alert('📧 Correo copiado al portapapeles');
         }
 
-        // Función para agregar al carrito
         function agregarAlCarrito(producto) {
             let carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
             
@@ -923,13 +916,11 @@
             
             localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
             
-            // Actualizar contador
             const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
             document.querySelectorAll('.carrito-contador').forEach(el => {
                 el.textContent = totalItems;
             });
             
-            // Feedback visual
             const btn = event.target;
             const textoOriginal = btn.textContent;
             btn.textContent = '✓ Añadido';
@@ -940,56 +931,20 @@
             }, 1000);
         }
 
-        // Datos de productos
         const productos = [
-            // 250gr
-            {
-                nombre: "Mantequilla de chocomaní",
-                presentacion: "250gr",
-                precio: 19.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní clásica",
-                presentacion: "250gr",
-                precio: 19.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "250gr",
-                precio: 19.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG"
-            },
-            // 400gr
-            {
-                nombre: "Mantequilla de chocomaní",
-                presentacion: "400gr",
-                precio: 30.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní clásica",
-                presentacion: "400gr",
-                precio: 30.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "400gr",
-                precio: 30.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG"
-            }
+            { nombre: "Mantequilla de chocomaní", presentacion: "250gr", precio: 19.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG" },
+            { nombre: "Mantequilla de maní clásica", presentacion: "250gr", precio: 19.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG" },
+            { nombre: "Mantequilla de maní la favorita", presentacion: "250gr", precio: 19.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG" },
+            { nombre: "Mantequilla de chocomaní", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG" },
+            { nombre: "Mantequilla de maní clásica", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG" },
+            { nombre: "Mantequilla de maní la favorita", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG" }
         ];
 
-        // Cargar productos en el carrusel
         const productosTrack = document.getElementById('productos-track');
         
         productos.forEach(producto => {
             const card = document.createElement('div');
             card.className = 'producto-card';
-            
-            // Convertir producto a string para pasarlo a la función
             const productoStr = JSON.stringify(producto).replace(/"/g, '&quot;');
             
             card.innerHTML = `
@@ -1008,28 +963,24 @@
             productosTrack.appendChild(card);
         });
 
-        // Carrusel de productos automático y manual
         const productosArrowLeft = document.getElementById('productos-arrow-left');
         const productosArrowRight = document.getElementById('productos-arrow-right');
         const productosCarruselTrack = document.getElementById('productos-track');
         
         let productosPosition = 0;
-        const cardWidth = 370; // ancho de tarjeta + gap
+        const cardWidth = 370;
         
         function moverCarruselProductos(direccion) {
             const maxScroll = productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth;
             productosPosition += direccion * cardWidth;
-            
             if (productosPosition < 0) productosPosition = 0;
             if (productosPosition > maxScroll) productosPosition = maxScroll;
-            
             productosCarruselTrack.style.transform = `translateX(-${productosPosition}px)`;
         }
         
         productosArrowLeft.addEventListener('click', () => moverCarruselProductos(-1));
         productosArrowRight.addEventListener('click', () => moverCarruselProductos(1));
         
-        // Auto-play productos cada 3 segundos
         setInterval(() => {
             moverCarruselProductos(1);
             if (productosPosition >= productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth) {
@@ -1038,38 +989,23 @@
             }
         }, 3000);
 
-        // Videos de testimonios (con audio)
-        const videos = [
-            "Video 10.mp4",
-            "Video 12.mp4",
-            "Video 4.mp4",
-            "Video 5.mp4",
-            "Video 8.mp4"
-        ];
-
+        const videos = ["Video 10.mp4", "Video 12.mp4", "Video 4.mp4", "Video 5.mp4", "Video 8.mp4"];
         const videosTrack = document.getElementById('videos-track');
         
         videos.forEach(video => {
             const card = document.createElement('div');
             card.className = 'video-card';
+            card.innerHTML = `<video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline></video>`;
             
-            // SIN muted para que tenga audio al reproducir
-            card.innerHTML = `
-                <video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline></video>
-            `;
-            
-            // Agregar evento para reproducir al hacer clic
             const videoElement = card.querySelector('video');
             card.addEventListener('click', function() {
                 if (videoElement.paused) {
-                    // Pausar todos los demás videos
                     document.querySelectorAll('.video-card video').forEach(v => {
                         if (v !== videoElement) {
                             v.pause();
                             v.parentElement.classList.remove('playing');
                         }
                     });
-                    
                     videoElement.play();
                     this.classList.add('playing');
                 } else {
@@ -1077,11 +1013,9 @@
                     this.classList.remove('playing');
                 }
             });
-            
             videosTrack.appendChild(card);
         });
 
-        // Carrusel de videos automático y manual
         const videosArrowLeft = document.getElementById('videos-arrow-left');
         const videosArrowRight = document.getElementById('videos-arrow-right');
         const videosCarruselTrack = document.getElementById('videos-track');
@@ -1091,17 +1025,14 @@
         function moverCarruselVideos(direccion) {
             const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
             videosPosition += direccion * cardWidth;
-            
             if (videosPosition < 0) videosPosition = 0;
             if (videosPosition > maxScroll) videosPosition = maxScroll;
-            
             videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
         }
         
         videosArrowLeft.addEventListener('click', () => moverCarruselVideos(-1));
         videosArrowRight.addEventListener('click', () => moverCarruselVideos(1));
         
-        // Auto-play videos cada 4 segundos
         setInterval(() => {
             moverCarruselVideos(1);
             if (videosPosition >= videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth) {
@@ -1110,11 +1041,9 @@
             }
         }, 4000);
 
-        // Inicializar contador del carrito
         function actualizarContadorCarrito() {
             const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
             const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-            
             document.querySelectorAll('.carrito-contador').forEach(el => {
                 el.textContent = totalItems;
                 el.style.display = totalItems > 0 ? 'flex' : 'none';
