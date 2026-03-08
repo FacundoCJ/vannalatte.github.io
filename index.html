@@ -18,24 +18,19 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif; /* TODAS las letras Merriweather */
             background-color: #ebe5df;
             color: #4e342e;
             line-height: 1.6;
         }
         
-        h1, h2, h3, h4, .section-title {
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
-        }
-        
-        /* Barra superior - SOLO texto */
+        /* Barra superior - Obtén la tuya ya! */
         .top-bar {
             background-color: #c68642;
-            padding: 8px 0;
+            padding: 10px 0;
             text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
+            font-family: 'Merriweather', serif;
+            font-size: 1rem;
             font-weight: 500;
             color: white;
             letter-spacing: 0.5px;
@@ -50,9 +45,9 @@
         /* Header */
         header {
             background-color: #4e342e;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -61,15 +56,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 5%;
+            padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
         
-        /* Logo blanco - grande */
+        /* Logo blanco - izquierda */
         .logo-link {
             display: block;
-            width: 200px; /* Ajusta según el tamaño que quieras */
+            width: 180px; /* Ajusta según el tamaño de tu logo */
         }
         
         .logo-img {
@@ -78,6 +73,7 @@
             display: block;
         }
         
+        /* Menú central */
         .nav-links {
             display: flex;
             gap: 2.5rem;
@@ -87,7 +83,7 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
             font-weight: 500;
             font-size: 1rem;
             transition: color 0.3s;
@@ -97,13 +93,12 @@
             color: #c68642;
         }
         
-        /* Icono carrito */
+        /* Carrito a la derecha */
         .carrito-link {
             position: relative;
             color: white;
             text-decoration: none;
             font-size: 1.5rem;
-            margin-left: 1rem;
         }
         
         .carrito-contador {
@@ -121,825 +116,98 @@
             align-items: center;
             justify-content: center;
             padding: 2px;
+            font-family: 'Poppins', sans-serif; /* Solo el contador con Poppins */
         }
         
-        /* Hero Section - SOLO imagen de fondo y botón */
+        /* Hero Section - imagen grande con botón */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             height: 80vh;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-            margin-top: 100px; /* Ajustado */
         }
         
-        .hero .btn {
+        /* Botón "Comprar" - con Poppins (como pediste) */
+        .btn {
             display: inline-block;
-            padding: 12px 35px;
+            padding: 14px 40px;
             background-color: #c24a34;
             color: white;
             text-decoration: none;
             border-radius: 50px;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             border: none;
             cursor: pointer;
             transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
-        .hero .btn:hover {
+        .btn:hover {
             background-color: #a63d2a;
             transform: translateY(-2px);
         }
         
-        /* Sección Mantequillas título */
-        .mantequillas-titulo-section {
-            text-align: center;
-            padding: 4rem 5% 1rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .mantequillas-titulo-section h2 {
-            font-size: 2.5rem;
-            color: #4e342e;
-            margin-bottom: 0.5rem;
-        }
-        
-        .mantequillas-titulo-section p {
-            font-size: 1.2rem;
-            color: #4e342e;
-            opacity: 0.8;
-        }
-        
-        /* Carrusel de productos - AUTOMÁTICO + FLECHAS A LOS COSTADOS */
-        .productos-carrusel-section {
-            position: relative;
-            max-width: 1400px;
-            margin: 2rem auto 4rem;
-            padding: 0 5%;
-        }
-        
-        .carrusel-wrapper {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .carrusel-track {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.5s ease;
-            padding: 1rem 0;
-        }
-        
-        .producto-card {
-            min-width: 300px;
-            max-width: 350px;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            flex-shrink: 0;
-        }
-        
-        .producto-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .producto-img {
-            height: 250px;
-            overflow: hidden;
-            background-color: #f9f9f9;
-            padding: 1rem;
-        }
-        
-        .producto-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .producto-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .producto-info h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            color: #4e342e;
-            margin-bottom: 0.5rem;
-        }
-        
-        .producto-presentacion {
-            font-family: 'Poppins', sans-serif;
-            color: #c68642;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .producto-precio {
-            font-family: 'Merriweather', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #c24a34;
-            margin: 0.5rem 0;
-        }
-        
-        /* Flechas de navegación A LOS COSTADOS */
-        .carrusel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #4e342e;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: none;
-            font-size: 1.5rem;
-            transition: background-color 0.3s;
-            z-index: 10;
-            opacity: 0.7;
-        }
-        
-        .carrusel-arrow:hover {
-            background-color: #c68642;
-            opacity: 1;
-        }
-        
-        .arrow-left {
-            left: 10px;
-        }
-        
-        .arrow-right {
-            right: 10px;
-        }
-        
-        /* Sección Nuestras mantequillas */
-        .nuestras-mantequillas-section {
-            text-align: center;
-            padding: 3rem 5% 4rem;
-            background-color: #4e342e;
-            color: white;
-        }
-        
-        .nuestras-mantequillas-section .small-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .nuestras-mantequillas-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .nuestras-mantequillas-section .btn {
-            display: inline-block;
-            padding: 12px 35px;
-            background-color: #c68642;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            transition: background-color 0.3s;
-        }
-        
-        .nuestras-mantequillas-section .btn:hover {
-            background-color: #b57535;
-        }
-        
-        /* Sección Simple y saludable (imagen izquierda, texto derecha) */
-        .simple-saludable-section {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 5%;
-            gap: 3rem;
-            background-color: #ebe5df; /* fondo normal */
-        }
-        
-        .simple-saludable-image {
-            flex: 1;
-        }
-        
-        .simple-saludable-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .simple-saludable-content {
-            flex: 1;
-        }
-        
-        .simple-saludable-content h2 {
-            font-size: 2.5rem;
-            color: #4e342e;
-            margin-bottom: 1rem;
-        }
-        
-        .simple-saludable-content p {
-            font-size: 1.2rem;
-            color: #4e342e;
-            margin-bottom: 2rem;
-            opacity: 0.8;
-        }
-        
-        .simple-saludable-content .btn {
-            display: inline-block;
-            padding: 12px 35px;
-            background-color: #c24a34;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        .simple-saludable-content .btn:hover {
-            background-color: #a63d2a;
-        }
-        
-        /* Sección Testimonios (videos) */
-        .testimonios-section {
-            background-color: #4e342e; /* fondo marrón */
-            padding: 4rem 5%;
-            position: relative;
-        }
-        
-        .testimonios-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 2rem;
-        }
-        
-        .testimonios-carrusel-wrapper {
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        .testimonios-track {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.5s ease;
-            padding: 1rem 0;
-        }
-        
-        .testimonio-card {
-            min-width: 300px;
-            background: #ebe5df;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            flex-shrink: 0;
-        }
-        
-        .testimonio-video {
-            width: 100%;
-            height: 200px;
-            background-color: #000;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .testimonio-video video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .testimonio-video::before {
-            content: '▶️';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            opacity: 0.7;
-            pointer-events: none;
-        }
-        
-        .testimonio-card p {
-            padding: 1rem;
-            text-align: center;
-            color: #4e342e;
-            font-weight: 500;
-        }
-        
-        /* Flechas de testimonios a los costados */
-        .testimonios-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #c68642;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: none;
-            font-size: 1.5rem;
-            transition: background-color 0.3s;
-            z-index: 10;
-            opacity: 0.8;
-        }
-        
-        .testimonios-arrow:hover {
-            background-color: #c24a34;
-            opacity: 1;
-        }
-        
-        .testimonios-arrow-left {
-            left: 10px;
-        }
-        
-        .testimonios-arrow-right {
-            right: 10px;
-        }
-        
-        /* Sección Envío rápido - Saludable - Pedidos (fondo #4e342e) */
-        .servicios-section {
-            background-color: #4e342e;
-            color: white;
-            padding: 4rem 5%;
-            text-align: center;
-        }
-        
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .servicio-item {
-            padding: 2rem;
-        }
-        
-        .servicio-icono {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .servicio-item h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .servicio-item p {
-            font-family: 'Poppins', sans-serif;
-            color: #ebe5df;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #ebe5df; /* fondo claro */
-            color: #4e342e;
-            padding: 3rem 5%;
-        }
-        
-        .footer-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1400px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .footer-logo {
-            width: 200px;
-        }
-        
-        .footer-logo img {
-            width: 100%;
-            height: auto;
-        }
-        
-        .footer-contacto {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .contacto-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #4e342e;
-            text-decoration: none;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        
-        .contacto-item i {
-            font-size: 1.5rem;
-        }
-        
-        .contacto-item span {
-            color: #4e342e;
-        }
-        
-        .contacto-item:hover {
-            color: #c68642;
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #4e342e;
-            opacity: 0.7;
-        }
-        
         /* Responsive */
         @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
             .nav-links a:not(.carrito-link) {
-                display: none;
+                font-size: 0.9rem;
             }
             
             .logo-link {
-                width: 150px;
+                width: 120px;
             }
             
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .simple-saludable-section {
-                flex-direction: column;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-contacto {
-                justify-content: center;
-            }
-            
-            .carrusel-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+            .hero {
+                height: 60vh;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Barra superior - SOLO texto -->
+    <!-- Barra superior - Obtén la tuya ya! -->
     <div class="top-bar">
         <div class="top-bar-content">
-            Obten la tuya ya!
+            Obtén la tuya ya!
         </div>
     </div>
 
+    <!-- Header con logo, menú y carrito -->
     <header>
         <nav>
-            <!-- Logo blanco (izquierda) que lleva al inicio -->
+            <!-- Logo blanco a la izquierda -->
             <a href="index.html" class="logo-link">
-                <img src="https://github.com/FacundoCJ/facundocj.github.io/blob/e354e39f354bc7cffcf437c32bd49f440a7d0d6e/logo%20blanco.png" alt="Vannalatte" class="logo-img">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/logo%20blanco.PNG" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú central -->
+            <!-- Menú en el medio -->
             <div class="nav-links">
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
-                <!-- Carrito a la derecha -->
-                <a href="carrito.html" class="carrito-link">
-                    🛒
-                    <span class="carrito-contador">0</span>
-                </a>
             </div>
+            
+            <!-- Carrito a la derecha -->
+            <a href="carrito.html" class="carrito-link">
+                🛒
+                <span class="carrito-contador">0</span>
+            </a>
         </nav>
     </header>
 
-    <!-- Hero Section - SOLO imagen de fondo y botón -->
+    <!-- Hero Section - imagen grande con botón -->
     <section class="hero">
         <a href="catalogo.html" class="btn">Comprar</a>
     </section>
-
-    <!-- Título: Mantequillas + subtítulo -->
-    <section class="mantequillas-titulo-section">
-        <h2>Mantequillas</h2>
-        <p>Orgánicas y con ingredientes naturales</p>
-    </section>
-
-    <!-- Carrusel de productos - TODOS los productos -->
-    <section class="productos-carrusel-section">
-        <div class="carrusel-wrapper">
-            <button class="carrusel-arrow arrow-left" id="productos-arrow-left">←</button>
-            <button class="carrusel-arrow arrow-right" id="productos-arrow-right">→</button>
-            
-            <div class="carrusel-track" id="productos-track">
-                <!-- Los productos se cargarán con JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Nuestras mantequillas (fondo marrón) -->
-    <section class="nuestras-mantequillas-section">
-        <p class="small-text">Nuestras mantequillas</p>
-        <h2>Hecha en casa,<br>inspirada en la tradición.</h2>
-        <a href="catalogo.html" class="btn">Comprar ahora →</a>
-    </section>
-
-    <!-- Sección Simple y saludable (imagen izquierda, texto derecha) -->
-    <section class="simple-saludable-section">
-        <div class="simple-saludable-image">
-            <img src="https://images.unsplash.com/photo-1626094309830-ff817e136d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Simple y saludable">
-        </div>
-        <div class="simple-saludable-content">
-            <h2>Simple y saludable</h2>
-            <p>Menos ingredientes, mejor nutrición</p>
-            <a href="catalogo.html" class="btn">Comprar</a>
-        </div>
-    </section>
-
-    <!-- Sección Testimonios (videos) -->
-    <section class="testimonios-section">
-        <h2>Testimonios</h2>
-        <div class="testimonios-carrusel-wrapper">
-            <button class="testimonios-arrow testimonios-arrow-left" id="testimonios-arrow-left">←</button>
-            <button class="testimonios-arrow testimonios-arrow-right" id="testimonios-arrow-right">→</button>
-            
-            <div class="testimonios-track" id="testimonios-track">
-                <!-- Los videos se cargarán con JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Servicios (fondo marrón) -->
-    <section class="servicios-section">
-        <div class="servicios-grid">
-            <div class="servicio-item">
-                <div class="servicio-icono">🚚</div>
-                <h3>Envío rápido</h3>
-                <p>Entregas en 24-48 horas</p>
-            </div>
-            <div class="servicio-item">
-                <div class="servicio-icono">🌱</div>
-                <h3>Saludable</h3>
-                <p>100% ingredientes naturales</p>
-            </div>
-            <div class="servicio-item">
-                <div class="servicio-icono">📦</div>
-                <h3>Pedidos</h3>
-                <p>Por WhatsApp o tienda online</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <!-- Logo negro a la izquierda -->
-            <div class="footer-logo">
-                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/logo%20negro.PNG" alt="Vannalatte">
-            </div>
-            
-            <!-- Contacto a la derecha -->
-            <div class="footer-contacto">
-                <div class="contacto-item" onclick="copiarCorreo()">
-                    <i>📧</i>
-                    <span>vannalatte@gmail.com</span>
-                </div>
-                <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
-                    <i>📱</i>
-                    <span>@vannalatte</span>
-                </a>
-                <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
-                    <i>📞</i>
-                    <span>+51 951 499 437</span>
-                </a>
-            </div>
-        </div>
-        <div class="copyright">
-            © 2024 Vannalatte - Todos los derechos reservados
-        </div>
-    </footer>
-
-    <script>
-        // ============================================
-        // FUNCIONES DEL CARRITO
-        // ============================================
-
-        function obtenerCarrito() {
-            const carrito = localStorage.getItem('vannalatte-carrito');
-            return carrito ? JSON.parse(carrito) : [];
-        }
-
-        function actualizarContadorCarrito() {
-            const carrito = obtenerCarrito();
-            const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
-            
-            document.querySelectorAll('.carrito-contador').forEach(el => {
-                el.textContent = totalItems;
-                el.style.display = totalItems > 0 ? 'flex' : 'none';
-            });
-        }
-
-        // ============================================
-        // DATOS DE PRODUCTOS (TODOS)
-        // ============================================
-        const productos = [
-            // 250gr
-            {
-                nombre: "Mantequilla de chocomaní",
-                presentacion: "250gr",
-                precio: 19.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní clásica",
-                presentacion: "250gr",
-                precio: 19.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "250gr",
-                precio: 19.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
-            },
-            // 400gr
-            {
-                nombre: "Mantequilla de chocomaní",
-                presentacion: "400gr",
-                precio: 30.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní clásica",
-                presentacion: "400gr",
-                precio: 30.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "400gr",
-                precio: 30.00,
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
-            }
-        ];
-
-        // ============================================
-        // CARGAR PRODUCTOS EN EL CARRUSEL
-        // ============================================
-        const productosTrack = document.getElementById('productos-track');
-        
-        productos.forEach(producto => {
-            const card = document.createElement('div');
-            card.className = 'producto-card';
-            card.innerHTML = `
-                <div class="producto-img">
-                    <img src="${producto.imagen}" alt="${producto.nombre}">
-                </div>
-                <div class="producto-info">
-                    <h3>${producto.nombre}</h3>
-                    <div class="producto-presentacion">${producto.presentacion}</div>
-                    <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
-                </div>
-            `;
-            productosTrack.appendChild(card);
-        });
-
-        // ============================================
-        // CARRUSEL DE PRODUCTOS (automático + manual)
-        // ============================================
-        const track = document.getElementById('productos-track');
-        const arrowLeft = document.getElementById('productos-arrow-left');
-        const arrowRight = document.getElementById('productos-arrow-right');
-        
-        let currentPosition = 0;
-        const cardWidth = 320; // ancho de tarjeta + gap
-        
-        // Función para mover el carrusel
-        function moverCarrusel(direccion) {
-            const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-            currentPosition += direccion * cardWidth;
-            
-            if (currentPosition < 0) currentPosition = 0;
-            if (currentPosition > maxScroll) currentPosition = maxScroll;
-            
-            track.style.transform = `translateX(-${currentPosition}px)`;
-        }
-        
-        // Event listeners para flechas
-        arrowLeft.addEventListener('click', () => moverCarrusel(-1));
-        arrowRight.addEventListener('click', () => moverCarrusel(1));
-        
-        // Auto-play cada 3 segundos
-        setInterval(() => {
-            moverCarrusel(1);
-            // Reset cuando llega al final
-            if (currentPosition >= track.scrollWidth - track.parentElement.offsetWidth) {
-                currentPosition = 0;
-                track.style.transform = 'translateX(0)';
-            }
-        }, 3000);
-
-        // ============================================
-        // CARGAR TESTIMONIOS (12 videos)
-        // ============================================
-        const testimoniosTrack = document.getElementById('testimonios-track');
-        
-        // Crear 12 testimonios
-        for (let i = 1; i <= 12; i++) {
-            const card = document.createElement('div');
-            card.className = 'testimonio-card';
-            card.innerHTML = `
-                <div class="testimonio-video">
-                    <video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/video%20${i}.mp4" muted playsinline></video>
-                </div>
-                <p>Testimonio ${i}</p>
-            `;
-            
-            // Agregar evento para reproducir al hacer clic
-            const video = card.querySelector('video');
-            card.addEventListener('click', () => {
-                if (video.paused) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            });
-            
-            testimoniosTrack.appendChild(card);
-        }
-
-        // ============================================
-        // CARRUSEL DE TESTIMONIOS (automático + manual)
-        // ============================================
-        const testTrack = document.getElementById('testimonios-track');
-        const testArrowLeft = document.getElementById('testimonios-arrow-left');
-        const testArrowRight = document.getElementById('testimonios-arrow-right');
-        
-        let testCurrentPosition = 0;
-        const testCardWidth = 320;
-        
-        function moverTestimonios(direccion) {
-            const maxScroll = testTrack.scrollWidth - testTrack.parentElement.offsetWidth;
-            testCurrentPosition += direccion * testCardWidth;
-            
-            if (testCurrentPosition < 0) testCurrentPosition = 0;
-            if (testCurrentPosition > maxScroll) testCurrentPosition = maxScroll;
-            
-            testTrack.style.transform = `translateX(-${testCurrentPosition}px)`;
-        }
-        
-        testArrowLeft.addEventListener('click', () => moverTestimonios(-1));
-        testArrowRight.addEventListener('click', () => moverTestimonios(1));
-        
-        // Auto-play testimonios cada 4 segundos
-        setInterval(() => {
-            moverTestimonios(1);
-            if (testCurrentPosition >= testTrack.scrollWidth - testTrack.parentElement.offsetWidth) {
-                testCurrentPosition = 0;
-                testTrack.style.transform = 'translateX(0)';
-            }
-        }, 4000);
-
-        // ============================================
-        // FUNCIÓN PARA COPIAR CORREO
-        // ============================================
-        function copiarCorreo() {
-            navigator.clipboard.writeText('vannalatte@gmail.com');
-            alert('📧 Correo copiado al portapapeles');
-        }
-
-        // Inicializar contador del carrito
-        document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
-    </script>
 </body>
 </html>
-
