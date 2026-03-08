@@ -22,9 +22,10 @@
             background-color: #ebe5df;
             color: #4e342e;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        h1, h2, h3, h4, .logo, .section-title {
+        h1, h2, h3, h4, .section-title {
             font-family: 'Merriweather', serif;
             font-weight: 700;
         }
@@ -32,10 +33,10 @@
         /* Barra superior */
         .top-bar {
             background-color: #c68642;
-            padding: 10px 0;
+            padding: 8px 0;
             text-align: center;
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: white;
             letter-spacing: 0.5px;
@@ -66,10 +67,10 @@
             margin: 0 auto;
         }
         
-        .logo {
-            color: white;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
+        .logo img {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
         }
         
         .nav-links {
@@ -117,105 +118,101 @@
             padding: 2px;
         }
         
-        /* Hero Section */
+        /* Hero Section - Rediseñado */
         .hero {
-            background: linear-gradient(rgba(78, 46, 46, 0.7), rgba(78, 46, 46, 0.7)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(78, 46, 46, 0.5), rgba(78, 46, 46, 0.5)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             margin-top: 120px;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 5%;
         }
         
         .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 900;
+            letter-spacing: 2px;
         }
         
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 300;
-        }
-        
-        .btn {
+        .hero-content .comprar-btn {
             display: inline-block;
-            padding: 12px 35px;
+            padding: 15px 50px;
             background-color: #c24a34;
             color: white;
             text-decoration: none;
             border-radius: 50px;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.2rem;
             border: none;
             cursor: pointer;
             transition: transform 0.3s, background-color 0.3s;
+            margin-top: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .btn:hover {
+        .hero-content .comprar-btn:hover {
             background-color: #a63d2a;
             transform: translateY(-2px);
         }
         
-        /* Sección Mantequillas con carrusel */
-        .productos-section {
+        /* Sección Mantequillas Destacadas */
+        .mantequillas-section {
             padding: 5rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            text-align: center;
         }
         
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
+        .mantequillas-section h2 {
+            font-size: 3rem;
             color: #4e342e;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         
-        .section-subtitle {
-            text-align: center;
+        .mantequillas-section .subtitle {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            color: #4e342e;
+            font-size: 1.2rem;
+            color: #c68642;
             margin-bottom: 3rem;
         }
         
-        /* Carrusel */
+        /* Carrusel Automático */
         .carrusel-container {
             position: relative;
             width: 100%;
             overflow: hidden;
             padding: 1rem 0;
+            margin-bottom: 2rem;
         }
         
         .carrusel-track {
             display: flex;
             gap: 2rem;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #c68642 #ebe5df;
-            padding: 1rem 0.5rem;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
         }
         
-        .carrusel-track::-webkit-scrollbar {
-            height: 8px;
+        .carrusel-container:hover .carrusel-track {
+            animation-play-state: paused;
         }
         
-        .carrusel-track::-webkit-scrollbar-track {
-            background: #ebe5df;
-            border-radius: 10px;
-        }
-        
-        .carrusel-track::-webkit-scrollbar-thumb {
-            background: #c68642;
-            border-radius: 10px;
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-350px * 3 - 2rem * 3)); }
         }
         
         .producto-card {
@@ -236,12 +233,14 @@
         .producto-img {
             height: 250px;
             overflow: hidden;
+            background-color: #f9f9f9;
+            padding: 1rem;
         }
         
         .producto-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.5s;
         }
         
@@ -264,15 +263,8 @@
             font-family: 'Poppins', sans-serif;
             color: #c68642;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-bottom: 0.5rem;
-        }
-        
-        .producto-ingredientes {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
         }
         
         .producto-precio {
@@ -280,7 +272,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: #c24a34;
-            margin-bottom: 1rem;
+            margin: 1rem 0;
         }
         
         .btn-carrito {
@@ -301,12 +293,12 @@
             background-color: #a63d2a;
         }
         
-        /* Flechas de navegación carrusel */
+        /* Flechas de navegación carrusel (manual) */
         .carrusel-controls {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: 2rem;
+            margin: 2rem 0;
         }
         
         .carrusel-arrow {
@@ -328,63 +320,291 @@
             background-color: #c68642;
         }
         
-        /* Sección Simple y saludable */
-        .simple-section {
-            background-color: #4e342e;
-            color: white;
+        /* Sección Nuestras Mantequillas */
+        .nuestras-mantequillas {
             text-align: center;
-            padding: 5rem 5%;
+            padding: 4rem 5%;
+            background-color: white;
         }
         
-        .simple-section h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 2.5rem;
+        .nuestras-mantequillas .small-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #c68642;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nuestras-mantequillas h2 {
+            font-size: 3rem;
+            color: #4e342e;
             margin-bottom: 1rem;
         }
         
-        .simple-section p {
+        .nuestras-mantequillas .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #c24a34;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
             font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .nuestras-mantequillas .btn:hover {
+            background-color: #a63d2a;
+            transform: translateY(-2px);
+        }
+        
+        /* Sección Simple y Saludable */
+        .simple-saludable {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 5%;
+            gap: 4rem;
+        }
+        
+        .simple-image {
+            flex: 1;
+        }
+        
+        .simple-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .simple-content {
+            flex: 1;
+        }
+        
+        .simple-content h2 {
+            font-size: 3rem;
+            color: #4e342e;
+            margin-bottom: 1rem;
+        }
+        
+        .simple-content p {
             font-size: 1.2rem;
+            color: #666;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            font-family: 'Poppins', sans-serif;
         }
         
-        .simple-section .btn {
+        .simple-content .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #c24a34;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .simple-content .btn:hover {
+            background-color: #a63d2a;
+            transform: translateY(-2px);
+        }
+        
+        /* Carrusel de Testimonios */
+        .testimonios-section {
+            padding: 4rem 5%;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .testimonios-section h2 {
+            font-size: 2.5rem;
+            color: #4e342e;
+            margin-bottom: 3rem;
+        }
+        
+        .testimonios-carrusel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+        
+        .testimonios-track {
+            display: flex;
+            gap: 2rem;
+            animation: scrollTestimonios 25s linear infinite;
+            width: fit-content;
+        }
+        
+        .testimonios-track:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes scrollTestimonios {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-300px * 4 - 2rem * 4)); }
+        }
+        
+        .testimonio-card {
+            min-width: 300px;
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .testimonio-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
             background-color: #c68642;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
         }
         
-        .simple-section .btn:hover {
-            background-color: #b57535;
+        .testimonio-texto {
+            font-style: italic;
+            color: #4e342e;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonio-nombre {
+            font-weight: 600;
+            color: #c68642;
+        }
+        
+        /* Beneficios */
+        .beneficios {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .beneficio {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .beneficio-icono {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #c68642;
+        }
+        
+        .beneficio h3 {
+            font-size: 1.3rem;
+            color: #4e342e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .beneficio p {
+            color: #666;
+            font-size: 0.9rem;
         }
         
         /* Footer */
         footer {
             background-color: #4e342e;
             color: white;
-            text-align: center;
             padding: 3rem 5%;
         }
         
-        .contacto-info {
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
+            justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
-            font-family: 'Poppins', sans-serif;
+            gap: 2rem;
         }
         
-        .contacto-info p {
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .social-item:hover {
+            color: #c68642;
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+        }
+        
+        .email-item {
+            cursor: pointer;
+        }
+        
+        .instagram-link, .whatsapp-link {
+            color: white;
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         
+        .instagram-link:hover, .whatsapp-link:hover {
+            color: #c68642;
+        }
+        
         .copyright {
-            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
             opacity: 0.7;
-            margin-top: 2rem;
+        }
+        
+        /* Notificación de copiado */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .copy-notification.show {
+            opacity: 1;
         }
         
         /* Responsive */
@@ -394,38 +614,53 @@
             }
             
             .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mantequillas-section h2 {
                 font-size: 2rem;
             }
             
-            .hero-content p {
-                font-size: 1rem;
+            .simple-saludable {
+                flex-direction: column;
             }
             
-            .section-title {
-                font-size: 2rem;
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .producto-card {
-                min-width: 260px;
+            .footer-social {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .beneficios {
+                gap: 2rem;
             }
             
             .top-bar {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 padding: 6px 0;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Notificación de copiado -->
+    <div id="copyNotification" class="copy-notification">¡Correo copiado!</div>
+
     <header>
         <!-- Barra superior con texto -->
         <div class="top-bar">
             <div class="top-bar-content">
-            Obtén la tuya ya!
+                🛒 Obtén la tuya ya! | Envíos a todo Perú 🇵🇪
             </div>
         </div>
         <nav>
-            <div class="logo">Vannalatte</div>
+            <a href="index.html" class="logo">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/logo%20blanco.png" alt="Vannalatte">
+            </a>
             <div class="nav-links">
                 <a href="index.html">Inicio</a>
                 <a href="catalogo.html">Catálogo</a>
@@ -443,16 +678,15 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Obtén la tuya ya!</h1>
-            <p>Mantequillas orgánicas con ingredientes naturales</p>
-            <a href="catalogo.html" class="btn">Ver Catálogo</a>
+            <h1>Obten la tuya ya!</h1>
+            <a href="catalogo.html" class="comprar-btn">COMPRAR</a>
         </div>
     </section>
 
-    <!-- Sección Mantequillas con Carrusel -->
-    <section class="productos-section">
-        <h2 class="section-title">Nuestras Mantequillas</h2>
-        <p class="section-subtitle">Hecha en casa, inspirada en la tradición</p>
+    <!-- Sección Mantequillas -->
+    <section class="mantequillas-section">
+        <h2>Mantequillas</h2>
+        <p class="subtitle">Orgánicas y con ingredientes naturales</p>
         
         <div class="carrusel-container">
             <div class="carrusel-track" id="carrusel-track">
@@ -466,21 +700,105 @@
         </div>
     </section>
 
-    <!-- Sección Simple y saludable -->
-    <section class="simple-section">
-        <h2>Simple y saludable</h2>
-        <p>Menos ingredientes, mejor nutrición</p>
-        <a href="catalogo.html" class="btn">Comprar ahora</a>
+    <!-- Sección Nuestras Mantequillas -->
+    <section class="nuestras-mantequillas">
+        <p class="small-title">NUESTRAS MANTEQUILLAS</p>
+        <h2>Hecha en casa, inspirada en la tradición.</h2>
+        <a href="catalogo.html" class="btn">COMPRAR AHORA ></a>
+    </section>
+
+    <!-- Sección Simple y Saludable -->
+    <section class="simple-saludable">
+        <div class="simple-image">
+            <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mantequilla de maní">
+        </div>
+        <div class="simple-content">
+            <h2>Simple y saludable</h2>
+            <p>Menos ingredientes, mejor nutrición</p>
+            <a href="catalogo.html" class="btn">COMPRAR</a>
+        </div>
+    </section>
+
+    <!-- Sección Testimonios -->
+    <section class="testimonios-section">
+        <h2>Lo que dicen nuestros clientes</h2>
+        <div class="testimonios-carrusel">
+            <div class="testimonios-track" id="testimonios-track">
+                <!-- Testimonios de ejemplo -->
+                <div class="testimonio-card">
+                    <div class="testimonio-img">👩</div>
+                    <p class="testimonio-texto">"La mejor mantequilla de maní que he probado, 100% natural"</p>
+                    <p class="testimonio-nombre">- María G.</p>
+                </div>
+                <div class="testimonio-card">
+                    <div class="testimonio-img">👨</div>
+                    <p class="testimonio-texto">"Excelente sabor y textura, ideal para mis desayunos"</p>
+                    <p class="testimonio-nombre">- Carlos R.</p>
+                </div>
+                <div class="testimonio-card">
+                    <div class="testimonio-img">👩</div>
+                    <p class="testimonio-texto">"Mis hijos aman la de chocomaní, y yo tranquila porque es saludable"</p>
+                    <p class="testimonio-nombre">- Laura M.</p>
+                </div>
+                <div class="testimonio-card">
+                    <div class="testimonio-img">👨</div>
+                    <p class="testimonio-texto">"Pedido llegó rápido y bien empaquetado, volveré a comprar"</p>
+                    <p class="testimonio-nombre">- Juan P.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carrusel-controls">
+            <button class="carrusel-arrow" id="testimonio-left">←</button>
+            <button class="carrusel-arrow" id="testimonio-right">→</button>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="beneficios">
+        <div class="beneficio">
+            <div class="beneficio-icono">🚚</div>
+            <h3>Envío rápido</h3>
+            <p>Entregas en 24-48 horas</p>
+        </div>
+        <div class="beneficio">
+            <div class="beneficio-icono">🌱</div>
+            <h3>Saludable</h3>
+            <p>Ingredientes 100% naturales</p>
+        </div>
+        <div class="beneficio">
+            <div class="beneficio-icono">📦</div>
+            <h3>Pedidos</h3>
+            <p>Por WhatsApp o tienda online</p>
+        </div>
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 1rem;">Vannalatte</div>
-        <div class="contacto-info">
-            <p>📧 vannalatte@gmail.com</p>
-            <p>📱 @vannalatte</p>
-            <p>📞 +51 951 499 437</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/logo%20negro.png" alt="Vannalatte">
+            </div>
+            <div class="footer-social">
+                <div class="social-item email-item" onclick="copiarCorreo()">
+                    <span class="social-icon">📧</span>
+                    <span>vannalatte@gmail.com</span>
+                </div>
+                <div class="social-item">
+                    <a href="https://instagram.com/vannalatte" target="_blank" class="instagram-link">
+                        <span class="social-icon">📱</span>
+                        <span>@vannalatte</span>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="https://wa.me/51951499437" target="_blank" class="whatsapp-link">
+                        <span class="social-icon">📞</span>
+                        <span>+51 951 499 437</span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <p class="copyright">© 2026 Vannalatte - Todos los derechos reservados</p>
+        <div class="copyright">
+            <p>© 2024 Vannalatte - Todos los derechos reservados</p>
+        </div>
     </footer>
 
     <script>
@@ -540,50 +858,70 @@
         }
 
         // ============================================
-        // DATOS DE PRODUCTOS
+        // FUNCIÓN PARA COPIAR CORREO
+        // ============================================
+        function copiarCorreo() {
+            const correo = "vannalatte@gmail.com";
+            navigator.clipboard.writeText(correo).then(() => {
+                const notification = document.getElementById('copyNotification');
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            });
+        }
+
+        // ============================================
+        // DATOS DE PRODUCTOS (TODOS)
         // ============================================
         const productos = [
+            // 250gr
             {
                 nombre: "Mantequilla de chocomaní",
                 presentacion: "250gr",
                 precio: 19.00,
-                ingredientes: ["Maní tostado", "Cacao", "Edulcorante"],
                 imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
             },
             {
                 nombre: "Mantequilla de maní clásica",
                 presentacion: "250gr",
                 precio: 19.00,
-                ingredientes: ["Maní tostado"],
                 imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
             },
             {
                 nombre: "Mantequilla de maní la favorita",
                 presentacion: "250gr",
                 precio: 19.00,
-                ingredientes: ["Maní tostado", "Sal de maras", "Edulcorante"],
                 imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
             },
+            // 400gr
             {
                 nombre: "Mantequilla de chocomaní",
                 presentacion: "400gr",
                 precio: 30.00,
-                ingredientes: ["Maní tostado", "Cacao", "Edulcorante"],
                 imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
             },
             {
                 nombre: "Mantequilla de maní clásica",
                 presentacion: "400gr",
                 precio: 30.00,
-                ingredientes: ["Maní tostado"],
                 imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní la favorita",
+                presentacion: "400gr",
+                precio: 30.00,
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
             }
         ];
 
-        // Cargar productos en el carrusel
+        // Cargar TODOS los productos en el carrusel
         const track = document.getElementById('carrusel-track');
         
-        productos.slice(0, 5).forEach(producto => {
+        // Duplicamos productos para que el carrusel infinito se vea bien
+        const productosCarrusel = [...productos, ...productos, ...productos];
+        
+        productosCarrusel.forEach(producto => {
             const card = document.createElement('div');
             card.className = 'producto-card';
             card.innerHTML = `
@@ -593,9 +931,8 @@
                 <div class="producto-info">
                     <h3>${producto.nombre}</h3>
                     <div class="producto-presentacion">${producto.presentacion}</div>
-                    <div class="producto-ingredientes">${producto.ingredientes.join(' • ')}</div>
                     <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
-                    <button class="btn-carrito" onclick="agregarAlCarrito(${JSON.stringify(producto).replace(/"/g, '&quot;')}, event)">
+                    <button class="btn-carrito" onclick='agregarAlCarrito(${JSON.stringify(producto).replace(/"/g, '&quot;')}, event)'>
                         Añadir al carrito
                     </button>
                 </div>
@@ -603,7 +940,7 @@
             track.appendChild(card);
         });
 
-        // Funcionalidad del carrusel
+        // Funcionalidad manual del carrusel de productos
         const arrowLeft = document.getElementById('arrow-left');
         const arrowRight = document.getElementById('arrow-right');
 
@@ -617,73 +954,23 @@
             });
         }
 
+        // Funcionalidad manual del carrusel de testimonios
+        const testimonioTrack = document.getElementById('testimonios-track');
+        const testimonioLeft = document.getElementById('testimonio-left');
+        const testimonioRight = document.getElementById('testimonio-right');
+
+        if (testimonioLeft && testimonioRight) {
+            testimonioLeft.addEventListener('click', () => {
+                testimonioTrack.scrollBy({ left: -320, behavior: 'smooth' });
+            });
+
+            testimonioRight.addEventListener('click', () => {
+                testimonioTrack.scrollBy({ left: 320, behavior: 'smooth' });
+            });
+        }
+
         // Inicializar contador
         document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
     </script>
-    <script>
-    // ============================================
-    // FUNCIONES DEL CARRITO (compartidas)
-    // ============================================
-
-    // Obtener carrito actual
-    function obtenerCarrito() {
-        const carrito = localStorage.getItem('vannalatte-carrito');
-        return carrito ? JSON.parse(carrito) : [];
-    }
-
-    // Guardar carrito
-    function guardarCarrito(carrito) {
-        localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
-        actualizarContadorCarrito();
-    }
-
-    // Agregar al carrito
-    function agregarAlCarrito(producto) {
-        let carrito = obtenerCarrito();
-        
-        // Buscar si ya existe (mismo nombre y presentación)
-        const existente = carrito.find(item => 
-            item.nombre === producto.nombre && 
-            item.presentacion === producto.presentacion
-        );
-        
-        if (existente) {
-            existente.cantidad += 1;
-        } else {
-            carrito.push({
-                ...producto,
-                cantidad: 1,
-                id: Date.now() + Math.random() // ID único
-            });
-        }
-        
-        guardarCarrito(carrito);
-        
-        // Feedback visual
-        const btn = event.target;
-        const textoOriginal = btn.textContent;
-        btn.textContent = '✅ Añadido';
-        btn.style.backgroundColor = '#4CAF50';
-        setTimeout(() => {
-            btn.textContent = textoOriginal;
-            btn.style.backgroundColor = '#c24a34';
-        }, 1000);
-    }
-
-    // Actualizar contador del carrito
-    function actualizarContadorCarrito() {
-        const carrito = obtenerCarrito();
-        const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-        
-        document.querySelectorAll('.carrito-contador').forEach(el => {
-            el.textContent = totalItems;
-            el.style.display = totalItems > 0 ? 'flex' : 'none';
-        });
-    }
-
-    // Llamar al cargar la página
-    document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
-</script>
 </body>
 </html>
-
