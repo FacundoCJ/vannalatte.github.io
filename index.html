@@ -307,6 +307,7 @@
             flex-shrink: 0;
             cursor: pointer;
             position: relative;
+            aspect-ratio: 9/16; /* Formato vertical para videos de testimonios */
         }
         
         .video-card video {
@@ -729,7 +730,7 @@
             }
         }, 3000);
 
-        // Videos de testimonios
+        // Videos de testimonios (con audio)
         const videos = [
             "Video 10.mp4",
             "Video 12.mp4",
@@ -744,8 +745,9 @@
             const card = document.createElement('div');
             card.className = 'video-card';
             
+            // SIN muted para que tenga audio al reproducir
             card.innerHTML = `
-                <video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" muted playsinline></video>
+                <video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline></video>
             `;
             
             // Agregar evento para reproducir al hacer clic
@@ -815,4 +817,3 @@
     </script>
 </body>
 </html>
-
