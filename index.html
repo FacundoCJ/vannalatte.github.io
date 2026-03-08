@@ -155,6 +155,24 @@
             transform: translateY(-2px);
         }
         
+        /* Botón subrayado (Comprar ahora >) */
+        .btn-subrayado {
+            display: inline-block;
+            color: #4e342e;
+            text-decoration: underline;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s;
+        }
+        
+        .btn-subrayado:hover {
+            color: #c68642;
+        }
+        
         /* Sección Mantequillas título */
         .mantequillas-titulo {
             text-align: center;
@@ -181,7 +199,7 @@
         .productos-carrusel-section {
             position: relative;
             max-width: 1400px;
-            margin: 0 auto 4rem;
+            margin: 0 auto 2rem;
             padding: 0 5%;
         }
         
@@ -304,6 +322,80 @@
             right: 0;
         }
         
+        /* Sección Nuestras mantequillas */
+        .nuestras-mantequillas-section {
+            text-align: center;
+            padding: 3rem 5% 4rem;
+            background-color: #ebe5df;
+        }
+        
+        .nuestras-mantequillas-section .small-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: #4e342e;
+        }
+        
+        .nuestras-mantequillas-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #4e342e;
+            font-family: 'Merriweather', serif;
+        }
+        
+        /* Sección Simple y saludable */
+        .simple-saludable-section {
+            display: flex;
+            align-items: center;
+            max-width: 1400px;
+            margin: 4rem auto;
+            background-color: #4e342e;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .simple-saludable-image {
+            flex: 1;
+        }
+        
+        .simple-saludable-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .simple-saludable-content {
+            flex: 1;
+            padding: 4rem;
+            color: white;
+        }
+        
+        .simple-saludable-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Merriweather', serif;
+            color: white;
+        }
+        
+        .simple-saludable-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0.9;
+        }
+        
+        .simple-saludable-content .btn {
+            background-color: #c24a34;
+            color: white;
+            border: none;
+        }
+        
+        .simple-saludable-content .btn:hover {
+            background-color: #a63d2a;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -338,6 +430,19 @@
                 width: 40px;
                 height: 40px;
                 font-size: 1.2rem;
+            }
+            
+            .simple-saludable-section {
+                flex-direction: column;
+            }
+            
+            .simple-saludable-content {
+                padding: 2rem;
+                text-align: center;
+            }
+            
+            .nuestras-mantequillas-section h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -391,6 +496,25 @@
             <div class="carrusel-track" id="productos-track">
                 <!-- Productos se cargarán con JavaScript -->
             </div>
+        </div>
+    </section>
+
+    <!-- Sección Nuestras mantequillas -->
+    <section class="nuestras-mantequillas-section">
+        <p class="small-text">Nuestras mantequillas</p>
+        <h2>Hecha en casa,<br>inspirada en la tradición.</h2>
+        <button class="btn-subrayado" onclick="window.location.href='catalogo.html'">Comprar ahora →</button>
+    </section>
+
+    <!-- Sección Simple y saludable -->
+    <section class="simple-saludable-section">
+        <div class="simple-saludable-image">
+            <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequillas.png" alt="Mantequillas">
+        </div>
+        <div class="simple-saludable-content">
+            <h2>Simple y saludable</h2>
+            <p>Menos ingredientes, mejor nutrición</p>
+            <a href="catalogo.html" class="btn">Comprar</a>
         </div>
     </section>
 
