@@ -59,7 +59,7 @@
         .logo-link {
             display: block;
             width: 180px;
-            flex-shrink: 0; /* Evita que se encoja */
+            flex-shrink: 0;
         }
         
         .logo-img {
@@ -76,7 +76,6 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            /* El menú queda exactamente en el centro */
         }
         
         .nav-links a {
@@ -86,7 +85,7 @@
             font-weight: 500;
             font-size: 1rem;
             transition: color 0.3s;
-            white-space: nowrap; /* Evita que el texto se rompa */
+            white-space: nowrap;
         }
         
         .nav-links a:hover {
@@ -99,8 +98,8 @@
             color: white;
             text-decoration: none;
             font-size: 1.5rem;
-            flex-shrink: 0; /* Evita que se encoja */
-            margin-left: auto; /* Empuja el carrito a la derecha */
+            flex-shrink: 0;
+            margin-left: auto;
         }
         
         .carrito-contador {
@@ -134,7 +133,7 @@
             text-align: center;
         }
         
-        /* Botón */
+        /* Botón principal */
         .btn {
             display: inline-block;
             padding: 14px 40px;
@@ -154,6 +153,155 @@
         .btn:hover {
             background-color: #a63d2a;
             transform: translateY(-2px);
+        }
+        
+        /* Sección Mantequillas título */
+        .mantequillas-titulo {
+            text-align: center;
+            padding: 4rem 5% 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .mantequillas-titulo h2 {
+            font-size: 2.5rem;
+            color: #4e342e;
+            margin-bottom: 0.5rem;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .mantequillas-titulo p {
+            font-size: 1.1rem;
+            color: #4e342e;
+            opacity: 0.8;
+            font-family: 'Merriweather', serif;
+        }
+        
+        /* Carrusel de productos */
+        .productos-carrusel-section {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            padding: 0 5%;
+        }
+        
+        .carrusel-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+        
+        .carrusel-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+        }
+        
+        .producto-card {
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .producto-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .producto-img {
+            height: 250px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            padding: 1rem;
+        }
+        
+        .producto-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .producto-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .producto-info h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            color: #4e342e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .producto-presentacion {
+            font-family: 'Merriweather', serif;
+            color: #4e342e;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .producto-precio {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #c24a34;
+            margin: 0.5rem 0 1rem;
+        }
+        
+        .btn-carrito {
+            background-color: #c24a34;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-carrito:hover {
+            background-color: #a63d2a;
+        }
+        
+        /* Flechas de navegación */
+        .carrusel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #4e342e;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1.5rem;
+            transition: background-color 0.3s;
+            z-index: 10;
+            opacity: 0.8;
+        }
+        
+        .carrusel-arrow:hover {
+            background-color: #c68642;
+            opacity: 1;
+        }
+        
+        .arrow-left {
+            left: 0;
+        }
+        
+        .arrow-right {
+            right: 0;
         }
         
         /* Responsive */
@@ -177,6 +325,20 @@
             .hero {
                 height: 60vh;
             }
+            
+            .mantequillas-titulo h2 {
+                font-size: 2rem;
+            }
+            
+            .producto-card {
+                min-width: 260px;
+            }
+            
+            .carrusel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -194,14 +356,14 @@
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú PERFECTAMENTE CENTRADO -->
+            <!-- Menú centrado -->
             <div class="nav-links">
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
-            <!-- Carrito derecha -->
+            <!-- Carrito -->
             <a href="carrito.html" class="carrito-link">
                 🛒
                 <span class="carrito-contador">0</span>
@@ -213,5 +375,176 @@
     <section class="hero">
         <a href="catalogo.html" class="btn">Comprar</a>
     </section>
+
+    <!-- Título Mantequillas -->
+    <section class="mantequillas-titulo">
+        <h2>Mantequillas</h2>
+        <p>Orgánicas y con ingredientes naturales</p>
+    </section>
+
+    <!-- Carrusel de productos -->
+    <section class="productos-carrusel-section">
+        <div class="carrusel-wrapper">
+            <button class="carrusel-arrow arrow-left" id="arrow-left">←</button>
+            <button class="carrusel-arrow arrow-right" id="arrow-right">→</button>
+            
+            <div class="carrusel-track" id="productos-track">
+                <!-- Productos se cargarán con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Función para agregar al carrito
+        function agregarAlCarrito(producto) {
+            let carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
+            
+            const existente = carrito.find(item => 
+                item.nombre === producto.nombre && 
+                item.presentacion === producto.presentacion
+            );
+            
+            if (existente) {
+                existente.cantidad += 1;
+            } else {
+                carrito.push({
+                    ...producto,
+                    cantidad: 1,
+                    id: Date.now() + Math.random()
+                });
+            }
+            
+            localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
+            
+            // Actualizar contador
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            document.querySelectorAll('.carrito-contador').forEach(el => {
+                el.textContent = totalItems;
+            });
+            
+            // Feedback visual
+            const btn = event.target;
+            const textoOriginal = btn.textContent;
+            btn.textContent = '✓ Añadido';
+            btn.style.backgroundColor = '#4CAF50';
+            setTimeout(() => {
+                btn.textContent = textoOriginal;
+                btn.style.backgroundColor = '#c24a34';
+            }, 1000);
+        }
+
+        // Datos de productos
+        const productos = [
+            // 250gr
+            {
+                nombre: "Mantequilla de chocomaní",
+                presentacion: "250gr",
+                precio: 19.00,
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní clásica",
+                presentacion: "250gr",
+                precio: 19.00,
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní la favorita",
+                presentacion: "250gr",
+                precio: 19.00,
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG"
+            },
+            // 400gr
+            {
+                nombre: "Mantequilla de chocomaní",
+                presentacion: "400gr",
+                precio: 30.00,
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní clásica",
+                presentacion: "400gr",
+                precio: 30.00,
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG"
+            },
+            {
+                nombre: "Mantequilla de maní la favorita",
+                presentacion: "400gr",
+                precio: 30.00,
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG"
+            }
+        ];
+
+        // Cargar productos en el carrusel
+        const track = document.getElementById('productos-track');
+        
+        productos.forEach(producto => {
+            const card = document.createElement('div');
+            card.className = 'producto-card';
+            
+            // Convertir producto a string para pasarlo a la función
+            const productoStr = JSON.stringify(producto).replace(/"/g, '&quot;');
+            
+            card.innerHTML = `
+                <div class="producto-img">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                </div>
+                <div class="producto-info">
+                    <h3>${producto.nombre}</h3>
+                    <div class="producto-presentacion">${producto.presentacion}</div>
+                    <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
+                    <button class="btn-carrito" onclick='agregarAlCarrito(${productoStr})'>
+                        Añadir
+                    </button>
+                </div>
+            `;
+            track.appendChild(card);
+        });
+
+        // Carrusel automático y manual
+        const arrowLeft = document.getElementById('arrow-left');
+        const arrowRight = document.getElementById('arrow-right');
+        const carruselTrack = document.getElementById('productos-track');
+        
+        let currentPosition = 0;
+        const cardWidth = 320; // ancho de tarjeta + gap
+        
+        function moverCarrusel(direccion) {
+            const maxScroll = carruselTrack.scrollWidth - carruselTrack.parentElement.offsetWidth;
+            currentPosition += direccion * cardWidth;
+            
+            if (currentPosition < 0) currentPosition = 0;
+            if (currentPosition > maxScroll) currentPosition = maxScroll;
+            
+            carruselTrack.style.transform = `translateX(-${currentPosition}px)`;
+        }
+        
+        // Eventos de flechas
+        arrowLeft.addEventListener('click', () => moverCarrusel(-1));
+        arrowRight.addEventListener('click', () => moverCarrusel(1));
+        
+        // Auto-play cada 3 segundos
+        setInterval(() => {
+            moverCarrusel(1);
+            // Reiniciar cuando llega al final
+            if (currentPosition >= carruselTrack.scrollWidth - carruselTrack.parentElement.offsetWidth) {
+                currentPosition = 0;
+                carruselTrack.style.transform = 'translateX(0)';
+            }
+        }, 3000);
+
+        // Inicializar contador del carrito
+        function actualizarContadorCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            
+            document.querySelectorAll('.carrito-contador').forEach(el => {
+                el.textContent = totalItems;
+                el.style.display = totalItems > 0 ? 'flex' : 'none';
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
+    </script>
 </body>
 </html>
