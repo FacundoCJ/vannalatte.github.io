@@ -18,7 +18,7 @@
         }
         
         body {
-            font-family: 'Merriweather', serif; /* TODAS las letras Merriweather */
+            font-family: 'Merriweather', serif;
             background-color: #ebe5df;
             color: #4e342e;
             line-height: 1.6;
@@ -34,12 +34,6 @@
             font-weight: 500;
             color: white;
             letter-spacing: 0.5px;
-        }
-        
-        .top-bar-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
         }
         
         /* Header */
@@ -64,7 +58,8 @@
         /* Logo blanco - izquierda */
         .logo-link {
             display: block;
-            width: 180px; /* Ajusta según el tamaño de tu logo */
+            width: 180px;
+            flex-shrink: 0; /* Evita que se encoja */
         }
         
         .logo-img {
@@ -73,11 +68,15 @@
             display: block;
         }
         
-        /* Menú central */
+        /* Menú central - PERFECTAMENTE CENTRADO */
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            /* El menú queda exactamente en el centro */
         }
         
         .nav-links a {
@@ -87,6 +86,7 @@
             font-weight: 500;
             font-size: 1rem;
             transition: color 0.3s;
+            white-space: nowrap; /* Evita que el texto se rompa */
         }
         
         .nav-links a:hover {
@@ -99,6 +99,8 @@
             color: white;
             text-decoration: none;
             font-size: 1.5rem;
+            flex-shrink: 0; /* Evita que se encoja */
+            margin-left: auto; /* Empuja el carrito a la derecha */
         }
         
         .carrito-contador {
@@ -116,10 +118,10 @@
             align-items: center;
             justify-content: center;
             padding: 2px;
-            font-family: 'Poppins', sans-serif; /* Solo el contador con Poppins */
+            font-family: 'Poppins', sans-serif;
         }
         
-        /* Hero Section - imagen grande con botón */
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -132,7 +134,7 @@
             text-align: center;
         }
         
-        /* Botón "Comprar" - con Poppins (como pediste) */
+        /* Botón */
         .btn {
             display: inline-block;
             padding: 14px 40px;
@@ -156,16 +158,20 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .nav-links a:not(.carrito-link) {
-                font-size: 0.9rem;
+            nav {
+                padding: 0.8rem 5%;
             }
             
             .logo-link {
                 width: 120px;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
             }
             
             .hero {
@@ -175,29 +181,27 @@
     </style>
 </head>
 <body>
-    <!-- Barra superior - Obtén la tuya ya! -->
+    <!-- Barra superior -->
     <div class="top-bar">
-        <div class="top-bar-content">
-            Obtén la tuya ya!
-        </div>
+        Obtén la tuya ya!
     </div>
 
-    <!-- Header con logo, menú y carrito -->
+    <!-- Header -->
     <header>
         <nav>
-            <!-- Logo blanco a la izquierda -->
+            <!-- Logo izquierda -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú en el medio -->
+            <!-- Menú PERFECTAMENTE CENTRADO -->
             <div class="nav-links">
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
-            <!-- Carrito a la derecha -->
+            <!-- Carrito derecha -->
             <a href="carrito.html" class="carrito-link">
                 🛒
                 <span class="carrito-contador">0</span>
@@ -205,16 +209,9 @@
         </nav>
     </header>
 
-    <!-- Hero Section - imagen grande con botón -->
+    <!-- Hero -->
     <section class="hero">
         <a href="catalogo.html" class="btn">Comprar</a>
     </section>
 </body>
 </html>
-
-
-
-
-
-
-
