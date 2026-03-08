@@ -307,7 +307,7 @@
             flex-shrink: 0;
             cursor: pointer;
             position: relative;
-            aspect-ratio: 9/16; /* Formato vertical para videos de testimonios */
+            aspect-ratio: 9/16;
         }
         
         .video-card video {
@@ -445,10 +445,109 @@
             background-color: #a63d2a;
         }
         
-        /* Espacio beige después de simple y saludable */
-        .espacio-beige {
-            height: 3rem;
+        /* Sección de Servicios (fondo marrón) */
+        .servicios-section {
+            background-color: #4e342e;
+            padding: 4rem 5%;
+            color: white;
+        }
+        
+        .servicios-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        
+        .servicio-item {
+            text-align: center;
+        }
+        
+        .servicio-icono {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .servicio-item h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .servicio-item p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: white;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
             background-color: #ebe5df;
+            padding: 3rem 5%;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            width: 200px;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .footer-contacto {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4e342e;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .contacto-item i {
+            font-size: 1.5rem;
+            color: #4e342e;
+        }
+        
+        .contacto-item span {
+            color: #4e342e;
+        }
+        
+        .contacto-item:hover {
+            color: #c68642;
+        }
+        
+        .contacto-item:hover i {
+            color: #c68642;
+        }
+        
+        .contacto-item:hover span {
+            color: #c68642;
         }
         
         /* Responsive */
@@ -503,6 +602,21 @@
             
             .nuestras-mantequillas-section h2 {
                 font-size: 2rem;
+            }
+            
+            .servicios-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .footer-contacto {
+                justify-content: center;
             }
         }
     </style>
@@ -593,7 +707,60 @@
         </div>
     </section>
 
+    <!-- Espacio beige -->
+    <div class="espacio-beige"></div>
+
+    <!-- Sección de Servicios (fondo marrón) -->
+    <section class="servicios-section">
+        <div class="servicios-container">
+            <div class="servicio-item">
+                <div class="servicio-icono">🚚</div>
+                <h3>Envío rápido</h3>
+                <p>Llegamos a todo el Perú. Trabajamos con Olva, Rappi e Indrive</p>
+            </div>
+            <div class="servicio-item">
+                <div class="servicio-icono">🌱</div>
+                <h3>Saludable</h3>
+                <p>Trabajamos con productos 100% naturales</p>
+            </div>
+            <div class="servicio-item">
+                <div class="servicio-icono">📱</div>
+                <h3>Pedidos</h3>
+                <p>Por Whatsapp e Instagram</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo negro.png" alt="Vannalatte">
+            </div>
+            <div class="footer-contacto">
+                <div class="contacto-item" onclick="copiarCorreo()">
+                    <i>📧</i>
+                    <span>vannalatte@gmail.com</span>
+                </div>
+                <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
+                    <i>📱</i>
+                    <span>@vannalatte</span>
+                </a>
+                <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
+                    <i>📞</i>
+                    <span>+51 951 499 437</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Función para copiar correo
+        function copiarCorreo() {
+            navigator.clipboard.writeText('vannalatte@gmail.com');
+            alert('📧 Correo copiado al portapapeles');
+        }
+
         // Función para agregar al carrito
         function agregarAlCarrito(producto) {
             let carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
