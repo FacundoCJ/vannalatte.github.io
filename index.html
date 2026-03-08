@@ -203,6 +203,14 @@
             padding: 0 5%;
         }
         
+        /* Carrusel de videos */
+        .videos-carrusel-section {
+            position: relative;
+            max-width: 1400px;
+            margin: 3rem auto 4rem;
+            padding: 0 5%;
+        }
+        
         .carrusel-wrapper {
             position: relative;
             overflow: hidden;
@@ -288,6 +296,43 @@
             background-color: #a63d2a;
         }
         
+        /* Tarjetas de video */
+        .video-card {
+            min-width: 300px;
+            max-width: 350px;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .video-card::before {
+            content: '▶️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .video-card.playing::before {
+            content: '⏸️';
+        }
+        
         /* Flechas de navegación */
         .carrusel-arrow {
             position: absolute;
@@ -344,7 +389,7 @@
             font-family: 'Merriweather', serif;
         }
         
-        /* Sección Simple y saludable - AHORA OCUPA TODO EL ANCHO */
+        /* Sección Simple y saludable */
         .simple-saludable-section {
             display: flex;
             width: 100%;
@@ -379,14 +424,14 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-family: 'Merriweather', serif;
-            color: #ebe5df; /* Color beige */
+            color: #ebe5df;
         }
         
         .simple-saludable-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             font-family: 'Poppins', sans-serif;
-            color: #ebe5df; /* Color beige */
+            color: #ebe5df;
         }
         
         .simple-saludable-content .btn {
@@ -397,6 +442,12 @@
         
         .simple-saludable-content .btn:hover {
             background-color: #a63d2a;
+        }
+        
+        /* Espacio beige después de simple y saludable */
+        .espacio-beige {
+            height: 3rem;
+            background-color: #ebe5df;
         }
         
         /* Responsive */
@@ -425,7 +476,8 @@
                 font-size: 2rem;
             }
             
-            .producto-card {
+            .producto-card,
+            .video-card {
                 min-width: 260px;
             }
             
@@ -497,8 +549,8 @@
     <!-- Carrusel de productos -->
     <section class="productos-carrusel-section">
         <div class="carrusel-wrapper">
-            <button class="carrusel-arrow arrow-left" id="arrow-left">←</button>
-            <button class="carrusel-arrow arrow-right" id="arrow-right">→</button>
+            <button class="carrusel-arrow arrow-left" id="productos-arrow-left">←</button>
+            <button class="carrusel-arrow arrow-right" id="productos-arrow-right">→</button>
             
             <div class="carrusel-track" id="productos-track">
                 <!-- Productos se cargarán con JavaScript -->
@@ -513,7 +565,7 @@
         <button class="btn-subrayado" onclick="window.location.href='catalogo.html'">Comprar ahora →</button>
     </section>
 
-    <!-- Sección Simple y saludable - AHORA A TODO LO ANCHO -->
+    <!-- Sección Simple y saludable -->
     <section class="simple-saludable-section">
         <div class="simple-saludable-image">
             <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequillas.PNG" alt="Mantequillas">
@@ -522,6 +574,21 @@
             <h2>Simple y saludable</h2>
             <p>Menos ingredientes, mejor nutrición</p>
             <a href="catalogo.html" class="btn">Comprar</a>
+        </div>
+    </section>
+
+    <!-- Espacio beige pequeño -->
+    <div class="espacio-beige"></div>
+
+    <!-- Carrusel de videos de testimonios -->
+    <section class="videos-carrusel-section">
+        <div class="carrusel-wrapper">
+            <button class="carrusel-arrow arrow-left" id="videos-arrow-left">←</button>
+            <button class="carrusel-arrow arrow-right" id="videos-arrow-right">→</button>
+            
+            <div class="carrusel-track" id="videos-track">
+                <!-- Videos se cargarán con JavaScript -->
+            </div>
         </div>
     </section>
 
@@ -607,7 +674,7 @@
         ];
 
         // Cargar productos en el carrusel
-        const track = document.getElementById('productos-track');
+        const productosTrack = document.getElementById('productos-track');
         
         productos.forEach(producto => {
             const card = document.createElement('div');
@@ -629,40 +696,109 @@
                     </button>
                 </div>
             `;
-            track.appendChild(card);
+            productosTrack.appendChild(card);
         });
 
-        // Carrusel automático y manual
-        const arrowLeft = document.getElementById('arrow-left');
-        const arrowRight = document.getElementById('arrow-right');
-        const carruselTrack = document.getElementById('productos-track');
+        // Carrusel de productos automático y manual
+        const productosArrowLeft = document.getElementById('productos-arrow-left');
+        const productosArrowRight = document.getElementById('productos-arrow-right');
+        const productosCarruselTrack = document.getElementById('productos-track');
         
-        let currentPosition = 0;
-        const cardWidth = 320; // ancho de tarjeta + gap
+        let productosPosition = 0;
+        const cardWidth = 320;
         
-        function moverCarrusel(direccion) {
-            const maxScroll = carruselTrack.scrollWidth - carruselTrack.parentElement.offsetWidth;
-            currentPosition += direccion * cardWidth;
+        function moverCarruselProductos(direccion) {
+            const maxScroll = productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth;
+            productosPosition += direccion * cardWidth;
             
-            if (currentPosition < 0) currentPosition = 0;
-            if (currentPosition > maxScroll) currentPosition = maxScroll;
+            if (productosPosition < 0) productosPosition = 0;
+            if (productosPosition > maxScroll) productosPosition = maxScroll;
             
-            carruselTrack.style.transform = `translateX(-${currentPosition}px)`;
+            productosCarruselTrack.style.transform = `translateX(-${productosPosition}px)`;
         }
         
-        // Eventos de flechas
-        arrowLeft.addEventListener('click', () => moverCarrusel(-1));
-        arrowRight.addEventListener('click', () => moverCarrusel(1));
+        productosArrowLeft.addEventListener('click', () => moverCarruselProductos(-1));
+        productosArrowRight.addEventListener('click', () => moverCarruselProductos(1));
         
-        // Auto-play cada 3 segundos
+        // Auto-play productos cada 3 segundos
         setInterval(() => {
-            moverCarrusel(1);
-            // Reiniciar cuando llega al final
-            if (currentPosition >= carruselTrack.scrollWidth - carruselTrack.parentElement.offsetWidth) {
-                currentPosition = 0;
-                carruselTrack.style.transform = 'translateX(0)';
+            moverCarruselProductos(1);
+            if (productosPosition >= productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth) {
+                productosPosition = 0;
+                productosCarruselTrack.style.transform = 'translateX(0)';
             }
         }, 3000);
+
+        // Videos de testimonios
+        const videos = [
+            "Video 10.mp4",
+            "Video 12.mp4",
+            "Video 4.mp4",
+            "Video 5.mp4",
+            "Video 8.mp4"
+        ];
+
+        const videosTrack = document.getElementById('videos-track');
+        
+        videos.forEach(video => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            
+            card.innerHTML = `
+                <video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Videos/${encodeURIComponent(video)}" muted playsinline></video>
+            `;
+            
+            // Agregar evento para reproducir al hacer clic
+            const videoElement = card.querySelector('video');
+            card.addEventListener('click', function() {
+                if (videoElement.paused) {
+                    // Pausar todos los demás videos
+                    document.querySelectorAll('.video-card video').forEach(v => {
+                        if (v !== videoElement) {
+                            v.pause();
+                            v.parentElement.classList.remove('playing');
+                        }
+                    });
+                    
+                    videoElement.play();
+                    this.classList.add('playing');
+                } else {
+                    videoElement.pause();
+                    this.classList.remove('playing');
+                }
+            });
+            
+            videosTrack.appendChild(card);
+        });
+
+        // Carrusel de videos automático y manual
+        const videosArrowLeft = document.getElementById('videos-arrow-left');
+        const videosArrowRight = document.getElementById('videos-arrow-right');
+        const videosCarruselTrack = document.getElementById('videos-track');
+        
+        let videosPosition = 0;
+        
+        function moverCarruselVideos(direccion) {
+            const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
+            videosPosition += direccion * cardWidth;
+            
+            if (videosPosition < 0) videosPosition = 0;
+            if (videosPosition > maxScroll) videosPosition = maxScroll;
+            
+            videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
+        }
+        
+        videosArrowLeft.addEventListener('click', () => moverCarruselVideos(-1));
+        videosArrowRight.addEventListener('click', () => moverCarruselVideos(1));
+        
+        // Auto-play videos cada 4 segundos
+        setInterval(() => {
+            moverCarruselVideos(1);
+            if (videosPosition >= videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth) {
+                videosPosition = 0;
+                videosCarruselTrack.style.transform = 'translateX(0)';
+            }
+        }, 4000);
 
         // Inicializar contador del carrito
         function actualizarContadorCarrito() {
