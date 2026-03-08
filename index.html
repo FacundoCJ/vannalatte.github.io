@@ -22,6 +22,7 @@
             background-color: #ebe5df;
             color: #4e342e;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         /* Barra superior - Obtén la tuya ya! */
@@ -34,6 +35,7 @@
             font-weight: 500;
             color: white;
             letter-spacing: 0.5px;
+            width: 100%;
         }
         
         /* Header */
@@ -50,16 +52,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 1rem 2%;
+            max-width: 100%;
+            margin: 0;
         }
         
-        /* Logo blanco - izquierda */
+        /* Logo blanco - izquierda PEGADO AL BORDE */
         .logo-link {
             display: block;
-            width: 200px;
+            width: 250px;
             flex-shrink: 0;
+            margin-left: 0;
         }
         
         .logo-img {
@@ -71,7 +74,7 @@
         /* Menú central - PERFECTAMENTE CENTRADO */
         .nav-links {
             display: flex;
-            gap: 3.5rem;
+            gap: 4rem;
             align-items: center;
             position: absolute;
             left: 50%;
@@ -83,7 +86,7 @@
             text-decoration: none;
             font-family: 'Merriweather', serif;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: color 0.3s;
             white-space: nowrap;
         }
@@ -92,23 +95,20 @@
             color: #c68642;
         }
         
-        /* Carrito a la derecha - MÁS PEGADO AL BORDE */
+        /* Carrito a la derecha - PEGADO AL BORDE DERECHO */
         .carrito-link {
             position: relative;
             color: white;
             text-decoration: none;
-            font-size: 2.2rem;
             flex-shrink: 0;
-            margin-left: 0;
-            line-height: 1;
+            margin-right: 0;
             display: flex;
             align-items: center;
-            margin-right: -100px; /* Para pegarlo más a la derecha */
         }
         
         .carrito-link img {
-            width: 115px;
-            height: 115px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
             filter: brightness(0) invert(1);
         }
@@ -116,13 +116,13 @@
         .carrito-contador {
             position: absolute;
             top: -5px;
-            right: -40px; /* Ajustado para que no se salga */
+            right: -8px;
             background-color: #c24a34;
             color: white;
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: bold;
-            min-width: 22px;
-            height: 22px;
+            min-width: 25px;
+            height: 25px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -466,16 +466,17 @@
             background-color: #a63d2a;
         }
         
-        /* Sección de Servicios (3 columnas) */
+        /* Sección de Servicios (3 columnas) - LOGOS GRANDES PEGADOS A LA IZQUIERDA */
         .servicios-section {
             background-color: #4e342e;
-            padding: 4rem 5%;
+            padding: 4rem 2%;
             color: white;
+            width: 100%;
         }
         
         .servicios-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
@@ -484,20 +485,20 @@
         .servicio-item {
             display: flex;
             align-items: flex-start;
-            gap: 0.8rem;
-            padding-left: 0; /* Pegado a la izquierda */
+            gap: 1rem;
+            padding-left: 0;
         }
         
         .servicio-icono {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 3px solid white;
             border-radius: 50%;
-            padding: 20px;
+            padding: 25px;
         }
         
         .servicio-icono img {
@@ -515,7 +516,7 @@
         .servicio-contenido h3 {
             font-family: 'Merriweather', serif;
             font-size: 1.5rem;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
             color: white;
         }
         
@@ -527,24 +528,26 @@
             line-height: 1.4;
         }
         
-        /* Footer - CONTACTOS MUY PEGADOS AL LOGO */
+        /* Footer - LOGO GRANDE Y CONTACTOS PEGADOS */
         footer {
             background-color: #ebe5df;
-            padding: 3rem 5%;
+            padding: 2rem 2%;
+            width: 100%;
         }
         
         .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
             display: flex;
             align-items: center;
-            gap: 0.2rem; /* Gap mínimo */
-            min-height: 280px;
+            gap: 0.5rem;
+            min-height: 300px;
         }
         
         .footer-logo {
-            width: 500px;
+            width: 550px;
             flex-shrink: 0;
+            margin-left: 0;
         }
         
         .footer-logo img {
@@ -556,26 +559,26 @@
         .footer-contacto {
             display: flex;
             flex-direction: column;
-            gap: 0.2rem; /* Gap mínimo entre contactos */
-            margin-left: -10px; /* Para pegarlos aún más al logo */
+            gap: 0.3rem;
+            margin-left: 0.5rem;
         }
         
         .contacto-item {
             display: flex;
             align-items: center;
-            gap: 0.3rem; /* Gap mínimo entre icono y texto */
+            gap: 0.5rem;
             color: #4e342e;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: color 0.3s;
             white-space: nowrap;
         }
         
         .contacto-item img {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             object-fit: contain;
             filter: brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(500%) hue-rotate(330deg);
         }
@@ -596,16 +599,17 @@
         .espacio-beige {
             height: 2rem;
             background-color: #ebe5df;
+            width: 100%;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 0.8rem 5%;
+                padding: 0.8rem 2%;
             }
             
             .logo-link {
-                width: 150px;
+                width: 180px;
             }
             
             .nav-links {
@@ -616,17 +620,9 @@
                 font-size: 0.9rem;
             }
             
-            .carrito-link {
-                margin-right: -5px;
-            }
-            
             .carrito-link img {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .carrito-contador {
-                right: -12px;
+                width: 45px;
+                height: 45px;
             }
             
             .hero {
@@ -673,14 +669,13 @@
             
             .servicios-container {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 2rem;
             }
             
             .servicio-item {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                gap: 1rem;
                 padding-left: 0;
             }
             
@@ -689,8 +684,8 @@
             }
             
             .servicio-icono {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
             }
             
             .footer-container {
@@ -701,23 +696,21 @@
             }
             
             .footer-logo {
-                width: 320px;
+                width: 350px;
             }
             
             .footer-contacto {
-                margin-left: 0;
                 align-items: center;
+                margin-left: 0;
             }
             
             .contacto-item {
-                justify-content: center;
-                font-size: 1rem;
-                gap: 0.3rem;
+                font-size: 1.1rem;
             }
             
             .contacto-item img {
-                width: 35px;
-                height: 35px;
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -731,7 +724,7 @@
     <!-- Header -->
     <header>
         <nav>
-            <!-- Logo izquierda -->
+            <!-- Logo izquierda - PEGADO AL BORDE -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
@@ -743,7 +736,7 @@
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
-            <!-- Carrito con nueva imagen - MÁS PEGADO A LA DERECHA -->
+            <!-- Carrito - PEGADO AL BORDE DERECHO -->
             <a href="carrito.html" class="carrito-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
                 <span class="carrito-contador">0</span>
@@ -811,7 +804,7 @@
     <!-- Espacio beige -->
     <div class="espacio-beige"></div>
 
-    <!-- Sección de Servicios (3 columnas) - LOGOS PEGADOS A LA IZQUIERDA -->
+    <!-- Sección de Servicios (3 columnas) - LOGOS GRANDES PEGADOS A LA IZQUIERDA -->
     <section class="servicios-section">
         <div class="servicios-container">
             <div class="servicio-item">
@@ -844,7 +837,7 @@
         </div>
     </section>
 
-    <!-- Footer - CONTACTOS MUY PEGADOS AL LOGO -->
+    <!-- Footer - LOGO GRANDE Y CONTACTOS PEGADOS -->
     <footer>
         <div class="footer-container">
             <div class="footer-logo">
@@ -986,7 +979,7 @@
         const productosCarruselTrack = document.getElementById('productos-track');
         
         let productosPosition = 0;
-        const cardWidth = 370;
+        const cardWidth = 370; // ancho de tarjeta + gap
         
         function moverCarruselProductos(direccion) {
             const maxScroll = productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth;
@@ -1025,13 +1018,16 @@
             const card = document.createElement('div');
             card.className = 'video-card';
             
+            // SIN muted para que tenga audio al reproducir
             card.innerHTML = `
                 <video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline></video>
             `;
             
+            // Agregar evento para reproducir al hacer clic
             const videoElement = card.querySelector('video');
             card.addEventListener('click', function() {
                 if (videoElement.paused) {
+                    // Pausar todos los demás videos
                     document.querySelectorAll('.video-card video').forEach(v => {
                         if (v !== videoElement) {
                             v.pause();
@@ -1070,6 +1066,7 @@
         videosArrowLeft.addEventListener('click', () => moverCarruselVideos(-1));
         videosArrowRight.addEventListener('click', () => moverCarruselVideos(1));
         
+        // Auto-play videos cada 4 segundos
         setInterval(() => {
             moverCarruselVideos(1);
             if (videosPosition >= videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth) {
@@ -1078,6 +1075,7 @@
             }
         }, 4000);
 
+        // Inicializar contador del carrito
         function actualizarContadorCarrito() {
             const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
             const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
@@ -1092,5 +1090,3 @@
     </script>
 </body>
 </html>
-
-
