@@ -29,7 +29,7 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* Barra superior - AHORA CON MERRIWEATHER */
+        /* Barra superior - CON MERRIWEATHER */
         .top-bar {
             background-color: #c68642;
             padding: 6px 0;
@@ -42,7 +42,7 @@
             width: 100%;
         }
         
-        /* Header - MENÚ CON MERRIWEATHER */
+        /* Header - CORREGIDO: menú perfectamente centrado */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -56,17 +56,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 0;
-            max-width: 900px;
+            padding: 0.5rem 5%;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
         
+        /* Logo - tamaño fijo */
         .logo-link {
             display: block;
             width: 180px;
             flex-shrink: 0;
-            margin-left: 0;
         }
         
         .logo-img {
@@ -75,6 +75,7 @@
             display: block;
         }
         
+        /* Menú - PERFECTAMENTE CENTRADO */
         .nav-links {
             display: flex;
             gap: 2.5rem;
@@ -104,12 +105,13 @@
             padding-bottom: 3px;
         }
         
+        /* Carrito - FIJO A LA DERECHA */
         .carrito-link {
             position: relative;
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-right: 0;
+            margin-left: auto;
             display: flex;
             align-items: center;
         }
@@ -146,6 +148,7 @@
             background-position: center;
             height: 40vh;
             width: 100%;
+            margin-top: 0;
         }
         
         /* Contenedor principal */
@@ -324,28 +327,28 @@
             width: 100%;
         }
         
-        /* Footer con fondo marrón - LOGO MÁS GRANDE Y CONTACTOS MÁS JUNTOS */
+        /* Footer con fondo marrón */
         footer {
             background-color: #4e342e;
-            padding: 3rem 5%;
+            padding: 3rem 0 3rem 2%;
             width: 100%;
             margin-top: 3rem;
         }
         
         .footer-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .footer-content {
             display: flex;
             align-items: center;
-            gap: 2rem; /* Reducido para acercar más */
+            gap: 0.5rem;
             flex-wrap: wrap;
         }
         
         .footer-logo {
-            width: 350px; /* MÁS GRANDE */
+            width: 350px;
             flex-shrink: 0;
         }
         
@@ -358,26 +361,26 @@
         .footer-contactos {
             display: flex;
             flex-direction: column;
-            gap: 0.2rem; /* MUCHO MÁS JUNTOS */
+            gap: 0.1rem;
             margin-left: 0;
         }
         
         .contacto-item {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
             cursor: pointer;
             color: #ebe5df;
             font-family: 'Poppins', sans-serif;
             font-size: 1.1rem;
             transition: color 0.3s;
             text-decoration: none;
-            line-height: 1.2; /* Reducido para que estén más juntos */
+            line-height: 1.1;
         }
         
         .contacto-item img {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             object-fit: contain;
             filter: brightness(0) invert(1);
         }
@@ -397,8 +400,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 0.4rem 2%;
-                max-width: 100%;
+                padding: 0.5rem 3%;
             }
             
             .logo-link {
@@ -467,27 +469,49 @@
                 gap: 0.1rem;
             }
         }
+
+        @media (max-width: 480px) {
+            .logo-link {
+                width: 100px;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.7rem;
+            }
+            
+            .carrito-link img {
+                width: 35px;
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Barra superior - AHORA CON MERRIWEATHER -->
+    <!-- Barra superior -->
     <div class="top-bar">
         Obtén la tuya ya!
     </div>
 
-    <!-- Header - MENÚ CON MERRIWEATHER -->
+    <!-- Header - CON MENÚ PERFECTAMENTE CENTRADO -->
     <header>
         <nav>
+            <!-- Logo izquierda -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
+            <!-- Menú PERFECTAMENTE CENTRADO -->
             <div class="nav-links">
                 <a href="catalogo.html" class="active">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
+            <!-- Carrito a la derecha -->
             <a href="carrito.html" class="carrito-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
                 <span class="carrito-contador">0</span>
@@ -505,46 +529,33 @@
         </div>
     </div>
 
-    <!-- Footer con fondo marrón - LOGO PEGADO A LA IZQUIERDA Y CONTACTOS AL LADO -->
-    <footer style="background-color: #4e342e; padding: 3rem 0 3rem 2%; width: 100%; margin-top: 3rem;">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                
-                <!-- Logo blanco GRANDE y PEGADO A LA IZQUIERDA -->
-                <div style="width: 350px; flex-shrink: 0;">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" 
-                         alt="Vannalatte" 
-                         style="width: 100%; height: auto; display: block;">
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Logo blanco GRANDE a la izquierda -->
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte">
                 </div>
                 
-                <!-- Contactos INMEDIATAMENTE AL LADO DEL LOGO -->
-                <div style="display: flex; flex-direction: column; gap: 0.1rem; margin-left: 0;">
-                    
+                <!-- Contactos al lado -->
+                <div class="footer-contactos">
                     <!-- Correo -->
-                    <div onclick="copiarCorreo()" 
-                         style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: #ebe5df; font-family: 'Poppins', sans-serif; font-size: 1.1rem; transition: color 0.3s; text-decoration: none; line-height: 1.1;">
-                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" 
-                             alt="Correo" 
-                             style="width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1);">
-                        <span style="color: #ebe5df;">vannalatte@gmail.com</span>
+                    <div onclick="copiarCorreo()" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" alt="Correo">
+                        <span>vannalatte@gmail.com</span>
                     </div>
                     
                     <!-- Instagram -->
-                    <a href="https://instagram.com/vannalatte" target="_blank" 
-                       style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ebe5df; font-family: 'Poppins', sans-serif; font-size: 1.1rem; transition: color 0.3s; line-height: 1.1;">
-                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram2.png" 
-                             alt="Instagram" 
-                             style="width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1);">
-                        <span style="color: #ebe5df;">@vannalatte</span>
+                    <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram2.png" alt="Instagram">
+                        <span>@vannalatte</span>
                     </a>
                     
                     <!-- WhatsApp -->
-                    <a href="https://wa.me/51951499437" target="_blank" 
-                       style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ebe5df; font-family: 'Poppins', sans-serif; font-size: 1.1rem; transition: color 0.3s; line-height: 1.1;">
-                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp2.png" 
-                             alt="WhatsApp" 
-                             style="width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1);">
-                        <span style="color: #ebe5df;">+51 951 499 437</span>
+                    <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp2.png" alt="WhatsApp">
+                        <span>+51 951 499 437</span>
                     </a>
                 </div>
             </div>
@@ -783,4 +794,3 @@
     </script>
 </body>
 </html>
-
