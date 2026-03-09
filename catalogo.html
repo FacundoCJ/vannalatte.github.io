@@ -18,41 +18,36 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', sans-serif; /* Todo Poppins como pediste */
             background-color: #ebe5df;
             color: #4e342e;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        h1, h2, h3, h4, .logo {
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif; /* Títulos también Poppins */
         }
         
-        /* Barra superior */
+        /* Barra superior - Obtén la tuya ya! */
         .top-bar {
             background-color: #c68642;
-            padding: 10px 0;
+            padding: 6px 0;
             text-align: center;
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: white;
             letter-spacing: 0.5px;
-        }
-        
-        .top-bar-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
+            width: 100%;
         }
         
         /* Header */
         header {
             background-color: #4e342e;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -61,21 +56,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
+            padding: 0.5rem 0;
+            max-width: 900px;
             margin: 0 auto;
+            width: 100%;
         }
         
-        .logo {
-            color: white;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
+        /* Logo izquierda */
+        .logo-link {
+            display: block;
+            width: 180px;
+            flex-shrink: 0;
+            margin-left: 0;
         }
         
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Menú centrado */
         .nav-links {
             display: flex;
             gap: 2.5rem;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .nav-links a {
@@ -83,8 +91,9 @@
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: color 0.3s;
+            white-space: nowrap;
         }
         
         .nav-links a:hover {
@@ -94,320 +103,288 @@
         .nav-links a.active {
             color: #c68642;
             border-bottom: 2px solid #c68642;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
         }
         
-        /* Icono carrito */
+        /* Carrito */
         .carrito-link {
             position: relative;
             color: white;
             text-decoration: none;
-            font-size: 1.5rem;
-            margin-left: 1rem;
+            flex-shrink: 0;
+            margin-right: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .carrito-link img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
         }
         
         .carrito-contador {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -3px;
+            right: -5px;
             background-color: #c24a34;
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             font-weight: bold;
-            min-width: 18px;
-            height: 18px;
+            min-width: 22px;
+            height: 22px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2px;
-        }
-        
-        /* Hero pequeño */
-        .page-hero {
-            background-color: #4e342e;
-            color: white;
-            text-align: center;
-            padding: 8rem 5% 4rem;
-            margin-top: 120px;
-        }
-        
-        .page-hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .page-hero p {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
+        }
+        
+        /* Hero Image (solo imagen, sin botón) */
+        .catalogo-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            width: 100%;
         }
         
         /* Contenedor principal */
         .catalogo-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 5%;
-        }
-        
-        /* Filtros o tabs (250gr / 400gr) */
-        .product-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .tab-btn {
-            background: none;
-            border: none;
-            font-family: 'Merriweather', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4e342e;
-            cursor: pointer;
-            padding: 0.5rem 2rem;
-            border-radius: 50px;
-            transition: all 0.3s;
-        }
-        
-        .tab-btn.active {
-            background-color: #c68642;
-            color: white;
-        }
-        
-        .tab-btn:hover {
-            background-color: #4e342e;
-            color: white;
+            padding: 3rem 5%;
         }
         
         /* Grid de productos */
         .productos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .producto-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
             display: flex;
             flex-direction: column;
+            gap: 3rem;
         }
         
-        .producto-card:hover {
-            transform: translateY(-5px);
+        /* Tarjeta de producto - horizontal */
+        .producto-card {
+            display: flex;
+            gap: 2rem;
+            background-color: transparent;
+            border-radius: 0;
+            overflow: hidden;
+            width: 100%;
         }
         
-        .producto-img {
+        .producto-imagen {
+            flex: 0 0 300px;
             height: 300px;
-            background-color: #f9f9f9;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            background-color: transparent;
         }
         
-        .producto-img img {
-            max-width: 100%;
-            max-height: 100%;
+        .producto-imagen img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
         
-        .producto-info {
-            padding: 1.5rem;
-            flex-grow: 1;
+        .producto-detalles {
+            flex: 1;
             display: flex;
             flex-direction: column;
+            gap: 1rem;
+            padding: 0.5rem 0;
         }
         
         .producto-nombre {
-            font-family: 'Merriweather', serif;
             font-size: 1.5rem;
+            font-weight: 700;
             color: #4e342e;
-            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 0.25rem;
         }
         
-        .producto-presentacion {
-            font-family: 'Poppins', sans-serif;
+        .producto-ingredientes-titulo {
+            font-size: 1rem;
             font-weight: 600;
-            color: #c68642;
-            font-size: 1.1rem;
+            color: #4e342e;
+            margin-bottom: 0.25rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .producto-ingredientes-lista {
+            list-style: none;
             margin-bottom: 0.5rem;
         }
         
-        .producto-ingredientes {
+        .producto-ingredientes-lista li {
+            font-size: 0.95rem;
+            color: #4e342e;
             font-family: 'Poppins', sans-serif;
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
             line-height: 1.4;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        
+        /* Tabla nutricional */
+        .tabla-nutricional {
+            width: 100%;
+            max-width: 400px;
+            border-collapse: collapse;
+            margin: 0.5rem 0 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .tabla-nutricional td {
+            padding: 0.3rem 0;
+            color: #4e342e;
+            font-size: 0.95rem;
+            border: none;
+        }
+        
+        .tabla-nutricional td:first-child {
+            font-weight: 500;
+        }
+        
+        .tabla-nutricional td:last-child {
+            text-align: left;
+            padding-left: 1rem;
         }
         
         .producto-precio {
-            font-family: 'Merriweather', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #c24a34;
-            margin: 1rem 0;
+            color: #4e342e;
+            font-family: 'Poppins', sans-serif;
+            margin: 0.5rem 0;
         }
         
         .btn-carrito {
             background-color: #c24a34;
             color: white;
             border: none;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 12px 30px;
+            border-radius: 50px;
             cursor: pointer;
-            width: 100%;
+            width: fit-content;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
-            margin-top: auto;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
         }
         
         .btn-carrito:hover {
             background-color: #a63d2a;
+            transform: translateY(-2px);
         }
         
-        /* Footer */
-        footer {
+        /* Separador entre productos */
+        .producto-divisor {
+            height: 2px;
             background-color: #4e342e;
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
-            margin-top: 2rem;
-        }
-        
-        .contacto-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .contacto-info p {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .copyright {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 2rem;
+            opacity: 0.2;
+            margin: 1rem 0 2rem;
+            width: 100%;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links a:not(.carrito-link) {
-                display: none;
+            nav {
+                padding: 0.4rem 2%;
+                max-width: 100%;
             }
             
-            .page-hero h1 {
-                font-size: 2rem;
+            .logo-link {
+                width: 130px;
             }
             
-            .product-tabs {
-                flex-direction: column;
-                align-items: center;
+            .nav-links {
                 gap: 1rem;
             }
             
-            .tab-btn {
-                width: 200px;
+            .nav-links a {
+                font-size: 0.8rem;
             }
             
-            .productos-grid {
-                grid-template-columns: 1fr;
+            .carrito-link img {
+                width: 45px;
+                height: 45px;
             }
             
-            .top-bar {
-                font-size: 0.85rem;
-                padding: 6px 0;
+            .catalogo-hero {
+                height: 30vh;
+            }
+            
+            .producto-card {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .producto-imagen {
+                flex: 0 0 auto;
+                width: 100%;
+                height: 250px;
+            }
+            
+            .tabla-nutricional {
+                max-width: 100%;
+            }
+            
+            .btn-carrito {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        Obtén la tuya ya!
+    </div>
+
+    <!-- Header -->
     <header>
-        <!-- Barra superior con texto -->
-        <div class="top-bar">
-            <div class="top-bar-content">
-            Obtén la tuya ya!
-            </div>
-        </div>
         <nav>
-            <div class="logo">Vannalatte</div>
+            <!-- Logo izquierda -->
+            <a href="index.html" class="logo-link">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
+            </a>
+            
+            <!-- Menú centrado -->
             <div class="nav-links">
-                <a href="index.html">Inicio</a>
                 <a href="catalogo.html" class="active">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
-                <!-- Carrito -->
-                <a href="carrito.html" class="carrito-link">
-                    🛒
-                    <span class="carrito-contador">0</span>
-                </a>
             </div>
+            
+            <!-- Carrito -->
+            <a href="carrito.html" class="carrito-link">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
+                <span class="carrito-contador">0</span>
+            </a>
         </nav>
     </header>
 
-    <section class="page-hero">
-        <h1>Nuestras Mantequillas</h1>
-        <p>Hechas en casa, inspiradas en la tradición</p>
-    </section>
+    <!-- Hero Image (solo imagen, sin botón) -->
+    <div class="catalogo-hero"></div>
 
+    <!-- Catálogo de productos -->
     <div class="catalogo-container">
-        <!-- Tabs para filtrar por presentación -->
-        <div class="product-tabs">
-            <button class="tab-btn active" onclick="filtrarProductos('todos')">Todos</button>
-            <button class="tab-btn" onclick="filtrarProductos('250gr')">250gr</button>
-            <button class="tab-btn" onclick="filtrarProductos('400gr')">400gr</button>
-        </div>
-
-        <!-- Grid de productos -->
         <div class="productos-grid" id="productos-grid">
-            <!-- Los productos se cargarán aquí -->
+            <!-- Los productos se cargarán con JavaScript -->
         </div>
     </div>
 
-    <footer>
-        <div class="logo" style="margin-bottom: 1rem;">Vannalatte</div>
-        <div class="contacto-info">
-            <p>📧 vannalatte@gmail.com</p>
-            <p>📱 @vannalatte</p>
-            <p>📞 +51 951 499 437</p>
-        </div>
-        <p class="copyright">© 2026 Vannalatte - Todos los derechos reservados</p>
-    </footer>
-
     <script>
-        // ============================================
-        // FUNCIONES DEL CARRITO
-        // ============================================
-
-        function obtenerCarrito() {
-            const carrito = localStorage.getItem('vannalatte-carrito');
-            return carrito ? JSON.parse(carrito) : [];
-        }
-
-        function guardarCarrito(carrito) {
-            localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
-            actualizarContadorCarrito();
+        function copiarCorreo() {
+            navigator.clipboard.writeText('vannalatte@gmail.com');
+            alert('📧 Correo copiado al portapapeles');
         }
 
         function agregarAlCarrito(producto, event) {
-            let carrito = obtenerCarrito();
+            let carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
             
             const existente = carrito.find(item => 
                 item.nombre === producto.nombre && 
@@ -424,12 +401,16 @@
                 });
             }
             
-            guardarCarrito(carrito);
+            localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
             
-            // Feedback visual
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            document.querySelectorAll('.carrito-contador').forEach(el => {
+                el.textContent = totalItems;
+            });
+            
             const btn = event.target;
             const textoOriginal = btn.textContent;
-            btn.textContent = '✅ Añadido';
+            btn.textContent = '✓ Añadido';
             btn.style.backgroundColor = '#4CAF50';
             setTimeout(() => {
                 btn.textContent = textoOriginal;
@@ -437,180 +418,186 @@
             }, 1000);
         }
 
-        function actualizarContadorCarrito() {
-            const carrito = obtenerCarrito();
-            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+        // Datos de productos con toda la información nutricional
+        const productos = [
+            // Mantequilla de chocomaní - 250gr
+            {
+                nombre: "Mantequilla de chocomaní - 250gr",
+                nombreSimple: "Mantequilla de chocomaní",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG",
+                nutricion: {
+                    porcion: "15g - 1 cucharada",
+                    proteina: "3.6g",
+                    grasas: "7.1g",
+                    carbohidratos: "2.4g",
+                    energia: "87kcal"
+                }
+            },
+            // Mantequilla de maní clásica - 250gr
+            {
+                nombre: "Mantequilla de maní clásica - 250gr",
+                nombreSimple: "Mantequilla de maní clásica",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: ["Maní tostado"],
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG",
+                nutricion: {
+                    porcion: "15g - 1 cucharada",
+                    proteina: "3.8g",
+                    grasas: "7.2g",
+                    carbohidratos: "2.1g",
+                    energia: "88kcal"
+                }
+            },
+            // Mantequilla de maní la favorita - 250gr
+            {
+                nombre: "Mantequilla de maní la favorita - 250gr",
+                nombreSimple: "Mantequilla de maní la favorita",
+                presentacion: "250gr",
+                precio: 19.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG",
+                nutricion: {
+                    porcion: "15g - 1 cucharada",
+                    proteina: "3.7g",
+                    grasas: "7.0g",
+                    carbohidratos: "2.0g",
+                    energia: "85kcal"
+                }
+            },
+            // Mantequilla de chocomaní - 400gr
+            {
+                nombre: "Mantequilla de chocomaní - 400gr",
+                nombreSimple: "Mantequilla de chocomaní",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG",
+                nutricion: {
+                    porcion: "15g - 1 cucharada",
+                    proteina: "3.6g",
+                    grasas: "7.1g",
+                    carbohidratos: "2.4g",
+                    energia: "87kcal"
+                }
+            },
+            // Mantequilla de maní clásica - 400gr
+            {
+                nombre: "Mantequilla de maní clásica - 400gr",
+                nombreSimple: "Mantequilla de maní clásica",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: ["Maní tostado"],
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG",
+                nutricion: {
+                    porcion: "15g - 1 cucharada",
+                    proteina: "3.8g",
+                    grasas: "7.2g",
+                    carbohidratos: "2.1g",
+                    energia: "88kcal"
+                }
+            },
+            // Mantequilla de maní la favorita - 400gr
+            {
+                nombre: "Mantequilla de maní la favorita - 400gr",
+                nombreSimple: "Mantequilla de maní la favorita",
+                presentacion: "400gr",
+                precio: 30.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG",
+                nutricion: {
+                    porcion: "15g - 1 cucharada",
+                    proteina: "3.7g",
+                    grasas: "7.0g",
+                    carbohidratos: "2.0g",
+                    energia: "85kcal"
+                }
+            }
+        ];
+
+        // Cargar productos en la página
+        const grid = document.getElementById('productos-grid');
+        
+        productos.forEach((producto, index) => {
+            const card = document.createElement('div');
             
+            // Crear lista de ingredientes
+            const ingredientesList = producto.ingredientes.map(ing => `<li>${ing}</li>`).join('');
+            
+            // Crear tarjeta
+            card.innerHTML = `
+                <div class="producto-card">
+                    <div class="producto-imagen">
+                        <img src="${producto.imagen}" alt="${producto.nombreSimple}">
+                    </div>
+                    <div class="producto-detalles">
+                        <h2 class="producto-nombre">${producto.nombre}</h2>
+                        
+                        <div class="producto-ingredientes-titulo">Ingredientes</div>
+                        <ul class="producto-ingredientes-lista">
+                            ${ingredientesList}
+                        </ul>
+                        
+                        <table class="tabla-nutricional">
+                            <tr>
+                                <td>Porción</td>
+                                <td>${producto.nutricion.porcion}</td>
+                            </tr>
+                            <tr>
+                                <td>Proteína</td>
+                                <td>${producto.nutricion.proteina}</td>
+                            </tr>
+                            <tr>
+                                <td>Grasas</td>
+                                <td>${producto.nutricion.grasas}</td>
+                            </tr>
+                            <tr>
+                                <td>Carbohidratos</td>
+                                <td>${producto.nutricion.carbohidratos}</td>
+                            </tr>
+                            <tr>
+                                <td>Energía</td>
+                                <td>${producto.nutricion.energia}</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
+                        
+                        <button class="btn-carrito" onclick='agregarAlCarrito(${JSON.stringify({
+                            nombre: producto.nombreSimple,
+                            presentacion: producto.presentacion,
+                            precio: producto.precio,
+                            imagen: producto.imagen
+                        }).replace(/'/g, "\\'")}, event)'>
+                            Comprar
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            grid.appendChild(card);
+            
+            // Agregar divisor entre productos (excepto después del último)
+            if (index < productos.length - 1) {
+                const divisor = document.createElement('div');
+                divisor.className = 'producto-divisor';
+                grid.appendChild(divisor);
+            }
+        });
+
+        function actualizarContadorCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
             document.querySelectorAll('.carrito-contador').forEach(el => {
                 el.textContent = totalItems;
                 el.style.display = totalItems > 0 ? 'flex' : 'none';
             });
         }
-
-        // ============================================
-        // DATOS DE PRODUCTOS
-        // ============================================
-        const productos = [
-            // 250gr
-            {
-                nombre: "Mantequilla de chocomaní",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: "MANÍ TOSTADO, CACAO, EDULCORANTE",
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní clásica",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: "MANÍ TOSTADO",
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: "MANÍ TOSTADO, SAL DE MARAS, EDULCORANTE",
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
-            },
-            // 400gr
-            {
-                nombre: "Mantequilla de chocomaní",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: "MANÍ TOSTADO, CACAO, EDULCORANTE",
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20chocomani.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní clásica",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: "MANÍ TOSTADO",
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20clasica.PNG"
-            },
-            {
-                nombre: "Mantequilla de maní la favorita",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: "MANÍ TOSTADO, SAL DE MARAS, EDULCORANTE",
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/mantequilla%20de%20mani%20la%20favorita.PNG"
-            }
-        ];
-
-        // Cargar productos
-        const grid = document.getElementById('productos-grid');
         
-        function mostrarProductos(filtro = 'todos') {
-            grid.innerHTML = '';
-            
-            const productosFiltrados = filtro === 'todos' 
-                ? productos 
-                : productos.filter(p => p.presentacion === filtro);
-            
-            productosFiltrados.forEach(producto => {
-                const card = document.createElement('div');
-                card.className = 'producto-card';
-                // Convertir producto a string para pasarlo a la función
-                const productoStr = JSON.stringify(producto).replace(/"/g, '&quot;');
-                card.innerHTML = `
-                    <div class="producto-img">
-                        <img src="${producto.imagen}" alt="${producto.nombre}">
-                    </div>
-                    <div class="producto-info">
-                        <h3 class="producto-nombre">${producto.nombre}</h3>
-                        <div class="producto-presentacion">${producto.presentacion}</div>
-                        <div class="producto-ingredientes">${producto.ingredientes}</div>
-                        <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
-                        <button class="btn-carrito" onclick='agregarAlCarrito(${productoStr}, event)'>
-                            Añadir al carrito
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Función para filtrar productos
-        function filtrarProductos(filtro) {
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.toLowerCase().includes(filtro) || 
-                    (filtro === 'todos' && btn.textContent === 'Todos')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            mostrarProductos(filtro);
-        }
-
-        // Inicializar
-        mostrarProductos('todos');
         document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
     </script>
-    <script>
-    // ============================================
-    // FUNCIONES DEL CARRITO (compartidas)
-    // ============================================
-
-    // Obtener carrito actual
-    function obtenerCarrito() {
-        const carrito = localStorage.getItem('vannalatte-carrito');
-        return carrito ? JSON.parse(carrito) : [];
-    }
-
-    // Guardar carrito
-    function guardarCarrito(carrito) {
-        localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
-        actualizarContadorCarrito();
-    }
-
-    // Agregar al carrito
-    function agregarAlCarrito(producto) {
-        let carrito = obtenerCarrito();
-        
-        // Buscar si ya existe (mismo nombre y presentación)
-        const existente = carrito.find(item => 
-            item.nombre === producto.nombre && 
-            item.presentacion === producto.presentacion
-        );
-        
-        if (existente) {
-            existente.cantidad += 1;
-        } else {
-            carrito.push({
-                ...producto,
-                cantidad: 1,
-                id: Date.now() + Math.random() // ID único
-            });
-        }
-        
-        guardarCarrito(carrito);
-        
-        // Feedback visual
-        const btn = event.target;
-        const textoOriginal = btn.textContent;
-        btn.textContent = '✅ Añadido';
-        btn.style.backgroundColor = '#4CAF50';
-        setTimeout(() => {
-            btn.textContent = textoOriginal;
-            btn.style.backgroundColor = '#c24a34';
-        }, 1000);
-    }
-
-    // Actualizar contador del carrito
-    function actualizarContadorCarrito() {
-        const carrito = obtenerCarrito();
-        const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-        
-        document.querySelectorAll('.carrito-contador').forEach(el => {
-            el.textContent = totalItems;
-            el.style.display = totalItems > 0 ? 'flex' : 'none';
-        });
-    }
-
-    // Llamar al cargar la página
-    document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
-</script>
 </body>
 </html>
-
