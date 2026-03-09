@@ -29,12 +29,12 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* Barra superior */
+        /* Barra superior - AHORA CON MERRIWEATHER */
         .top-bar {
             background-color: #c68642;
             padding: 6px 0;
             text-align: center;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
             font-size: 0.9rem;
             font-weight: 500;
             color: white;
@@ -42,7 +42,7 @@
             width: 100%;
         }
         
-        /* Header */
+        /* Header - MENÚ CON MERRIWEATHER */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -87,7 +87,7 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s;
@@ -324,7 +324,7 @@
             width: 100%;
         }
         
-        /* Footer con fondo marrón */
+        /* Footer con fondo marrón - LOGO MÁS GRANDE Y CONTACTOS MÁS JUNTOS */
         footer {
             background-color: #4e342e;
             padding: 3rem 5%;
@@ -340,12 +340,12 @@
         .footer-content {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 2rem; /* Reducido para acercar más */
             flex-wrap: wrap;
         }
         
         .footer-logo {
-            width: 250px;
+            width: 350px; /* MÁS GRANDE */
             flex-shrink: 0;
         }
         
@@ -358,7 +358,7 @@
         .footer-contactos {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.2rem; /* MUCHO MÁS JUNTOS */
             margin-left: 0;
         }
         
@@ -372,6 +372,7 @@
             font-size: 1.1rem;
             transition: color 0.3s;
             text-decoration: none;
+            line-height: 1.2; /* Reducido para que estén más juntos */
         }
         
         .contacto-item img {
@@ -391,15 +392,6 @@
         
         .contacto-item:hover span {
             color: #c68642;
-        }
-        
-        .copyright {
-            margin-top: 2rem;
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            color: #ebe5df;
-            opacity: 0.7;
         }
         
         /* Responsive */
@@ -463,22 +455,27 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                gap: 1.5rem;
+                gap: 1rem;
+            }
+            
+            .footer-logo {
+                width: 280px;
             }
             
             .footer-contactos {
                 align-items: center;
+                gap: 0.1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Barra superior -->
+    <!-- Barra superior - AHORA CON MERRIWEATHER -->
     <div class="top-bar">
         Obtén la tuya ya!
     </div>
 
-    <!-- Header -->
+    <!-- Header - MENÚ CON MERRIWEATHER -->
     <header>
         <nav>
             <a href="index.html" class="logo-link">
@@ -508,16 +505,16 @@
         </div>
     </div>
 
-    <!-- Footer con fondo marrón, logo blanco y contactos -->
+    <!-- Footer con fondo marrón, logo blanco GRANDE y contactos MUY JUNTOS -->
     <footer>
         <div class="footer-container">
             <div class="footer-content">
-                <!-- Logo blanco a la izquierda -->
+                <!-- Logo blanco MÁS GRANDE a la izquierda -->
                 <div class="footer-logo">
                     <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte">
                 </div>
                 
-                <!-- Contactos pegados al logo -->
+                <!-- Contactos MUY PEGADOS entre sí -->
                 <div class="footer-contactos">
                     <!-- Correo -->
                     <div class="contacto-item" onclick="copiarCorreo()">
@@ -538,8 +535,6 @@
                     </a>
                 </div>
             </div>
-            
-
         </div>
     </footer>
 
@@ -775,4 +770,3 @@
     </script>
 </body>
 </html>
-
