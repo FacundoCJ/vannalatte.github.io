@@ -757,7 +757,7 @@ function finalizarCompra() {
         return;
     }
 
-    let mensaje = "🛍️ *NUEVO PEDIDO - Vannalatte*\n\n";
+    let mensaje = " *NUEVO PEDIDO - Vannalatte*\n\n";
     mensaje += "*DETALLE DE PRODUCTOS:*\n";
     
     let totalGeneral = 0;
@@ -768,7 +768,7 @@ function finalizarCompra() {
         mensaje += `• ${item.nombre} (${item.presentacion}) x ${item.cantidad} = S/ ${subtotal.toFixed(2)}\n`;
     });
     
-    mensaje += `\n💰 *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
+    mensaje += `\n *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
     
     // Usar api.whatsapp.com (más compatible con iOS)
     const url = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
@@ -788,5 +788,6 @@ function finalizarCompra() {
     </script>
 </body>
 </html>
+
 
 
