@@ -505,33 +505,46 @@
         </div>
     </div>
 
-    <!-- Footer con fondo marrón, logo blanco GRANDE y contactos MUY JUNTOS -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <!-- Logo blanco MÁS GRANDE a la izquierda -->
-                <div class="footer-logo">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte">
+    <!-- Footer con fondo marrón - LOGO PEGADO A LA IZQUIERDA Y CONTACTOS AL LADO -->
+    <footer style="background-color: #4e342e; padding: 3rem 0 3rem 2%; width: 100%; margin-top: 3rem;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                
+                <!-- Logo blanco GRANDE y PEGADO A LA IZQUIERDA -->
+                <div style="width: 350px; flex-shrink: 0;">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" 
+                         alt="Vannalatte" 
+                         style="width: 100%; height: auto; display: block;">
                 </div>
                 
-                <!-- Contactos MUY PEGADOS entre sí -->
-                <div class="footer-contactos">
+                <!-- Contactos INMEDIATAMENTE AL LADO DEL LOGO -->
+                <div style="display: flex; flex-direction: column; gap: 0.1rem; margin-left: 0;">
+                    
                     <!-- Correo -->
-                    <div class="contacto-item" onclick="copiarCorreo()">
-                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" alt="Correo">
-                        <span>vannalatte@gmail.com</span>
+                    <div onclick="copiarCorreo()" 
+                         style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: #ebe5df; font-family: 'Poppins', sans-serif; font-size: 1.1rem; transition: color 0.3s; text-decoration: none; line-height: 1.1;">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" 
+                             alt="Correo" 
+                             style="width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1);">
+                        <span style="color: #ebe5df;">vannalatte@gmail.com</span>
                     </div>
                     
                     <!-- Instagram -->
-                    <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
-                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram2.png" alt="Instagram">
-                        <span>@vannalatte</span>
+                    <a href="https://instagram.com/vannalatte" target="_blank" 
+                       style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ebe5df; font-family: 'Poppins', sans-serif; font-size: 1.1rem; transition: color 0.3s; line-height: 1.1;">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram2.png" 
+                             alt="Instagram" 
+                             style="width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1);">
+                        <span style="color: #ebe5df;">@vannalatte</span>
                     </a>
                     
                     <!-- WhatsApp -->
-                    <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
-                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp2.png" alt="WhatsApp">
-                        <span>+51 951 499 437</span>
+                    <a href="https://wa.me/51951499437" target="_blank" 
+                       style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ebe5df; font-family: 'Poppins', sans-serif; font-size: 1.1rem; transition: color 0.3s; line-height: 1.1;">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp2.png" 
+                             alt="WhatsApp" 
+                             style="width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1);">
+                        <span style="color: #ebe5df;">+51 951 499 437</span>
                     </a>
                 </div>
             </div>
@@ -770,3 +783,4 @@
     </script>
 </body>
 </html>
+
