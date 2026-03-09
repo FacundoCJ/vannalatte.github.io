@@ -28,17 +28,17 @@
         /* Barra superior - Obtén la tuya ya! */
         .top-bar {
             background-color: #c68642;
-            padding: 6px 0; /* Reducido ligeramente */
+            padding: 6px 0;
             text-align: center;
             font-family: 'Merriweather', serif;
-            font-size: 0.9rem; /* Reducido */
+            font-size: 0.9rem;
             font-weight: 500;
             color: white;
             letter-spacing: 0.5px;
             width: 100%;
         }
         
-        /* Header - ALTO REDUCIDO A 2/3 */
+        /* Header - CORREGIDO: logo más a la izquierda, menú centrado natural */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -52,18 +52,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 0; /* Reducido de 1rem a 0.5rem (2/3) */
-            max-width: 900px; /* Mantenemos el ancho anterior */
+            padding: 0.5rem 5%;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
         
-        /* Logo blanco - PEGADO AL BORDE IZQUIERDO */
+        /* Logo - MÁS PEGADO A LA IZQUIERDA */
         .logo-link {
             display: block;
-            width: 180px; /* Reducido ligeramente para proporción */
+            width: 180px;
             flex-shrink: 0;
-            margin-left: 0;
+            margin-right: auto; /* Empuja el menú hacia la derecha */
         }
         
         .logo-img {
@@ -72,14 +72,12 @@
             display: block;
         }
         
-        /* Menú central - PERFECTAMENTE CENTRADO */
+        /* Menú - AHORA CENTRADO NATURALMENTE (sin absolute) */
         .nav-links {
             display: flex;
-            gap: 2.5rem; /* Reducido ligeramente */
+            gap: 2.5rem;
             align-items: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            margin: 0 2rem;
         }
         
         .nav-links a {
@@ -87,7 +85,7 @@
             text-decoration: none;
             font-family: 'Merriweather', serif;
             font-weight: 500;
-            font-size: 0.95rem; /* Reducido ligeramente */
+            font-size: 0.95rem;
             transition: color 0.3s;
             white-space: nowrap;
         }
@@ -96,19 +94,19 @@
             color: #c68642;
         }
         
-        /* Carrito - PEGADO AL BORDE DERECHO */
+        /* Carrito - FIJO A LA DERECHA */
         .carrito-link {
             position: relative;
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-right: 0;
+            margin-left: auto; /* Empuja a la derecha */
             display: flex;
             align-items: center;
         }
         
         .carrito-link img {
-            width: 60px; /* Reducido para proporción */
+            width: 60px;
             height: 60px;
             object-fit: contain;
             filter: brightness(0) invert(1);
@@ -116,7 +114,7 @@
         
         .carrito-contador {
             position: absolute;
-            top: -3px; /* Ajustado por el tamaño más pequeño */
+            top: -3px;
             right: -5px;
             background-color: #c24a34;
             color: white;
@@ -627,8 +625,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 0.4rem 2%; /* Aún más pequeño en móvil */
-                max-width: 100%;
+                padding: 0.5rem 3%;
             }
             
             .logo-link {
@@ -637,10 +634,15 @@
             
             .nav-links {
                 gap: 1rem;
+                margin: 0 0.5rem;
             }
             
             .nav-links a {
                 font-size: 0.8rem;
+            }
+            
+            .carrito-link {
+                margin-left: 0.5rem;
             }
             
             .carrito-link img {
@@ -743,6 +745,25 @@
                 height: 35px;
             }
         }
+
+        @media (max-width: 480px) {
+            .logo-link {
+                width: 100px;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.7rem;
+            }
+            
+            .carrito-link img {
+                width: 35px;
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -751,22 +772,22 @@
         Obtén la tuya ya!
     </div>
 
-    <!-- Header - ALTO REDUCIDO -->
+    <!-- Header - CORREGIDO -->
     <header>
         <nav>
-            <!-- Logo izquierda -->
+            <!-- Logo izquierda (MÁS PEGADO) -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú centrado -->
+            <!-- Menú centrado naturalmente -->
             <div class="nav-links">
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
-            <!-- Carrito -->
+            <!-- Carrito a la derecha -->
             <a href="carrito.html" class="carrito-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
                 <span class="carrito-contador">0</span>
