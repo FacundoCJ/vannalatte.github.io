@@ -29,30 +29,25 @@
             font-weight: 700;
         }
         
-        /* Barra superior */
+        /* Barra superior - CON MERRIWEATHER */
         .top-bar {
             background-color: #c68642;
-            padding: 10px 0;
+            padding: 6px 0;
             text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-family: 'Merriweather', serif;
+            font-size: 0.9rem;
             font-weight: 500;
             color: white;
             letter-spacing: 0.5px;
+            width: 100%;
         }
         
-        .top-bar-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-        
-        /* Header */
+        /* Header - MENÚ CON MERRIWEATHER */
         header {
             background-color: #4e342e;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -61,30 +56,42 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
+            padding: 0.5rem 0;
+            max-width: 900px;
             margin: 0 auto;
+            width: 100%;
         }
         
-        .logo {
-            color: white;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
+        .logo-link {
+            display: block;
+            width: 180px;
+            flex-shrink: 0;
+            margin-left: 0;
+        }
+        
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         .nav-links {
             display: flex;
             gap: 2.5rem;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: color 0.3s;
+            white-space: nowrap;
         }
         
         .nav-links a:hover {
@@ -94,7 +101,7 @@
         .nav-links a.active {
             color: #c68642;
             border-bottom: 2px solid #c68642;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
         }
         
         /* Icono carrito */
@@ -102,67 +109,75 @@
             position: relative;
             color: white;
             text-decoration: none;
-            font-size: 1.5rem;
-            margin-left: 1rem;
+            flex-shrink: 0;
+            margin-right: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .carrito-link img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
         }
         
         .carrito-contador {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -3px;
+            right: -5px;
             background-color: #c24a34;
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             font-weight: bold;
-            min-width: 18px;
-            height: 18px;
+            min-width: 22px;
+            height: 22px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2px;
-        }
-        
-        /* Hero pequeño */
-        .page-hero {
-            background-color: #4e342e;
-            color: white;
-            text-align: center;
-            padding: 8rem 5% 4rem;
-            margin-top: 120px;
-        }
-        
-        .page-hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .page-hero p {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
-            opacity: 0.9;
+        }
+        
+        /* Título de la página */
+        .page-title {
+            text-align: center;
+            margin: 2rem 0 1rem;
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4e342e;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: #4e342e;
+            margin-bottom: 3rem;
         }
         
         /* Contenedor principal */
         .carrito-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 5%;
+            padding: 2rem 5% 4rem;
             min-height: 50vh;
         }
         
-        /* Carrito vacío */
+        /* Carrito vacío - SIN FONDO BLANCO */
         .carrito-vacio {
             text-align: center;
             padding: 4rem;
-            background: white;
+            background-color: transparent;
+            border: 2px dashed #4e342e;
             border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
         
         .carrito-vacio p {
             font-size: 1.2rem;
-            color: #666;
+            color: #4e342e;
             margin-bottom: 2rem;
         }
         
@@ -176,13 +191,13 @@
             font-weight: 600;
         }
         
-        /* Tabla del carrito */
+        /* Tabla del carrito - SIN FONDO BLANCO */
         .carrito-tabla {
             width: 100%;
-            background: white;
+            background-color: transparent;
             border-radius: 20px;
+            border: 1px solid #4e342e;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             margin-bottom: 2rem;
         }
         
@@ -191,9 +206,10 @@
             grid-template-columns: 100px 2fr 1fr 1fr 1fr 50px;
             padding: 1.5rem;
             background-color: #4e342e;
-            color: white;
+            color: #ebe5df; /* Beige */
             font-weight: 600;
             gap: 1rem;
+            font-family: 'Poppins', sans-serif;
         }
         
         .carrito-item {
@@ -202,7 +218,8 @@
             padding: 1.5rem;
             align-items: center;
             gap: 1rem;
-            border-bottom: 1px solid #ebe5df;
+            border-bottom: 1px solid #4e342e;
+            background-color: transparent;
         }
         
         .carrito-item:last-child {
@@ -213,7 +230,7 @@
             width: 80px;
             height: 80px;
             object-fit: contain;
-            background-color: #f9f9f9;
+            background-color: transparent;
             border-radius: 10px;
             padding: 0.5rem;
         }
@@ -224,8 +241,9 @@
         }
         
         .item-presentacion {
-            color: #c68642;
+            color: #4e342e;
             font-size: 0.9rem;
+            opacity: 0.8;
         }
         
         .item-precio {
@@ -240,8 +258,8 @@
         }
         
         .cantidad-btn {
-            background-color: #ebe5df;
-            border: none;
+            background-color: transparent;
+            border: 1px solid #4e342e;
             width: 30px;
             height: 30px;
             border-radius: 5px;
@@ -249,18 +267,20 @@
             font-size: 1.2rem;
             font-weight: bold;
             color: #4e342e;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, color 0.3s;
         }
         
         .cantidad-btn:hover {
             background-color: #c68642;
             color: white;
+            border-color: #c68642;
         }
         
         .cantidad-numero {
             min-width: 30px;
             text-align: center;
             font-weight: 600;
+            color: #4e342e;
         }
         
         .item-subtotal {
@@ -281,12 +301,12 @@
             transform: scale(1.1);
         }
         
-        /* Resumen del carrito */
+        /* Resumen del carrito - SIN FONDO BLANCO */
         .carrito-resumen {
-            background: white;
+            background-color: transparent;
+            border: 1px solid #4e342e;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             margin-bottom: 2rem;
         }
         
@@ -295,7 +315,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
-            border-bottom: 2px solid #ebe5df;
+            border-bottom: 2px solid #4e342e;
             font-size: 1.3rem;
         }
         
@@ -339,7 +359,7 @@
         
         .btn-secondary {
             background-color: #4e342e;
-            color: white;
+            color: #ebe5df; /* Beige */
         }
         
         .btn-secondary:hover {
@@ -358,44 +378,101 @@
             color: white;
         }
         
-        /* Footer */
+        /* Footer con fondo marrón - LOGO BLANCO Y CONTACTOS */
         footer {
             background-color: #4e342e;
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
-            margin-top: 2rem;
+            padding: 3rem 0 3rem 2%;
+            width: 100%;
+            margin-top: 3rem;
         }
         
-        .contacto-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            font-family: 'Poppins', sans-serif;
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .contacto-info p {
+        .footer-content {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            flex-wrap: wrap;
         }
         
-        .copyright {
+        .footer-logo {
+            width: 350px;
+            flex-shrink: 0;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .footer-contactos {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            margin-left: 0;
+        }
+        
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #ebe5df;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 2rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            text-decoration: none;
+            line-height: 1.1;
+        }
+        
+        .contacto-item img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .contacto-item span {
+            color: #ebe5df;
+        }
+        
+        .contacto-item:hover {
+            color: #c68642;
+        }
+        
+        .contacto-item:hover span {
+            color: #c68642;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links a:not(.carrito-link) {
-                display: none;
+            nav {
+                padding: 0.4rem 2%;
+                max-width: 100%;
             }
             
-            .page-hero h1 {
+            .logo-link {
+                width: 130px;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            
+            .carrito-link img {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .page-title {
                 font-size: 2rem;
             }
             
@@ -429,53 +506,100 @@
                 font-size: 0.85rem;
                 padding: 6px 0;
             }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .footer-logo {
+                width: 280px;
+            }
+            
+            .footer-contactos {
+                align-items: center;
+                gap: 0.1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        Obtén la tuya ya!
+    </div>
+
+    <!-- Header -->
     <header>
-        <!-- Barra superior con texto -->
-        <div class="top-bar">
-            <div class="top-bar-content">
-            Obtén la tuya ya!
-            </div>
-        </div>
         <nav>
-            <div class="logo">Vannalatte</div>
+            <a href="index.html" class="logo-link">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
+            </a>
+            
             <div class="nav-links">
-                <a href="index.html">Inicio</a>
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
-                <!-- Carrito -->
-                <a href="carrito.html" class="carrito-link active">
-                    🛒
-                    <span class="carrito-contador">0</span>
-                </a>
             </div>
+            
+            <a href="carrito.html" class="carrito-link active">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
+                <span class="carrito-contador">0</span>
+            </a>
         </nav>
     </header>
 
-    <section class="page-hero">
-        <h1>Carrito de Compras</h1>
-        <p>Revisa tus productos antes de finalizar</p>
-    </section>
+    <!-- Título de la página -->
+    <h1 class="page-title">Carrito de Compras</h1>
+    <p class="page-subtitle">Revisa tus productos antes de finalizar</p>
 
+    <!-- Contenedor del carrito -->
     <div class="carrito-container" id="carrito-container">
         <!-- El contenido se cargará dinámicamente con JavaScript -->
     </div>
 
+    <!-- Footer con fondo marrón -->
     <footer>
-        <div class="logo" style="margin-bottom: 1rem;">Vannalatte</div>
-        <div class="contacto-info">
-            <p>📧 vannalatte@gmail.com</p>
-            <p>📱 @vannalatte</p>
-            <p>📞 +51 951 499 437</p>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Logo blanco GRANDE y PEGADO A LA IZQUIERDA -->
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte">
+                </div>
+                
+                <!-- Contactos INMEDIATAMENTE AL LADO DEL LOGO -->
+                <div class="footer-contactos">
+                    
+                    <!-- Correo -->
+                    <div onclick="copiarCorreo()" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" alt="Correo">
+                        <span>vannalatte@gmail.com</span>
+                    </div>
+                    
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram2.png" alt="Instagram">
+                        <span>@vannalatte</span>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp2.png" alt="WhatsApp">
+                        <span>+51 951 499 437</span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <p class="copyright">© 2024 Vannalatte - Todos los derechos reservados</p>
     </footer>
 
     <script>
+        function copiarCorreo() {
+            navigator.clipboard.writeText('vannalatte@gmail.com');
+            alert('📧 Correo copiado al portapapeles');
+        }
+
         // ============================================
         // FUNCIONES DEL CARRITO
         // ============================================
@@ -490,7 +614,7 @@
         function guardarCarrito(carrito) {
             localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
             actualizarContadorCarrito();
-            mostrarCarrito(); // Actualizar la vista
+            mostrarCarrito();
         }
 
         // Actualizar contador del carrito
@@ -510,7 +634,6 @@
             const container = document.getElementById('carrito-container');
             
             if (carrito.length === 0) {
-                // Mostrar carrito vacío
                 container.innerHTML = `
                     <div class="carrito-vacio">
                         <p>🛒 Tu carrito está vacío</p>
@@ -521,10 +644,8 @@
                 return;
             }
 
-            // Calcular total general
             const totalGeneral = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
 
-            // Generar HTML del carrito
             let html = `
                 <div class="carrito-tabla">
                     <div class="carrito-header">
@@ -537,7 +658,6 @@
                     </div>
             `;
 
-            // Agregar cada producto
             carrito.forEach(item => {
                 const subtotal = item.precio * item.cantidad;
                 html += `
@@ -561,7 +681,6 @@
 
             html += `</div>`;
 
-            // Resumen y botones
             html += `
                 <div class="carrito-resumen">
                     <div class="resumen-total">
@@ -589,7 +708,6 @@
                 producto.cantidad += cambio;
                 
                 if (producto.cantidad <= 0) {
-                    // Eliminar si cantidad es 0
                     carrito = carrito.filter(item => item.id != id);
                 }
                 
@@ -616,15 +734,14 @@
         // Finalizar compra por WhatsApp
         function finalizarCompra() {
             const carrito = obtenerCarrito();
-            const numero = "51951499437"; // Tu número de WhatsApp
+            const numero = "51951499437";
             
             if (carrito.length === 0) {
                 alert('Tu carrito está vacío');
                 return;
             }
 
-            // Construir mensaje del pedido
-            let mensaje = " *NUEVO PEDIDO - Vannalatte*\n\n";
+            let mensaje = "🛍️ *NUEVO PEDIDO - Vannalatte*\n\n";
             mensaje += "*DETALLE DE PRODUCTOS:*\n";
             
             let totalGeneral = 0;
@@ -635,13 +752,10 @@
                 mensaje += `• ${item.nombre} (${item.presentacion}) x ${item.cantidad} = S/ ${subtotal.toFixed(2)}\n`;
             });
             
-            mensaje += `\n *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
+            mensaje += `\n💰 *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
             
-            
-            // Abrir WhatsApp
             window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
             
-            // Opcional: preguntar si quiere vaciar el carrito después del pedido
             if (confirm('¿Quieres vaciar el carrito después de enviar el pedido?')) {
                 localStorage.removeItem('vannalatte-carrito');
                 actualizarContadorCarrito();
@@ -656,6 +770,4 @@
         });
     </script>
 </body>
-
 </html>
-
