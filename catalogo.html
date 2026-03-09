@@ -18,7 +18,7 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif; /* Todo Poppins como pediste */
+            font-family: 'Poppins', sans-serif;
             background-color: #ebe5df;
             color: #4e342e;
             line-height: 1.6;
@@ -26,10 +26,10 @@
         }
         
         h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif; /* Títulos también Poppins */
+            font-family: 'Poppins', sans-serif;
         }
         
-        /* Barra superior - Obtén la tuya ya! */
+        /* Barra superior */
         .top-bar {
             background-color: #c68642;
             padding: 6px 0;
@@ -62,7 +62,6 @@
             width: 100%;
         }
         
-        /* Logo izquierda */
         .logo-link {
             display: block;
             width: 180px;
@@ -76,7 +75,6 @@
             display: block;
         }
         
-        /* Menú centrado */
         .nav-links {
             display: flex;
             gap: 2.5rem;
@@ -106,7 +104,6 @@
             padding-bottom: 3px;
         }
         
-        /* Carrito */
         .carrito-link {
             position: relative;
             color: white;
@@ -142,7 +139,7 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* Hero Image (solo imagen, sin botón) */
+        /* Hero Image */
         .catalogo-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -165,14 +162,13 @@
             gap: 3rem;
         }
         
-        /* Tarjeta de producto - horizontal */
+        /* Tarjeta de producto */
         .producto-card {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
             background-color: transparent;
-            border-radius: 0;
-            overflow: hidden;
             width: 100%;
+            align-items: flex-start;
         }
         
         .producto-imagen {
@@ -194,8 +190,6 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            padding: 0.5rem 0;
         }
         
         .producto-nombre {
@@ -203,62 +197,83 @@
             font-weight: 700;
             color: #4e342e;
             font-family: 'Poppins', sans-serif;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
         }
         
-        .producto-ingredientes-titulo {
+        /* Contenedor de ingredientes y tabla */
+        .info-container {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ingredientes-section {
+            flex: 1;
+        }
+        
+        .ingredientes-titulo {
             font-size: 1rem;
             font-weight: 600;
             color: #4e342e;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             font-family: 'Poppins', sans-serif;
         }
         
-        .producto-ingredientes-lista {
+        .ingredientes-lista {
             list-style: none;
-            margin-bottom: 0.5rem;
         }
         
-        .producto-ingredientes-lista li {
+        .ingredientes-lista li {
             font-size: 0.95rem;
             color: #4e342e;
             font-family: 'Poppins', sans-serif;
-            line-height: 1.4;
-            margin-left: 0;
-            padding-left: 0;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1rem;
         }
         
-        /* Tabla nutricional */
+        .ingredientes-lista li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4e342e;
+        }
+        
+        /* Tabla nutricional - ESTILO EXCEL CON BORDES */
         .tabla-nutricional {
-            width: 100%;
-            max-width: 400px;
+            flex: 1;
             border-collapse: collapse;
-            margin: 0.5rem 0 1rem;
             font-family: 'Poppins', sans-serif;
+            border: 1px solid #4e342e;
+            width: 100%;
         }
         
         .tabla-nutricional td {
-            padding: 0.3rem 0;
+            padding: 0.5rem 0.8rem;
             color: #4e342e;
             font-size: 0.95rem;
-            border: none;
+            border: 1px solid #4e342e;
+            vertical-align: middle;
         }
         
         .tabla-nutricional td:first-child {
             font-weight: 500;
+            background-color: rgba(78, 52, 46, 0.05);
+            width: 40%;
         }
         
         .tabla-nutricional td:last-child {
             text-align: left;
-            padding-left: 1rem;
+            width: 60%;
         }
         
+        /* Precio y botón */
         .producto-precio {
             font-size: 1.8rem;
             font-weight: 700;
             color: #4e342e;
             font-family: 'Poppins', sans-serif;
-            margin: 0.5rem 0;
+            margin: 0.5rem 0 1rem;
         }
         
         .btn-carrito {
@@ -280,7 +295,7 @@
             transform: translateY(-2px);
         }
         
-        /* Separador entre productos */
+        /* Separador */
         .producto-divisor {
             height: 2px;
             background-color: #4e342e;
@@ -323,13 +338,13 @@
             }
             
             .producto-imagen {
-                flex: 0 0 auto;
                 width: 100%;
                 height: 250px;
             }
             
-            .tabla-nutricional {
-                max-width: 100%;
+            .info-container {
+                flex-direction: column;
+                gap: 1.5rem;
             }
             
             .btn-carrito {
@@ -347,19 +362,16 @@
     <!-- Header -->
     <header>
         <nav>
-            <!-- Logo izquierda -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú centrado -->
             <div class="nav-links">
                 <a href="catalogo.html" class="active">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
-            <!-- Carrito -->
             <a href="carrito.html" class="carrito-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
                 <span class="carrito-contador">0</span>
@@ -367,7 +379,7 @@
         </nav>
     </header>
 
-    <!-- Hero Image (solo imagen, sin botón) -->
+    <!-- Hero Image -->
     <div class="catalogo-hero"></div>
 
     <!-- Catálogo de productos -->
@@ -418,11 +430,11 @@
             }, 1000);
         }
 
-        // Datos de productos con toda la información nutricional
+        // Datos de productos
         const productos = [
             // Mantequilla de chocomaní - 250gr
             {
-                nombre: "Mantequilla de chocomaní - 250gr",
+                nombreCompleto: "Mantequilla de chocomaní – 250gr",
                 nombreSimple: "Mantequilla de chocomaní",
                 presentacion: "250gr",
                 precio: 19.00,
@@ -438,7 +450,7 @@
             },
             // Mantequilla de maní clásica - 250gr
             {
-                nombre: "Mantequilla de maní clásica - 250gr",
+                nombreCompleto: "Mantequilla de maní clásica – 250gr",
                 nombreSimple: "Mantequilla de maní clásica",
                 presentacion: "250gr",
                 precio: 19.00,
@@ -454,7 +466,7 @@
             },
             // Mantequilla de maní la favorita - 250gr
             {
-                nombre: "Mantequilla de maní la favorita - 250gr",
+                nombreCompleto: "Mantequilla de maní la favorita – 250gr",
                 nombreSimple: "Mantequilla de maní la favorita",
                 presentacion: "250gr",
                 precio: 19.00,
@@ -470,7 +482,7 @@
             },
             // Mantequilla de chocomaní - 400gr
             {
-                nombre: "Mantequilla de chocomaní - 400gr",
+                nombreCompleto: "Mantequilla de chocomaní – 400gr",
                 nombreSimple: "Mantequilla de chocomaní",
                 presentacion: "400gr",
                 precio: 30.00,
@@ -486,7 +498,7 @@
             },
             // Mantequilla de maní clásica - 400gr
             {
-                nombre: "Mantequilla de maní clásica - 400gr",
+                nombreCompleto: "Mantequilla de maní clásica – 400gr",
                 nombreSimple: "Mantequilla de maní clásica",
                 presentacion: "400gr",
                 precio: 30.00,
@@ -502,7 +514,7 @@
             },
             // Mantequilla de maní la favorita - 400gr
             {
-                nombre: "Mantequilla de maní la favorita - 400gr",
+                nombreCompleto: "Mantequilla de maní la favorita – 400gr",
                 nombreSimple: "Mantequilla de maní la favorita",
                 presentacion: "400gr",
                 precio: 30.00,
@@ -518,51 +530,54 @@
             }
         ];
 
-        // Cargar productos en la página
+        // Cargar productos
         const grid = document.getElementById('productos-grid');
         
         productos.forEach((producto, index) => {
             const card = document.createElement('div');
             
-            // Crear lista de ingredientes
+            // Crear lista de ingredientes con viñetas
             const ingredientesList = producto.ingredientes.map(ing => `<li>${ing}</li>`).join('');
             
-            // Crear tarjeta
             card.innerHTML = `
                 <div class="producto-card">
                     <div class="producto-imagen">
                         <img src="${producto.imagen}" alt="${producto.nombreSimple}">
                     </div>
                     <div class="producto-detalles">
-                        <h2 class="producto-nombre">${producto.nombre}</h2>
+                        <h2 class="producto-nombre">${producto.nombreCompleto}</h2>
                         
-                        <div class="producto-ingredientes-titulo">Ingredientes</div>
-                        <ul class="producto-ingredientes-lista">
-                            ${ingredientesList}
-                        </ul>
-                        
-                        <table class="tabla-nutricional">
-                            <tr>
-                                <td>Porción</td>
-                                <td>${producto.nutricion.porcion}</td>
-                            </tr>
-                            <tr>
-                                <td>Proteína</td>
-                                <td>${producto.nutricion.proteina}</td>
-                            </tr>
-                            <tr>
-                                <td>Grasas</td>
-                                <td>${producto.nutricion.grasas}</td>
-                            </tr>
-                            <tr>
-                                <td>Carbohidratos</td>
-                                <td>${producto.nutricion.carbohidratos}</td>
-                            </tr>
-                            <tr>
-                                <td>Energía</td>
-                                <td>${producto.nutricion.energia}</td>
-                            </tr>
-                        </table>
+                        <div class="info-container">
+                            <div class="ingredientes-section">
+                                <div class="ingredientes-titulo">Ingredientes</div>
+                                <ul class="ingredientes-lista">
+                                    ${ingredientesList}
+                                </ul>
+                            </div>
+                            
+                            <table class="tabla-nutricional">
+                                <tr>
+                                    <td>Porción</td>
+                                    <td>${producto.nutricion.porcion}</td>
+                                </tr>
+                                <tr>
+                                    <td>Proteína</td>
+                                    <td>${producto.nutricion.proteina}</td>
+                                </tr>
+                                <tr>
+                                    <td>Grasas</td>
+                                    <td>${producto.nutricion.grasas}</td>
+                                </tr>
+                                <tr>
+                                    <td>Carbohidratos</td>
+                                    <td>${producto.nutricion.carbohidratos}</td>
+                                </tr>
+                                <tr>
+                                    <td>Energía</td>
+                                    <td>${producto.nutricion.energia}</td>
+                                </tr>
+                            </table>
+                        </div>
                         
                         <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
                         
@@ -580,7 +595,7 @@
             
             grid.appendChild(card);
             
-            // Agregar divisor entre productos (excepto después del último)
+            // Agregar divisor entre productos
             if (index < productos.length - 1) {
                 const divisor = document.createElement('div');
                 divisor.className = 'producto-divisor';
