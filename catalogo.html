@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Vannalatte</title>
+    <title>Vannalatte - Mantequillas Artesanales</title>
     
     <!-- Fuentes Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
             background-color: #ebe5df;
             color: #4e342e;
             line-height: 1.6;
@@ -26,15 +26,15 @@
         }
         
         h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
         }
         
-        /* Barra superior */
+        /* Barra superior - Obtén la tuya ya! */
         .top-bar {
             background-color: #c68642;
             padding: 6px 0;
             text-align: center;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
             font-size: 0.9rem;
             font-weight: 500;
             color: white;
@@ -62,6 +62,7 @@
             width: 100%;
         }
         
+        /* Logo blanco - izquierda */
         .logo-link {
             display: block;
             width: 180px;
@@ -75,6 +76,7 @@
             display: block;
         }
         
+        /* Menú centrado */
         .nav-links {
             display: flex;
             gap: 2.5rem;
@@ -87,7 +89,7 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s;
@@ -98,12 +100,7 @@
             color: #c68642;
         }
         
-        .nav-links a.active {
-            color: #c68642;
-            border-bottom: 2px solid #c68642;
-            padding-bottom: 3px;
-        }
-        
+        /* Carrito */
         .carrito-link {
             position: relative;
             color: white;
@@ -139,189 +136,489 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* Hero Image */
-        .catalogo-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 40vh;
+            height: 80vh;
             width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            padding-bottom: 4rem;
         }
         
-        /* Contenedor principal */
-        .catalogo-container {
+        /* Botón principal */
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background-color: #c24a34;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background-color: #a63d2a;
+            transform: translateY(-2px);
+        }
+        
+        /* Botón subrayado */
+        .btn-subrayado {
+            display: inline-block;
+            color: #4e342e;
+            text-decoration: underline;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+        
+        .btn-subrayado:hover {
+            color: #c68642;
+        }
+        
+        /* Sección Mantequillas título */
+        .mantequillas-titulo {
+            text-align: center;
+            padding: 4rem 5% 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 5%;
         }
         
-        /* Grid de productos */
-        .productos-grid {
+        .mantequillas-titulo h2 {
+            font-size: 2.5rem;
+            color: #4e342e;
+            margin-bottom: 0.5rem;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .mantequillas-titulo p {
+            font-size: 1.1rem;
+            color: #4e342e;
+            opacity: 0.8;
+            font-family: 'Merriweather', serif;
+        }
+        
+        /* Carrusel de productos */
+        .productos-carrusel-section {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+            padding: 0 5%;
+            width: 100%;
+        }
+        
+        .carrusel-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+        
+        .carrusel-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+        }
+        
+        .producto-card {
+            min-width: 350px;
+            max-width: 400px;
+            background: transparent;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            gap: 3rem;
-        }
-        
-        /* Tarjeta de producto */
-        .producto-card {
-            display: flex;
-            gap: 3rem;
-            background-color: transparent;
             width: 100%;
-            align-items: flex-start;
         }
         
-        .producto-imagen {
-            flex: 0 0 300px;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .producto-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .producto-img {
+            height: 350px;
+            width: 100%;
+            overflow: hidden;
             background-color: transparent;
+            padding: 0;
         }
         
-        .producto-imagen img {
+        .producto-img img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
         
-        .producto-detalles {
-            flex: 1;
+        .producto-info {
+            padding: 1.5rem 0.5rem;
+            text-align: center;
             display: flex;
             flex-direction: column;
+            flex-grow: 1;
         }
         
-        .producto-nombre {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4e342e;
-            font-family: 'Poppins', sans-serif;
-            margin-bottom: 1rem;
-        }
-        
-        /* Contenedor de ingredientes y tabla */
-        .info-container {
-            display: flex;
-            gap: 3rem;
-            width: 100%;
-        }
-        
-        .ingredientes-section {
-            flex: 1;
-        }
-        
-        .ingredientes-titulo {
-            font-size: 1rem;
-            font-weight: 600;
+        .producto-info h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
             color: #4e342e;
             margin-bottom: 0.5rem;
-            font-family: 'Poppins', sans-serif;
         }
         
-        .ingredientes-lista {
-            list-style: none;
-        }
-        
-        .ingredientes-lista li {
-            font-size: 0.95rem;
+        .producto-presentacion {
+            font-family: 'Merriweather', serif;
             color: #4e342e;
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            position: relative;
-            padding-left: 1rem;
-        }
-        
-        .ingredientes-lista li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #4e342e;
-        }
-        
-        /* Tabla nutricional */
-        .tabla-nutricional {
-            flex: 1;
-            border-collapse: collapse;
-            font-family: 'Poppins', sans-serif;
-            border: 1px solid #4e342e;
-            width: 100%;
-        }
-        
-        .tabla-nutricional td {
-            padding: 0.5rem 0.8rem;
-            color: #4e342e;
-            font-size: 0.95rem;
-            border: 1px solid #4e342e;
-            vertical-align: middle;
-        }
-        
-        .tabla-nutricional td:first-child {
-            font-weight: 500;
-            background-color: rgba(78, 52, 46, 0.05);
-            width: 40%;
-        }
-        
-        .tabla-nutricional td:last-child {
-            text-align: left;
-            width: 60%;
-        }
-        
-        /* Contenedor para acciones debajo (precio y botón) */
-        .acciones-debajo {
-            display: flex;
-            gap: 3rem;
-            width: 100%;
-            margin-top: 1.5rem;
-            align-items: center;
-        }
-        
-        .precio-container {
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
         }
         
         .producto-precio {
-            font-size: 1.8rem;
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #4e342e;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .boton-container {
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
+            color: #c24a34;
+            margin: 0.5rem 0 1rem;
         }
         
         .btn-carrito {
             background-color: #c24a34;
             color: white;
             border: none;
-            padding: 12px 0;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: 25px;
             cursor: pointer;
             width: 100%;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 1rem;
-            transition: background-color 0.3s, transform 0.3s;
-            text-align: center;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+            margin-top: auto;
         }
         
         .btn-carrito:hover {
             background-color: #a63d2a;
-            transform: translateY(-2px);
         }
         
-        /* Separador */
-        .producto-divisor {
-            height: 2px;
+        /* Flechas de navegación */
+        .carrusel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             background-color: #4e342e;
-            opacity: 0.2;
-            margin: 1rem 0 2rem;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+            z-index: 10;
+            opacity: 0.8;
+        }
+        
+        .carrusel-arrow:hover {
+            background-color: #c68642;
+            opacity: 1;
+        }
+        
+        .arrow-left {
+            left: 0;
+        }
+        
+        .arrow-right {
+            right: 0;
+        }
+        
+        /* Sección Nuestras mantequillas */
+        .nuestras-mantequillas-section {
+            text-align: center;
+            padding: 3rem 5% 4rem;
+            background-color: #ebe5df;
+        }
+        
+        .nuestras-mantequillas-section .small-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: #4e342e;
+        }
+        
+        .nuestras-mantequillas-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #4e342e;
+            font-family: 'Merriweather', serif;
+        }
+        
+        /* Sección Simple y saludable */
+        .simple-saludable-section {
+            display: flex;
             width: 100%;
+            background-color: #4e342e;
+            margin: 0 auto;
+        }
+        
+        .simple-saludable-image {
+            flex: 1;
+            width: 50%;
+        }
+        
+        .simple-saludable-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .simple-saludable-content {
+            flex: 1;
+            width: 50%;
+            background-color: #4e342e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .simple-saludable-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Merriweather', serif;
+            color: #ebe5df;
+        }
+        
+        .simple-saludable-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-family: 'Poppins', sans-serif;
+            color: #ebe5df;
+        }
+        
+        .simple-saludable-content .btn {
+            background-color: #c24a34;
+            color: white;
+            border: none;
+        }
+        
+        .simple-saludable-content .btn:hover {
+            background-color: #a63d2a;
+        }
+        
+        /* Carrusel de videos */
+        .videos-carrusel-section {
+            position: relative;
+            max-width: 1200px;
+            margin: 3rem auto 4rem;
+            padding: 0 5%;
+        }
+        
+        .video-card {
+            min-width: 280px;
+            max-width: 320px;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            aspect-ratio: 9/16;
+        }
+        
+        .video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .video-card::before {
+            content: '▶️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .video-card.playing::before {
+            content: '⏸️';
+        }
+        
+        /* Sección de Servicios */
+        .servicios-section {
+            background-color: #4e342e;
+            padding: 5rem 2%;
+            color: white;
+            width: 100%;
+        }
+        
+        .servicios-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .servicio-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        
+        .servicio-item:first-child {
+            justify-content: flex-start;
+        }
+        
+        .servicio-item:nth-child(2) {
+            justify-content: center;
+        }
+        
+        .servicio-item:last-child {
+            justify-content: flex-end;
+        }
+        
+        .servicio-icono {
+            width: 150px;
+            height: 150px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid white;
+            border-radius: 50%;
+            padding: 30px;
+        }
+        
+        .servicio-icono img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .servicio-contenido {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .servicio-contenido h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .servicio-contenido p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: white;
+            opacity: 0.9;
+            line-height: 1.5;
+            max-width: 300px;
+        }
+        
+        /* Footer con fondo marrón, logo blanco y contactos beige */
+        footer {
+            background-color: #4e342e;
+            padding: 3rem 5%;
+            width: 100%;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            width: 250px;
+            flex-shrink: 0;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .footer-contactos {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-left: 0;
+        }
+        
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            color: #ebe5df;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+        
+        .contacto-item:hover {
+            color: #c68642;
+        }
+        
+        .contacto-item img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .contacto-item span {
+            color: #ebe5df;
+        }
+        
+        .contacto-item:hover span {
+            color: #c68642;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #ebe5df;
+            opacity: 0.7;
         }
         
         /* Responsive */
@@ -348,36 +645,90 @@
                 height: 45px;
             }
             
-            .catalogo-hero {
-                height: 30vh;
+            .hero {
+                height: 60vh;
+                padding-bottom: 2rem;
+            }
+            
+            .mantequillas-titulo h2 {
+                font-size: 2rem;
             }
             
             .producto-card {
-                flex-direction: column;
-                gap: 1rem;
+                min-width: 280px;
             }
             
-            .producto-imagen {
+            .producto-img {
+                height: 280px;
+            }
+            
+            .video-card {
+                min-width: 240px;
+            }
+            
+            .simple-saludable-section {
+                flex-direction: column;
+            }
+            
+            .simple-saludable-image,
+            .simple-saludable-content {
                 width: 100%;
-                height: 250px;
             }
             
-            .info-container {
+            .simple-saludable-content {
+                padding: 2rem;
+            }
+            
+            .simple-saludable-content h2 {
+                font-size: 2rem;
+            }
+            
+            .nuestras-mantequillas-section h2 {
+                font-size: 2rem;
+            }
+            
+            .servicios-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .servicio-item {
+                justify-content: flex-start !important;
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .servicio-icono {
+                width: 120px;
+                height: 120px;
+                padding: 25px;
+            }
+            
+            .servicio-contenido h3 {
+                font-size: 1.8rem;
+            }
+            
+            .servicio-contenido p {
+                font-size: 1rem;
+            }
+            
+            .footer-content {
                 flex-direction: column;
+                align-items: center;
+                text-align: center;
                 gap: 1.5rem;
             }
             
-            .acciones-debajo {
-                flex-direction: column;
-                gap: 1rem;
+            .footer-logo {
+                width: 200px;
             }
             
-            .precio-container, .boton-container {
-                width: 100%;
+            .footer-contactos {
+                align-items: center;
             }
             
-            .btn-carrito {
-                width: 100%;
+            .contacto-item {
+                justify-content: center;
             }
         }
     </style>
@@ -391,16 +742,19 @@
     <!-- Header -->
     <header>
         <nav>
+            <!-- Logo izquierda -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
+            <!-- Menú centrado -->
             <div class="nav-links">
-                <a href="catalogo.html" class="active">Catálogo</a>
+                <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
+            <!-- Carrito -->
             <a href="carrito.html" class="carrito-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
                 <span class="carrito-contador">0</span>
@@ -408,15 +762,130 @@
         </nav>
     </header>
 
-    <!-- Hero Image -->
-    <div class="catalogo-hero"></div>
+    <!-- Hero -->
+    <section class="hero">
+        <a href="catalogo.html" class="btn">Comprar</a>
+    </section>
 
-    <!-- Catálogo de productos -->
-    <div class="catalogo-container">
-        <div class="productos-grid" id="productos-grid">
-            <!-- Los productos se cargarán con JavaScript -->
+    <!-- Título Mantequillas -->
+    <section class="mantequillas-titulo">
+        <h2>Mantequillas</h2>
+        <p>Orgánicas y con ingredientes naturales</p>
+    </section>
+
+    <!-- Carrusel de productos -->
+    <section class="productos-carrusel-section">
+        <div class="carrusel-wrapper">
+            <button class="carrusel-arrow arrow-left" id="productos-arrow-left">←</button>
+            <button class="carrusel-arrow arrow-right" id="productos-arrow-right">→</button>
+            
+            <div class="carrusel-track" id="productos-track">
+                <!-- Productos se cargarán con JavaScript -->
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Sección Nuestras mantequillas -->
+    <section class="nuestras-mantequillas-section">
+        <p class="small-text">Nuestras mantequillas</p>
+        <h2>Hecha en casa,<br>inspirada en la tradición.</h2>
+        <button class="btn-subrayado" onclick="window.location.href='catalogo.html'">Comprar ahora →</button>
+    </section>
+
+    <!-- Sección Simple y saludable -->
+    <section class="simple-saludable-section">
+        <div class="simple-saludable-image">
+            <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequillas.PNG" alt="Mantequillas">
+        </div>
+        <div class="simple-saludable-content">
+            <h2>Simple y saludable</h2>
+            <p>Menos ingredientes, mejor nutrición</p>
+            <a href="catalogo.html" class="btn">Comprar</a>
+        </div>
+    </section>
+
+    <!-- Carrusel de videos -->
+    <section class="videos-carrusel-section">
+        <div class="carrusel-wrapper">
+            <button class="carrusel-arrow arrow-left" id="videos-arrow-left">←</button>
+            <button class="carrusel-arrow arrow-right" id="videos-arrow-right">→</button>
+            
+            <div class="carrusel-track" id="videos-track">
+                <!-- Videos se cargarán con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="servicios-section">
+        <div class="servicios-container">
+            <div class="servicio-item">
+                <div class="servicio-icono">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-pedidos.png" alt="Envío rápido">
+                </div>
+                <div class="servicio-contenido">
+                    <h3>Envío rápido</h3>
+                    <p>Llegamos a todo el Perú.<br>Trabajamos con Olva,<br>Rappi e Indrive</p>
+                </div>
+            </div>
+            <div class="servicio-item">
+                <div class="servicio-icono">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/hojas.png" alt="Saludable">
+                </div>
+                <div class="servicio-contenido">
+                    <h3>Saludable</h3>
+                    <p>Trabajamos con productos<br>100% naturales y<br>libres de conservantes</p>
+                </div>
+            </div>
+            <div class="servicio-item">
+                <div class="servicio-icono">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/gente-mundo.png" alt="Pedidos">
+                </div>
+                <div class="servicio-contenido">
+                    <h3>Pedidos</h3>
+                    <p>Por Whatsapp e<br>Instagram</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer con fondo marrón, logo blanco y contactos beige -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Logo blanco a la izquierda -->
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte">
+                </div>
+                
+                <!-- Contactos beige muy pegados al logo -->
+                <div class="footer-contactos">
+                    <!-- Correo -->
+                    <div class="contacto-item" onclick="copiarCorreo()">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" alt="Correo">
+                        <span>vannalatte@gmail.com</span>
+                    </div>
+                    
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram2.png" alt="Instagram">
+                        <span>@vannalatte</span>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp2.png" alt="WhatsApp">
+                        <span>+51 951 499 437</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="copyright">
+                © 2024 Vannalatte - Todos los derechos reservados
+            </div>
+        </div>
+    </footer>
 
     <script>
         function copiarCorreo() {
@@ -459,183 +928,115 @@
             }, 1000);
         }
 
-        // Datos de productos
         const productos = [
-            // Mantequilla de chocomaní - 250gr
-            {
-                nombreCompleto: "Mantequilla de chocomaní – 250gr",
-                nombreSimple: "Mantequilla de chocomaní",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG",
-                nutricion: {
-                    porcion: "15g - 1 cucharada",
-                    proteina: "3.6g",
-                    grasas: "7.1g",
-                    carbohidratos: "2.4g",
-                    energia: "87kcal"
-                }
-            },
-            // Mantequilla de maní clásica - 250gr
-            {
-                nombreCompleto: "Mantequilla de maní clásica – 250gr",
-                nombreSimple: "Mantequilla de maní clásica",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: ["Maní tostado"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG",
-                nutricion: {
-                    porcion: "15g - 1 cucharada",
-                    proteina: "3.8g",
-                    grasas: "7.2g",
-                    carbohidratos: "2.1g",
-                    energia: "88kcal"
-                }
-            },
-            // Mantequilla de maní la favorita - 250gr
-            {
-                nombreCompleto: "Mantequilla de maní la favorita – 250gr",
-                nombreSimple: "Mantequilla de maní la favorita",
-                presentacion: "250gr",
-                precio: 19.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG",
-                nutricion: {
-                    porcion: "15g - 1 cucharada",
-                    proteina: "3.7g",
-                    grasas: "7.0g",
-                    carbohidratos: "2.0g",
-                    energia: "85kcal"
-                }
-            },
-            // Mantequilla de chocomaní - 400gr
-            {
-                nombreCompleto: "Mantequilla de chocomaní – 400gr",
-                nombreSimple: "Mantequilla de chocomaní",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG",
-                nutricion: {
-                    porcion: "15g - 1 cucharada",
-                    proteina: "3.6g",
-                    grasas: "7.1g",
-                    carbohidratos: "2.4g",
-                    energia: "87kcal"
-                }
-            },
-            // Mantequilla de maní clásica - 400gr
-            {
-                nombreCompleto: "Mantequilla de maní clásica – 400gr",
-                nombreSimple: "Mantequilla de maní clásica",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: ["Maní tostado"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG",
-                nutricion: {
-                    porcion: "15g - 1 cucharada",
-                    proteina: "3.8g",
-                    grasas: "7.2g",
-                    carbohidratos: "2.1g",
-                    energia: "88kcal"
-                }
-            },
-            // Mantequilla de maní la favorita - 400gr
-            {
-                nombreCompleto: "Mantequilla de maní la favorita – 400gr",
-                nombreSimple: "Mantequilla de maní la favorita",
-                presentacion: "400gr",
-                precio: 30.00,
-                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG",
-                nutricion: {
-                    porcion: "15g - 1 cucharada",
-                    proteina: "3.7g",
-                    grasas: "7.0g",
-                    carbohidratos: "2.0g",
-                    energia: "85kcal"
-                }
-            }
+            { nombre: "Mantequilla de chocomaní", presentacion: "250gr", precio: 19.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG" },
+            { nombre: "Mantequilla de maní clásica", presentacion: "250gr", precio: 19.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG" },
+            { nombre: "Mantequilla de maní la favorita", presentacion: "250gr", precio: 19.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG" },
+            { nombre: "Mantequilla de chocomaní", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG" },
+            { nombre: "Mantequilla de maní clásica", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG" },
+            { nombre: "Mantequilla de maní la favorita", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG" }
         ];
 
-        // Cargar productos
-        const grid = document.getElementById('productos-grid');
+        const productosTrack = document.getElementById('productos-track');
         
-        productos.forEach((producto, index) => {
+        productos.forEach(producto => {
             const card = document.createElement('div');
-            
-            // Crear lista de ingredientes con viñetas
-            const ingredientesList = producto.ingredientes.map(ing => `<li>${ing}</li>`).join('');
+            card.className = 'producto-card';
+            const productoStr = JSON.stringify(producto).replace(/"/g, '&quot;');
             
             card.innerHTML = `
-                <div class="producto-card">
-                    <div class="producto-imagen">
-                        <img src="${producto.imagen}" alt="${producto.nombreSimple}">
-                    </div>
-                    <div class="producto-detalles">
-                        <h2 class="producto-nombre">${producto.nombreCompleto}</h2>
-                        
-                        <div class="info-container">
-                            <div class="ingredientes-section">
-                                <div class="ingredientes-titulo">Ingredientes</div>
-                                <ul class="ingredientes-lista">
-                                    ${ingredientesList}
-                                </ul>
-                            </div>
-                            
-                            <table class="tabla-nutricional">
-                                <tr>
-                                    <td>Porción</td>
-                                    <td>${producto.nutricion.porcion}</td>
-                                </tr>
-                                <tr>
-                                    <td>Proteína</td>
-                                    <td>${producto.nutricion.proteina}</td>
-                                </tr>
-                                <tr>
-                                    <td>Grasas</td>
-                                    <td>${producto.nutricion.grasas}</td>
-                                </tr>
-                                <tr>
-                                    <td>Carbohidratos</td>
-                                    <td>${producto.nutricion.carbohidratos}</td>
-                                </tr>
-                                <tr>
-                                    <td>Energía</td>
-                                    <td>${producto.nutricion.energia}</td>
-                                </tr>
-                            </table>
-                        </div>
-                        
-                        <div class="acciones-debajo">
-                            <div class="precio-container">
-                                <span class="producto-precio">S/ ${producto.precio.toFixed(2)}</span>
-                            </div>
-                            <div class="boton-container">
-                                <button class="btn-carrito" onclick='agregarAlCarrito(${JSON.stringify({
-                                    nombre: producto.nombreSimple,
-                                    presentacion: producto.presentacion,
-                                    precio: producto.precio,
-                                    imagen: producto.imagen
-                                }).replace(/'/g, "\\'")}, event)'>
-                                    Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="producto-img">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                </div>
+                <div class="producto-info">
+                    <h3>${producto.nombre}</h3>
+                    <div class="producto-presentacion">${producto.presentacion}</div>
+                    <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
+                    <button class="btn-carrito" onclick='agregarAlCarrito(${productoStr}, event)'>
+                        Añadir
+                    </button>
                 </div>
             `;
-            
-            grid.appendChild(card);
-            
-            // Agregar divisor entre productos
-            if (index < productos.length - 1) {
-                const divisor = document.createElement('div');
-                divisor.className = 'producto-divisor';
-                grid.appendChild(divisor);
-            }
+            productosTrack.appendChild(card);
         });
+
+        const productosArrowLeft = document.getElementById('productos-arrow-left');
+        const productosArrowRight = document.getElementById('productos-arrow-right');
+        const productosCarruselTrack = document.getElementById('productos-track');
+        
+        let productosPosition = 0;
+        const cardWidth = 370;
+        
+        function moverCarruselProductos(direccion) {
+            const maxScroll = productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth;
+            productosPosition += direccion * cardWidth;
+            if (productosPosition < 0) productosPosition = 0;
+            if (productosPosition > maxScroll) productosPosition = maxScroll;
+            productosCarruselTrack.style.transform = `translateX(-${productosPosition}px)`;
+        }
+        
+        productosArrowLeft.addEventListener('click', () => moverCarruselProductos(-1));
+        productosArrowRight.addEventListener('click', () => moverCarruselProductos(1));
+        
+        setInterval(() => {
+            moverCarruselProductos(1);
+            if (productosPosition >= productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth) {
+                productosPosition = 0;
+                productosCarruselTrack.style.transform = 'translateX(0)';
+            }
+        }, 3000);
+
+        const videos = ["Video 10.mp4", "Video 12.mp4", "Video 4.mp4", "Video 5.mp4", "Video 8.mp4"];
+        const videosTrack = document.getElementById('videos-track');
+        
+        videos.forEach(video => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `<video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline></video>`;
+            
+            const videoElement = card.querySelector('video');
+            card.addEventListener('click', function() {
+                if (videoElement.paused) {
+                    document.querySelectorAll('.video-card video').forEach(v => {
+                        if (v !== videoElement) {
+                            v.pause();
+                            v.parentElement.classList.remove('playing');
+                        }
+                    });
+                    videoElement.play();
+                    this.classList.add('playing');
+                } else {
+                    videoElement.pause();
+                    this.classList.remove('playing');
+                }
+            });
+            videosTrack.appendChild(card);
+        });
+
+        const videosArrowLeft = document.getElementById('videos-arrow-left');
+        const videosArrowRight = document.getElementById('videos-arrow-right');
+        const videosCarruselTrack = document.getElementById('videos-track');
+        
+        let videosPosition = 0;
+        
+        function moverCarruselVideos(direccion) {
+            const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
+            videosPosition += direccion * cardWidth;
+            if (videosPosition < 0) videosPosition = 0;
+            if (videosPosition > maxScroll) videosPosition = maxScroll;
+            videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
+        }
+        
+        videosArrowLeft.addEventListener('click', () => moverCarruselVideos(-1));
+        videosArrowRight.addEventListener('click', () => moverCarruselVideos(1));
+        
+        setInterval(() => {
+            moverCarruselVideos(1);
+            if (videosPosition >= videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth) {
+                videosPosition = 0;
+                videosCarruselTrack.style.transform = 'translateX(0)';
+            }
+        }, 4000);
 
         function actualizarContadorCarrito() {
             const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
