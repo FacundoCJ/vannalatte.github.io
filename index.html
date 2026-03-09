@@ -38,7 +38,7 @@
             width: 100%;
         }
         
-        /* Header - CORREGIDO: logo más a la izquierda, menú centrado natural */
+        /* Header - CORREGIDO: menú perfectamente centrado */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -58,12 +58,11 @@
             width: 100%;
         }
         
-        /* Logo - MÁS PEGADO A LA IZQUIERDA */
+        /* Logo - tamaño fijo */
         .logo-link {
             display: block;
             width: 180px;
             flex-shrink: 0;
-            margin-right: auto; /* Empuja el menú hacia la derecha */
         }
         
         .logo-img {
@@ -72,12 +71,15 @@
             display: block;
         }
         
-        /* Menú - AHORA CENTRADO NATURALMENTE (sin absolute) */
+        /* Menú - PERFECTAMENTE CENTRADO con flex y margin auto */
         .nav-links {
             display: flex;
             gap: 2.5rem;
             align-items: center;
-            margin: 0 2rem;
+            margin: 0 auto; /* Esto centra el menú */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .nav-links a {
@@ -634,15 +636,10 @@
             
             .nav-links {
                 gap: 1rem;
-                margin: 0 0.5rem;
             }
             
             .nav-links a {
                 font-size: 0.8rem;
-            }
-            
-            .carrito-link {
-                margin-left: 0.5rem;
             }
             
             .carrito-link img {
@@ -772,15 +769,15 @@
         Obtén la tuya ya!
     </div>
 
-    <!-- Header - CORREGIDO -->
+    <!-- Header - CON MENÚ PERFECTAMENTE CENTRADO -->
     <header>
         <nav>
-            <!-- Logo izquierda (MÁS PEGADO) -->
+            <!-- Logo izquierda -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú centrado naturalmente -->
+            <!-- Menú PERFECTAMENTE CENTRADO -->
             <div class="nav-links">
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
