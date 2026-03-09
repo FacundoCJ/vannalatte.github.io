@@ -761,6 +761,18 @@
                 height: 35px;
             }
         }
+        /* Rotar imágenes de 400gr */
+.producto-imagen img[src*="400gr"] {
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+}
+
+/* Opcional: mantener la proporción correcta */
+.producto-imagen img[src*="400gr"] {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
     </style>
 </head>
 <body>
@@ -955,7 +967,7 @@
             { nombre: "Mantequilla de maní la favorita", presentacion: "250gr", precio: 19.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG" },
             { nombre: "Mantequilla de chocomaní", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla de chocomani 2.png" },
             { nombre: "Mantequilla de maní clásica", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla de mani clasica 2.png" },
-            { nombre: "Mantequilla de maní la favorita", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla de mani la favorita 2.png.PNG" }
+            { nombre: "Mantequilla de maní la favorita", presentacion: "400gr", precio: 30.00, imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla de mani la favorita 2.png" }
         ];
 
         const productosTrack = document.getElementById('productos-track');
@@ -1072,4 +1084,5 @@
     </script>
 </body>
 </html>
+
 
