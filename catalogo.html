@@ -267,13 +267,22 @@
             width: 60%;
         }
         
-        /* Precio y botón */
+        /* Contenedor para precio y botón juntos */
+        .acciones-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 2rem;
+            margin-top: 1rem;
+            width: 100%;
+        }
+        
         .producto-precio {
             font-size: 1.8rem;
             font-weight: 700;
             color: #4e342e;
             font-family: 'Poppins', sans-serif;
-            margin: 0.5rem 0 1rem;
+            white-space: nowrap;
         }
         
         .btn-carrito {
@@ -283,11 +292,11 @@
             padding: 12px 30px;
             border-radius: 50px;
             cursor: pointer;
-            width: fit-content;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             font-size: 1rem;
             transition: background-color 0.3s, transform 0.3s;
+            white-space: nowrap;
         }
         
         .btn-carrito:hover {
@@ -347,8 +356,9 @@
                 gap: 1.5rem;
             }
             
-            .btn-carrito {
-                width: 100%;
+            .acciones-container {
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -579,16 +589,17 @@
                             </table>
                         </div>
                         
-                        <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
-                        
-                        <button class="btn-carrito" onclick='agregarAlCarrito(${JSON.stringify({
-                            nombre: producto.nombreSimple,
-                            presentacion: producto.presentacion,
-                            precio: producto.precio,
-                            imagen: producto.imagen
-                        }).replace(/'/g, "\\'")}, event)'>
-                            Comprar
-                        </button>
+                        <div class="acciones-container">
+                            <span class="producto-precio">S/ ${producto.precio.toFixed(2)}</span>
+                            <button class="btn-carrito" onclick='agregarAlCarrito(${JSON.stringify({
+                                nombre: producto.nombreSimple,
+                                presentacion: producto.presentacion,
+                                precio: producto.precio,
+                                imagen: producto.imagen
+                            }).replace(/'/g, "\\'")}, event)'>
+                                Comprar
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
