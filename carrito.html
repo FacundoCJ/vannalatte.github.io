@@ -42,7 +42,7 @@
             width: 100%;
         }
         
-        /* Header - MENÚ CON MERRIWEATHER */
+        /* Header - CORREGIDO: menú perfectamente centrado */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -56,17 +56,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 0;
-            max-width: 900px;
+            padding: 0.5rem 5%;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
         
+        /* Logo - tamaño fijo */
         .logo-link {
             display: block;
             width: 180px;
             flex-shrink: 0;
-            margin-left: 0;
         }
         
         .logo-img {
@@ -75,6 +75,7 @@
             display: block;
         }
         
+        /* Menú - PERFECTAMENTE CENTRADO */
         .nav-links {
             display: flex;
             gap: 2.5rem;
@@ -110,7 +111,7 @@
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-right: 0;
+            margin-left: auto;
             display: flex;
             align-items: center;
         }
@@ -206,7 +207,7 @@
             grid-template-columns: 100px 2fr 1fr 1fr 1fr 50px;
             padding: 1.5rem;
             background-color: #4e342e;
-            color: #ebe5df; /* Beige */
+            color: #ebe5df;
             font-weight: 600;
             gap: 1rem;
             font-family: 'Poppins', sans-serif;
@@ -359,7 +360,7 @@
         
         .btn-secondary {
             background-color: #4e342e;
-            color: #ebe5df; /* Beige */
+            color: #ebe5df;
         }
         
         .btn-secondary:hover {
@@ -451,8 +452,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 0.4rem 2%;
-                max-width: 100%;
+                padding: 0.5rem 3%;
             }
             
             .logo-link {
@@ -502,11 +502,6 @@
                 width: 100%;
             }
             
-            .top-bar {
-                font-size: 0.85rem;
-                padding: 6px 0;
-            }
-            
             .footer-content {
                 flex-direction: column;
                 align-items: center;
@@ -523,6 +518,25 @@
                 gap: 0.1rem;
             }
         }
+
+        @media (max-width: 480px) {
+            .logo-link {
+                width: 100px;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.7rem;
+            }
+            
+            .carrito-link img {
+                width: 35px;
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -531,19 +545,22 @@
         Obtén la tuya ya!
     </div>
 
-    <!-- Header -->
+    <!-- Header - CON MENÚ PERFECTAMENTE CENTRADO -->
     <header>
         <nav>
+            <!-- Logo izquierda -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
+            <!-- Menú PERFECTAMENTE CENTRADO -->
             <div class="nav-links">
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html">Sobre mí</a>
             </div>
             
+            <!-- Carrito a la derecha (activo) -->
             <a href="carrito.html" class="carrito-link active">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
                 <span class="carrito-contador">0</span>
@@ -564,14 +581,13 @@
     <footer>
         <div class="footer-container">
             <div class="footer-content">
-                <!-- Logo blanco GRANDE y PEGADO A LA IZQUIERDA -->
+                <!-- Logo blanco GRANDE a la izquierda -->
                 <div class="footer-logo">
                     <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte">
                 </div>
                 
-                <!-- Contactos INMEDIATAMENTE AL LADO DEL LOGO -->
+                <!-- Contactos al lado -->
                 <div class="footer-contactos">
-                    
                     <!-- Correo -->
                     <div onclick="copiarCorreo()" class="contacto-item">
                         <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" alt="Correo">
@@ -771,4 +787,3 @@
     </script>
 </body>
 </html>
-
