@@ -204,7 +204,7 @@
         .info-container {
             display: flex;
             gap: 3rem;
-            margin-bottom: 1.5rem;
+            width: 100%;
         }
         
         .ingredientes-section {
@@ -239,7 +239,7 @@
             color: #4e342e;
         }
         
-        /* Tabla nutricional - ESTILO EXCEL CON BORDES */
+        /* Tabla nutricional */
         .tabla-nutricional {
             flex: 1;
             border-collapse: collapse;
@@ -267,14 +267,19 @@
             width: 60%;
         }
         
-        /* Contenedor para precio y botón juntos */
-        .acciones-container {
+        /* Contenedor para acciones debajo (precio y botón) */
+        .acciones-debajo {
             display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 2rem;
-            margin-top: 1rem;
+            gap: 3rem;
             width: 100%;
+            margin-top: 1.5rem;
+            align-items: center;
+        }
+        
+        .precio-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
         }
         
         .producto-precio {
@@ -282,21 +287,27 @@
             font-weight: 700;
             color: #4e342e;
             font-family: 'Poppins', sans-serif;
-            white-space: nowrap;
+        }
+        
+        .boton-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
         }
         
         .btn-carrito {
             background-color: #c24a34;
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 12px 0;
             border-radius: 50px;
             cursor: pointer;
+            width: 100%;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             font-size: 1rem;
             transition: background-color 0.3s, transform 0.3s;
-            white-space: nowrap;
+            text-align: center;
         }
         
         .btn-carrito:hover {
@@ -356,9 +367,17 @@
                 gap: 1.5rem;
             }
             
-            .acciones-container {
-                justify-content: center;
-                flex-wrap: wrap;
+            .acciones-debajo {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .precio-container, .boton-container {
+                width: 100%;
+            }
+            
+            .btn-carrito {
+                width: 100%;
             }
         }
     </style>
@@ -589,16 +608,20 @@
                             </table>
                         </div>
                         
-                        <div class="acciones-container">
-                            <span class="producto-precio">S/ ${producto.precio.toFixed(2)}</span>
-                            <button class="btn-carrito" onclick='agregarAlCarrito(${JSON.stringify({
-                                nombre: producto.nombreSimple,
-                                presentacion: producto.presentacion,
-                                precio: producto.precio,
-                                imagen: producto.imagen
-                            }).replace(/'/g, "\\'")}, event)'>
-                                Comprar
-                            </button>
+                        <div class="acciones-debajo">
+                            <div class="precio-container">
+                                <span class="producto-precio">S/ ${producto.precio.toFixed(2)}</span>
+                            </div>
+                            <div class="boton-container">
+                                <button class="btn-carrito" onclick='agregarAlCarrito(${JSON.stringify({
+                                    nombre: producto.nombreSimple,
+                                    presentacion: producto.presentacion,
+                                    precio: producto.precio,
+                                    imagen: producto.imagen
+                                }).replace(/'/g, "\\'")}, event)'>
+                                    Comprar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
