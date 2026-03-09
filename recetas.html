@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetas - Vannalatte</title>
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ebe5df;
+            color: #4e342e;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Barra superior - CON MERRIWEATHER */
+        .top-bar {
+            background-color: #c68642;
+            padding: 6px 0;
+            text-align: center;
+            font-family: 'Merriweather', serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+        
+        /* Header - menú perfectamente centrado */
+        header {
+            background-color: #4e342e;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .logo-link {
+            display: block;
+            width: 180px;
+            flex-shrink: 0;
+        }
+        
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Merriweather', serif;
+            font-weight: 500;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+        
+        .nav-links a:hover {
+            color: #c68642;
+        }
+        
+        .nav-links a.active {
+            color: #c68642;
+            border-bottom: 2px solid #c68642;
+            padding-bottom: 3px;
+        }
+        
+        .carrito-link {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            flex-shrink: 0;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        .carrito-link img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .carrito-contador {
+            position: absolute;
+            top: -3px;
+            right: -5px;
+            background-color: #c24a34;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: bold;
+            min-width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Título de la página - MERRIWEATHER */
+        .page-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4e342e;
+        }
+        
+        /* Contenedor principal */
+        .recetas-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 3rem;
+        }
+        
+        /* Grid de recetas - estilo cubo Rubik */
+        .recetas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* Tarjeta de receta */
+        .receta-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .receta-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .receta-imagen {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .receta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .receta-card:hover .receta-imagen img {
+            transform: scale(1.05);
+        }
+        
+        .receta-titulo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #4e342e;
+            max-width: 250px;
+        }
+        
+        /* Footer con fondo marrón */
+        footer {
+            background-color: #4e342e;
+            padding: 3rem 0 3rem 2%;
+            width: 100%;
+            margin-top: 3rem;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            width: 350px;
+            flex-shrink: 0;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .footer-contactos {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            margin-left: 0;
+        }
+        
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #ebe5df;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            text-decoration: none;
+            line-height: 1.1;
+        }
+        
+        .contacto-item img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .contacto-item span {
+            color: #ebe5df;
+        }
+        
+        .contacto-item:hover {
+            color: #c68642;
+        }
+        
+        .contacto-item:hover span {
+            color: #c68642;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.5rem 3%;
+            }
+            
+            .logo-link {
+                width: 130px;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 1rem;
+            }
+            
+            .carrito-link img {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+                margin: 2rem 0 1.5rem;
+            }
+            
+            .recetas-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .footer-logo {
+                width: 280px;
+            }
+            
+            .footer-contactos {
+                align-items: center;
+                gap: 0.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-link {
+                width: 100px;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .carrito-link img {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .recetas-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .receta-titulo {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        Obtén la tuya ya!
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <!-- Logo izquierda -->
+            <a href="index.html" class="logo-link">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
+            </a>
+            
+            <!-- Menú centrado -->
+            <div class="nav-links">
+                <a href="catalogo.html">Catálogo</a>
+                <a href="recetas.html" class="active">Recetas</a>
+                <a href="sobre-mi.html">Sobre mí</a>
+            </div>
+            
+            <!-- Carrito -->
+            <a href="carrito.html" class="carrito-link">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
+                <span class="carrito-contador">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Título Recetas - MERRIWEATHER -->
+    <h1 class="page-title">Recetas</h1>
+
+    <!-- Grid de recetas -->
+    <div class="recetas-container">
+        <div class="recetas-grid">
+            <!-- Receta 1 -->
+            <div class="receta-card" onclick="window.location.href='receta1.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta1.png" alt="Smoothie de mantequilla de maní y platano">
+                </div>
+                <div class="receta-titulo">Smoothie de mantequilla de maní y platano</div>
+            </div>
+            
+            <!-- Receta 2 -->
+            <div class="receta-card" onclick="window.location.href='receta2.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta2.png" alt="Avena nocturna">
+                </div>
+                <div class="receta-titulo">Avena nocturna</div>
+            </div>
+            
+            <!-- Receta 3 -->
+            <div class="receta-card" onclick="window.location.href='receta3.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta3.png" alt="Brownies saludables">
+                </div>
+                <div class="receta-titulo">Brownies saludables</div>
+            </div>
+            
+            <!-- Receta 4 -->
+            <div class="receta-card" onclick="window.location.href='receta4.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta4.png" alt="Pie de limón saludable">
+                </div>
+                <div class="receta-titulo">Pie de limón saludable</div>
+            </div>
+            
+            <!-- Receta 5 -->
+            <div class="receta-card" onclick="window.location.href='receta5.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta5.png" alt="Keke de café">
+                </div>
+                <div class="receta-titulo">Keke de café</div>
+            </div>
+            
+            <!-- Receta 6 -->
+            <div class="receta-card" onclick="window.location.href='receta6.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta6.png" alt="Big cookie proteíco">
+                </div>
+                <div class="receta-titulo">Big cookie proteíco</div>
+            </div>
+            
+            <!-- Receta 7 -->
+            <div class="receta-card" onclick="window.location.href='receta7.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta7.png" alt="Ferrero fit">
+                </div>
+                <div class="receta-titulo">Ferrero fit</div>
+            </div>
+            
+            <!-- Receta 8 -->
+            <div class="receta-card" onclick="window.location.href='receta8.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta8.png" alt="Bolitas de chocolate">
+                </div>
+                <div class="receta-titulo">Bolitas de chocolate</div>
+            </div>
+            
+            <!-- Receta 9 -->
+            <div class="receta-card" onclick="window.location.href='receta9.html'">
+                <div class="receta-imagen">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta9.png" alt="Big cookie proteíco">
+                </div>
+                <div class="receta-titulo">Big cookie proteíco</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Logo blanco GRANDE a la izquierda -->
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte">
+                </div>
+                
+                <!-- Contactos al lado -->
+                <div class="footer-contactos">
+                    <!-- Correo -->
+                    <div onclick="copiarCorreo()" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" alt="Correo">
+                        <span>vannalatte@gmail.com</span>
+                    </div>
+                    
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram2.png" alt="Instagram">
+                        <span>@vannalatte</span>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp2.png" alt="WhatsApp">
+                        <span>+51 951 499 437</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copiarCorreo() {
+            navigator.clipboard.writeText('vannalatte@gmail.com');
+            alert('📧 Correo copiado al portapapeles');
+        }
+
+        function actualizarContadorCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            document.querySelectorAll('.carrito-contador').forEach(el => {
+                el.textContent = totalItems;
+                el.style.display = totalItems > 0 ? 'flex' : 'none';
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
+    </script>
+</body>
+</html>
