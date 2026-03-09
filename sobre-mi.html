@@ -22,37 +22,32 @@
             background-color: #ebe5df;
             color: #4e342e;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        h1, h2, h3, h4, .logo {
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
         }
         
-        /* Barra superior */
+        /* Barra superior - CON MERRIWEATHER */
         .top-bar {
             background-color: #c68642;
-            padding: 10px 0;
+            padding: 6px 0;
             text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-family: 'Merriweather', serif;
+            font-size: 0.9rem;
             font-weight: 500;
             color: white;
             letter-spacing: 0.5px;
+            width: 100%;
         }
         
-        .top-bar-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-        
-        /* Header */
+        /* Header - MENÚ CON MERRIWEATHER */
         header {
             background-color: #4e342e;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -61,29 +56,42 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
+            padding: 0.5rem 0;
+            max-width: 900px;
             margin: 0 auto;
+            width: 100%;
         }
         
-        .logo {
-            color: white;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
+        .logo-link {
+            display: block;
+            width: 180px;
+            flex-shrink: 0;
+            margin-left: 0;
+        }
+        
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         .nav-links {
             display: flex;
             gap: 2.5rem;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Merriweather', serif;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: color 0.3s;
+            white-space: nowrap;
         }
         
         .nav-links a:hover {
@@ -93,337 +101,353 @@
         .nav-links a.active {
             color: #c68642;
             border-bottom: 2px solid #c68642;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
         }
         
-        /* Hero pequeño */
-        .page-hero {
-            background-color: #4e342e;
+        .carrito-link {
+            position: relative;
             color: white;
-            text-align: center;
-            padding: 8rem 5% 4rem;
-            margin-top: 120px; /* Ajustado por barra + header */
+            text-decoration: none;
+            flex-shrink: 0;
+            margin-right: 0;
+            display: flex;
+            align-items: center;
         }
         
-        .page-hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
+        .carrito-link img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
         }
         
-        .page-hero p {
+        .carrito-contador {
+            position: absolute;
+            top: -3px;
+            right: -5px;
+            background-color: #c24a34;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: bold;
+            min-width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
-            opacity: 0.9;
+        }
+        
+        /* Título de la página - MERRIWEATHER */
+        .page-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4e342e;
         }
         
         /* Contenedor principal */
         .sobre-mi-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 5%;
+            padding: 0 5% 3rem;
         }
         
-        /* Tarjeta de perfil */
-        .profile-card {
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        /* Sección de perfil */
+        .perfil-section {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
             margin-bottom: 3rem;
         }
         
-        .profile-header {
-            background: linear-gradient(135deg, #c68642 0%, #4e342e 100%);
-            height: 200px;
-            position: relative;
+        .perfil-imagen {
+            flex: 0 0 300px;
         }
         
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid white;
-            background-color: #ebe5df;
-            position: absolute;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .profile-image img {
+        .perfil-imagen img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        .profile-image .placeholder {
-            font-size: 5rem;
-            color: #c68642;
-            opacity: 0.3;
+        .perfil-info {
+            flex: 1;
+            padding-top: 1rem;
         }
         
-        .profile-content {
-            padding: 120px 3rem 3rem;
-            text-align: center;
-        }
-        
-        .profile-name {
+        .perfil-nombre {
             font-family: 'Merriweather', serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
+            font-weight: 700;
             color: #4e342e;
             margin-bottom: 0.5rem;
         }
         
-        .profile-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
-            color: #c68642;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid #ebe5df;
-        }
-        
-        .profile-story {
+        .perfil-titulo {
             font-family: 'Poppins', sans-serif;
             font-size: 1.1rem;
             color: #4e342e;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .perfil-cita {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
             line-height: 1.8;
-            text-align: left;
-            max-width: 700px;
-            margin: 0 auto;
+            color: #4e342e;
+            font-style: italic;
             position: relative;
+            padding-left: 1.5rem;
+            border-left: 3px solid #c68642;
         }
         
-        .profile-story::before {
-            content: '"';
-            font-family: 'Merriweather', serif;
-            font-size: 5rem;
-            color: #c68642;
-            opacity: 0.2;
-            position: absolute;
-            top: -20px;
-            left: -30px;
-        }
-        
-        .profile-story::after {
-            content: '"';
-            font-family: 'Merriweather', serif;
-            font-size: 5rem;
-            color: #c68642;
-            opacity: 0.2;
-            position: absolute;
-            bottom: -50px;
-            right: -30px;
-        }
-        
-        /* Sección de valores */
-        .valores-section {
-            margin: 4rem 0;
-        }
-        
-        .valores-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .valor-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-        
-        .valor-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .valor-icon {
-            font-size: 3rem;
+        .perfil-cita p {
             margin-bottom: 1rem;
         }
         
-        .valor-card h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            color: #4e342e;
-            margin-bottom: 0.5rem;
-        }
-        
-        .valor-card p {
-            font-family: 'Poppins', sans-serif;
-            color: #666;
-            font-size: 0.95rem;
-        }
-        
-        /* Footer */
+        /* Footer con fondo marrón - LOGO BLANCO Y CONTACTOS */
         footer {
             background-color: #4e342e;
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
-            margin-top: 2rem;
+            padding: 3rem 0 3rem 2%;
+            width: 100%;
+            margin-top: 3rem;
         }
         
-        .contacto-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            font-family: 'Poppins', sans-serif;
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .contacto-info p {
+        .footer-content {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            flex-wrap: wrap;
         }
         
-        .copyright {
+        .footer-logo {
+            width: 350px;
+            flex-shrink: 0;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .footer-contactos {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            margin-left: 0;
+        }
+        
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #ebe5df;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 2rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            text-decoration: none;
+            line-height: 1.1;
+        }
+        
+        .contacto-item img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .contacto-item span {
+            color: #ebe5df;
+        }
+        
+        .contacto-item:hover {
+            color: #c68642;
+        }
+        
+        .contacto-item:hover span {
+            color: #c68642;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                padding: 0.4rem 2%;
+                max-width: 100%;
+            }
+            
+            .logo-link {
+                width: 130px;
+            }
+            
             .nav-links {
-                display: none;
+                gap: 1rem;
             }
             
-            .page-hero h1 {
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            
+            .carrito-link img {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .page-title {
                 font-size: 2rem;
+                margin: 2rem 0 1.5rem;
             }
             
-            .profile-name {
-                font-size: 2rem;
+            .perfil-section {
+                flex-direction: column;
+                gap: 2rem;
             }
             
-            .profile-content {
-                padding: 100px 1.5rem 2rem;
+            .perfil-imagen {
+                flex: 0 0 auto;
+                max-width: 280px;
+                margin: 0 auto;
             }
             
-            .profile-story::before,
-            .profile-story::after {
-                display: none;
+            .perfil-info {
+                text-align: center;
             }
             
-            .valores-grid {
-                grid-template-columns: 1fr;
+            .perfil-cita {
+                text-align: left;
+                padding-left: 1rem;
             }
             
-            .top-bar {
-                font-size: 0.85rem;
-                padding: 6px 0;
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .footer-logo {
+                width: 280px;
+            }
+            
+            .footer-contactos {
+                align-items: center;
+                gap: 0.1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Barra superior - CON MERRIWEATHER -->
+    <div class="top-bar">
+        Obtén la tuya ya!
+    </div>
+
+    <!-- Header - MENÚ CON MERRIWEATHER -->
     <header>
-        <!-- Barra superior con texto -->
-        <div class="top-bar">
-            <div class="top-bar-content">
-            Obtén la tuya ya!
-            </div>
-        </div>
         <nav>
-            <div class="logo">Vannalatte</div>
+            <a href="index.html" class="logo-link">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
+            </a>
+            
             <div class="nav-links">
-                <a href="index.html">Inicio</a>
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
                 <a href="sobre-mi.html" class="active">Sobre mí</a>
             </div>
+            
+            <a href="carrito.html" class="carrito-link">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
+                <span class="carrito-contador">0</span>
+            </a>
         </nav>
     </header>
 
-    <section class="page-hero">
-        <h1>Sobre Mí</h1>
-        <p>La historia detrás de Vannalatte</p>
-    </section>
+    <!-- Título Sobre Mí - MERRIWEATHER -->
+    <h1 class="page-title">Sobre Mí</h1>
 
+    <!-- Contenido principal -->
     <div class="sobre-mi-container">
-        <!-- Tarjeta de perfil -->
-        <div class="profile-card">
-            <div class="profile-header">
-                <div class="profile-image">
-                    <!-- Aquí puedes poner una foto si tienes, por ahora un ícono -->
-                    <div class="placeholder">👩‍🍳</div>
-                </div>
+        <div class="perfil-section">
+            <!-- Foto a la izquierda -->
+            <div class="perfil-imagen">
+                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/foto-psicologa.png" alt="Silvana Sillau">
             </div>
             
-            <div class="profile-content">
-                <h2 class="profile-name">Silvana Sillau</h2>
-                <div class="profile-title">Psicoterapeuta de niños y adolescentes · Amante de la cocina</div>
+            <!-- Información a la derecha -->
+            <div class="perfil-info">
+                <div class="perfil-nombre">Silvana Sillau</div>
+                <div class="perfil-titulo">psicoterapeuta de niños y adolescentes.</div>
                 
-                <div class="profile-story">
-                    <p>Hace 6 años descubrí cuanto me gustaba hacer postres y al mismo tiempo recordé que mi babu (abuela) hacía pasteles y bizcochos. Realmente muchos secretos de mis postres los aprendí de ella, pero sobre todo la perseverancia y dedicación por lo que uno hace.</p>
-                    <p style="margin-top: 1.5rem;">Cada pedacito de postre tiene una cucharadita de amor casero. Eso es lo que encontrarás en Vannalatte: productos hechos con dedicación, pensando en quienes buscan algo rico pero también saludable.</p>
+                <!-- Cita -->
+                <div class="perfil-cita">
+                    <p>“hace 6 años descubrí cuanto me gustaba hacer postres y al mismo tiempo recorde que mi babu hacia pasteles y bizcochos, realmente muchos secretos de mis postres los aprendí de ella, pero sobre todo la perseverancia y dedicación por lo que uno hace, cada pedacito de postre tiene una cucharadita de amor casero”</p>
                 </div>
             </div>
-        </div>
-
-        <!-- Valores -->
-        <div class="valores-section">
-            <h2 style="text-align: center; font-size: 2rem; color: #4e342e; margin-bottom: 1rem;">Mis valores</h2>
-            <p style="text-align: center; font-family: 'Poppins', sans-serif; color: #666; max-width: 600px; margin: 0 auto 2rem;">
-                Lo que hace especial a Vannalatte
-            </p>
-            
-            <div class="valores-grid">
-                <div class="valor-card">
-                    <div class="valor-icon">🌱</div>
-                    <h3>Ingredientes naturales</h3>
-                    <p>Solo maní tostado, cacao, sal de maras y edulcorante. Nada más.</p>
-                </div>
-                
-                <div class="valor-card">
-                    <div class="valor-icon">❤️</div>
-                    <h3>Hecho con amor</h3>
-                    <p>Cada frasco tiene esa cucharadita de amor casero que aprendí de mi babu.</p>
-                </div>
-                
-                <div class="valor-card">
-                    <div class="valor-icon">🏠</div>
-                    <h3>Tradición familiar</h3>
-                    <p>Recetas inspiradas en los secretos de mi abuela, adaptadas para hoy.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Contacto rápido -->
-        <div style="text-align: center; margin: 4rem 0;">
-            <h2 style="font-size: 2rem; color: #4e342e; margin-bottom: 1rem;">¿Quieres saber más?</h2>
-            <p style="margin-bottom: 2rem; font-family: 'Poppins', sans-serif;">Escríbeme directamente por WhatsApp</p>
-            <a href="https://wa.me/51951499437?text=Hola%20Silvana%2C%20quiero%20saber%20m%C3%A1s%20sobre%20tus%20productos" 
-               class="btn" 
-               style="display: inline-block; padding: 12px 35px; background-color: #c24a34; color: white; text-decoration: none; border-radius: 50px; font-weight: 600;">
-                Contactar por WhatsApp
-            </a>
         </div>
     </div>
 
+    <!-- Footer con fondo marrón - LOGO BLANCO Y CONTACTOS -->
     <footer>
-        <div class="logo" style="margin-bottom: 1rem;">Vannalatte</div>
-        <div class="contacto-info">
-            <p>📧 vannalatte@gmail.com</p>
-            <p>📱 @vannalatte</p>
-            <p>📞 +51 951 499 437</p>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Logo blanco GRANDE y PEGADO A LA IZQUIERDA -->
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte">
+                </div>
+                
+                <!-- Contactos INMEDIATAMENTE AL LADO DEL LOGO -->
+                <div class="footer-contactos">
+                    
+                    <!-- Correo -->
+                    <div onclick="copiarCorreo()" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo2.png" alt="Correo">
+                        <span>vannalatte@gmail.com</span>
+                    </div>
+                    
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram2.png" alt="Instagram">
+                        <span>@vannalatte</span>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp2.png" alt="WhatsApp">
+                        <span>+51 951 499 437</span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <p class="copyright">© 2026 Vannalatte - Todos los derechos reservados</p>
     </footer>
+
+    <script>
+        function copiarCorreo() {
+            navigator.clipboard.writeText('vannalatte@gmail.com');
+            alert('📧 Correo copiado al portapapeles');
+        }
+
+        function actualizarContadorCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            document.querySelectorAll('.carrito-contador').forEach(el => {
+                el.textContent = totalItems;
+                el.style.display = totalItems > 0 ? 'flex' : 'none';
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
+    </script>
 </body>
 </html>
-
