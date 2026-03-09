@@ -757,7 +757,7 @@ function finalizarCompra() {
         return;
     }
 
-    let mensaje = " *NUEVO PEDIDO - Vannalatte*\n\n";
+    let mensaje = "🛍️ *NUEVO PEDIDO - Vannalatte*\n\n";
     mensaje += "*DETALLE DE PRODUCTOS:*\n";
     
     let totalGeneral = 0;
@@ -768,19 +768,16 @@ function finalizarCompra() {
         mensaje += `• ${item.nombre} (${item.presentacion}) x ${item.cantidad} = S/ ${subtotal.toFixed(2)}\n`;
     });
     
-    mensaje += `\n *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
+    mensaje += `\n💰 *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
     
-    // CAMBIO IMPORTANTE: usar api.whatsapp.com en lugar de wa.me
+    // Usar api.whatsapp.com (más compatible con iOS)
     const url = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
     
-    // Abrir WhatsApp
-    window.open(url, '_blank');
+    // CAMBIO IMPORTANTE: usar window.location.href en lugar de window.open
+    window.location.href = url;
     
-    if (confirm('¿Quieres vaciar el carrito después de enviar el pedido?')) {
-        localStorage.removeItem('vannalatte-carrito');
-        actualizarContadorCarrito();
-        mostrarCarrito();
-    }
+    // Ya no preguntamos si quiere vaciar el carrito aquí
+    // porque la página se va a redirigir
 }
 
         // Inicializar la página
@@ -791,4 +788,5 @@ function finalizarCompra() {
     </script>
 </body>
 </html>
+
 
