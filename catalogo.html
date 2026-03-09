@@ -90,7 +90,7 @@
             text-decoration: none;
             font-family: 'Merriweather', serif;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1.3rem; /* IGUAL QUE EN INDEX */
             transition: color 0.3s;
             white-space: nowrap;
         }
@@ -397,7 +397,7 @@
             color: #c68642;
         }
         
-        /* Responsive */
+        /* Responsive - MEJORADO IGUAL QUE INDEX */
         @media (max-width: 768px) {
             nav {
                 padding: 0.5rem 3%;
@@ -412,7 +412,7 @@
             }
             
             .nav-links a {
-                font-size: 0.8rem;
+                font-size: 1rem; /* MÁS GRANDE EN MÓVIL */
             }
             
             .carrito-link img {
@@ -476,17 +476,24 @@
             }
             
             .nav-links {
-                gap: 0.5rem;
+                gap: 0.8rem;
             }
             
             .nav-links a {
-                font-size: 0.7rem;
+                font-size: 0.9rem; /* MÁS GRANDE EN PANTALLAS MUY PEQUEÑAS */
             }
             
             .carrito-link img {
                 width: 35px;
                 height: 35px;
             }
+        }
+        
+        /* Rotar imágenes de 400gr */
+        .producto-imagen img[src*="400gr"],
+        .producto-imagen img[src*="2.png"] {
+            transform: rotate(-90deg);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
@@ -794,4 +801,3 @@
     </script>
 </body>
 </html>
-
