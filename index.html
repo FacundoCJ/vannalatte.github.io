@@ -1010,32 +1010,52 @@
             }
         }, 3000);
 
-        const videos = ["Video 10.mp4", "Video 12.mp4", "Video 4.mp4", "Video 5.mp4", "Video 8.mp4"];
-        const videosTrack = document.getElementById('videos-track');
-        
-        videos.forEach(video => {
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            card.innerHTML = `<video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline></video>`;
-            
-            const videoElement = card.querySelector('video');
-            card.addEventListener('click', function() {
-                if (videoElement.paused) {
-                    document.querySelectorAll('.video-card video').forEach(v => {
-                        if (v !== videoElement) {
-                            v.pause();
-                            v.parentElement.classList.remove('playing');
-                        }
-                    });
-                    videoElement.play();
-                    this.classList.add('playing');
-                } else {
-                    videoElement.pause();
-                    this.classList.remove('playing');
+// Videos con sus respectivas imágenes de portada (poster)
+const videos = [
+    { src: "Video 10.mp4", poster: "video10-poster.png" },
+    { src: "Video 12.mp4", poster: "video12-poster.png" },
+    { src: "Video 4.mp4", poster: "video4-poster.png" },
+    { src: "Video 5.mp4", poster: "video5-poster.png" },
+    { src: "Video 8.mp4", poster: "video8-poster.png" }
+];
+
+const videosTrack = document.getElementById('videos-track');
+
+videos.forEach(video => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    
+    // Crear elemento video con poster y atributos para iOS
+    const videoElement = document.createElement('video');
+    videoElement.src = `https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video.src)}`;
+    videoElement.poster = `https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video.poster)}`;
+    videoElement.setAttribute('playsinline', '');
+    videoElement.setAttribute('preload', 'metadata');
+    videoElement.setAttribute('webkit-playsinline', '');
+    
+    card.appendChild(videoElement);
+    
+    // Evento para reproducir/pausar
+    videoElement.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (this.paused) {
+            // Pausar otros videos
+            document.querySelectorAll('.video-card video').forEach(v => {
+                if (v !== videoElement) {
+                    v.pause();
+                    v.parentElement.classList.remove('playing');
                 }
             });
-            videosTrack.appendChild(card);
-        });
+            this.play();
+            this.parentElement.classList.add('playing');
+        } else {
+            this.pause();
+            this.parentElement.classList.remove('playing');
+        }
+    });
+    
+    videosTrack.appendChild(card);
+});
 
         const videosArrowLeft = document.getElementById('videos-arrow-left');
         const videosArrowRight = document.getElementById('videos-arrow-right');
@@ -1075,3 +1095,4 @@
     </script>
 </body>
 </html>
+
