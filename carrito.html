@@ -90,7 +90,7 @@
             text-decoration: none;
             font-family: 'Merriweather', serif;
             font-weight: 500;
-            font-size: 1.3rem; /* IGUAL QUE EN INDEX */
+            font-size: 1.3rem;
             transition: color 0.3s;
             white-space: nowrap;
         }
@@ -464,7 +464,7 @@
             }
             
             .nav-links a {
-                font-size: 1rem; /* MÁS GRANDE EN MÓVIL */
+                font-size: 1rem;
             }
             
             .carrito-link img {
@@ -521,7 +521,7 @@
 
         @media (max-width: 480px) {
             .logo-link {
-                width: 80px; /* Aumentado de 100px a 140px */
+                width: 80px;
                 margin-left: -0.15rem;
             }
             
@@ -555,15 +555,15 @@
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú PERFECTAMENTE CENTRADO -->
+            <!-- Menú PERFECTAMENTE CENTRADO (SIN .html) -->
             <div class="nav-links">
-                <a href="catalogo.html">Catálogo</a>
-                <a href="recetas.html">Recetas</a>
-                <a href="sobre-mi.html">Sobre mí</a>
+                <a href="catalogo">Catálogo</a>
+                <a href="recetas">Recetas</a>
+                <a href="sobre-mi">Sobre mí</a>
             </div>
             
-            <!-- Carrito a la derecha (activo) -->
-            <a href="carrito.html" class="carrito-link active">
+            <!-- Carrito a la derecha (activo) (SIN .html) -->
+            <a href="carrito" class="carrito-link active">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
                 <span class="carrito-contador">0</span>
             </a>
@@ -656,7 +656,7 @@
                     <div class="carrito-vacio">
                         <p>🛒 Tu carrito está vacío</p>
                         <p style="font-size: 1rem; margin-bottom: 2rem;">Agrega algunos productos del catálogo</p>
-                        <a href="catalogo.html" class="btn btn-primary">Ver Catálogo</a>
+                        <a href="catalogo" class="btn btn-primary">Ver Catálogo</a>
                     </div>
                 `;
                 return;
@@ -709,7 +709,7 @@
 
                 <div class="carrito-acciones">
                     <button class="btn btn-outline" onclick="vaciarCarrito()">Vaciar Carrito</button>
-                    <a href="catalogo.html" class="btn btn-secondary">Seguir Comprando</a>
+                    <a href="catalogo" class="btn btn-secondary">Seguir Comprando</a>
                     <button class="btn btn-primary" onclick="finalizarCompra()">Finalizar Compra por WhatsApp</button>
                 </div>
             `;
@@ -749,38 +749,35 @@
             }
         }
 
-// Finalizar compra por WhatsApp - VERSIÓN CORREGIDA PARA iOS
-function finalizarCompra() {
-    const carrito = obtenerCarrito();
-    const numero = "51951499437"; // Tu número sin el +
-    
-    if (carrito.length === 0) {
-        alert('Tu carrito está vacío');
-        return;
-    }
+        // Finalizar compra por WhatsApp - VERSIÓN CORREGIDA PARA iOS
+        function finalizarCompra() {
+            const carrito = obtenerCarrito();
+            const numero = "51951499437"; // Tu número sin el +
+            
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
 
-    let mensaje = " *NUEVO PEDIDO - Vannalatte*\n\n";
-    mensaje += "*DETALLE DE PRODUCTOS:*\n";
-    
-    let totalGeneral = 0;
-    
-    carrito.forEach(item => {
-        const subtotal = item.precio * item.cantidad;
-        totalGeneral += subtotal;
-        mensaje += `• ${item.nombre} (${item.presentacion}) x ${item.cantidad} = S/ ${subtotal.toFixed(2)}\n`;
-    });
-    
-    mensaje += `\n *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
-    
-    // Usar api.whatsapp.com (más compatible con iOS)
-    const url = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
-    
-    // CAMBIO IMPORTANTE: usar window.location.href en lugar de window.open
-    window.location.href = url;
-    
-    // Ya no preguntamos si quiere vaciar el carrito aquí
-    // porque la página se va a redirigir
-}
+            let mensaje = "🛍️ *NUEVO PEDIDO - Vannalatte*\n\n";
+            mensaje += "*DETALLE DE PRODUCTOS:*\n";
+            
+            let totalGeneral = 0;
+            
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                totalGeneral += subtotal;
+                mensaje += `• ${item.nombre} (${item.presentacion}) x ${item.cantidad} = S/ ${subtotal.toFixed(2)}\n`;
+            });
+            
+            mensaje += `\n💰 *TOTAL: S/ ${totalGeneral.toFixed(2)}*`;
+            
+            // Usar api.whatsapp.com (más compatible con iOS)
+            const url = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
+            
+            // Redirigir la página actual a WhatsApp
+            window.location.href = url;
+        }
 
         // Inicializar la página
         document.addEventListener('DOMContentLoaded', () => {
@@ -790,9 +787,3 @@ function finalizarCompra() {
     </script>
 </body>
 </html>
-
-
-
-
-
-
