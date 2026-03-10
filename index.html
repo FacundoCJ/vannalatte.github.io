@@ -38,7 +38,7 @@
             width: 100%;
         }
         
-        /* Header - CORREGIDO: logo más grande y pegado a la izquierda */
+        /* Header - CORREGIDO: menú perfectamente centrado */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -52,7 +52,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 5%;
+            padding: 0.5rem 2%; /* Reducido padding lateral para que el logo esté más pegado */
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
@@ -61,9 +61,9 @@
         /* Logo - MÁS GRANDE Y PEGADO A LA IZQUIERDA */
         .logo-link {
             display: block;
-            width: 220px; /* Antes 180px */
+            width: 220px; /* Aumentado de 180px a 220px */
             flex-shrink: 0;
-            margin-left: -10px; /* Pegado al borde izquierdo */
+            margin-left: -1rem; /* Lo pega más a la izquierda */
         }
         
         .logo-img {
@@ -72,11 +72,12 @@
             display: block;
         }
         
-        /* Menú - PERFECTAMENTE CENTRADO */
+        /* Menú - PERFECTAMENTE CENTRADO con flex y margin auto */
         .nav-links {
             display: flex;
             gap: 2.5rem;
             align-items: center;
+            margin: 0 auto; /* Esto centra el menú */
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -102,7 +103,7 @@
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-left: auto;
+            margin-left: auto; /* Empuja a la derecha */
             display: flex;
             align-items: center;
         }
@@ -627,12 +628,12 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 0.5rem 3%;
+                padding: 0.5rem 1%; /* Reducido aún más en móvil */
             }
             
             .logo-link {
-                width: 160px; /* Antes 130px */
-                margin-left: -8px;
+                width: 160px; /* Aumentado de 130px a 160px */
+                margin-left: -0.5rem; /* Lo pega más a la izquierda en móvil */
             }
             
             .nav-links {
@@ -640,7 +641,7 @@
             }
             
             .nav-links a {
-                font-size: 1rem; /* Antes 0.8rem */
+                font-size: 1rem; /* Aumentado de 0.8rem a 1rem */
             }
             
             .carrito-link img {
@@ -746,8 +747,8 @@
 
         @media (max-width: 480px) {
             .logo-link {
-                width: 130px; /* Antes 100px */
-                margin-left: -5px;
+                width: 140px; /* Aumentado de 100px a 140px */
+                margin-left: -0.3rem;
             }
             
             .nav-links {
@@ -773,7 +774,7 @@
         Obtén la tuya ya!
     </div>
 
-    <!-- Header - CON LOGO MÁS GRANDE Y PEGADO A LA IZQUIERDA -->
+    <!-- Header - CON MENÚ PERFECTAMENTE CENTRADO -->
     <header>
         <nav>
             <!-- Logo izquierda - MÁS GRANDE Y PEGADO -->
@@ -841,14 +842,14 @@
     <!-- Espacio beige -->
     <div class="espacio-beige"></div>
 
-    <!-- Carrusel de videos - CORREGIDO PARA iOS -->
+    <!-- Carrusel de videos -->
     <section class="videos-carrusel-section">
         <div class="carrusel-wrapper">
             <button class="carrusel-arrow arrow-left" id="videos-arrow-left">←</button>
             <button class="carrusel-arrow arrow-right" id="videos-arrow-right">→</button>
             
             <div class="carrusel-track" id="videos-track">
-                <!-- Videos se cargarán con JavaScript (corregido para iOS) -->
+                <!-- Videos se cargarán con JavaScript -->
             </div>
         </div>
     </section>
@@ -1011,50 +1012,32 @@
             }
         }, 3000);
 
-        // CORREGIDO PARA iOS - videos con poster y atributos específicos
         const videos = ["Video 10.mp4", "Video 12.mp4", "Video 4.mp4", "Video 5.mp4", "Video 8.mp4"];
         const videosTrack = document.getElementById('videos-track');
-        
-        // URL base de los videos
-        const baseVideoUrl = "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/";
         
         videos.forEach(video => {
             const card = document.createElement('div');
             card.className = 'video-card';
+            // Extraemos el número del video para crear una imagen de preview
+            const videoNum = video.match(/\d+/)[0];
+            card.innerHTML = `<video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline poster="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/poster-${videoNum}.jpg"></video>`;
             
-            // Extraer nombre sin extensión para el poster
-            const videoName = video.replace('.mp4', '');
-            
-            // Crear elemento video con atributos para iOS
-            const videoElement = document.createElement('video');
-            videoElement.src = baseVideoUrl + encodeURIComponent(video);
-            videoElement.setAttribute('playsinline', '');
-            videoElement.setAttribute('webkit-playsinline', '');
-            videoElement.setAttribute('preload', 'metadata');
-            videoElement.setAttribute('poster', ''); // Poster vacío para que iOS use el primer frame
-            
-            card.appendChild(videoElement);
-            
-            // Evento para reproducir/pausar
+            const videoElement = card.querySelector('video');
             card.addEventListener('click', function() {
                 if (videoElement.paused) {
-                    // Pausar todos los demás videos
                     document.querySelectorAll('.video-card video').forEach(v => {
                         if (v !== videoElement) {
                             v.pause();
                             v.parentElement.classList.remove('playing');
                         }
                     });
-                    
-                    // Reproducir este video
-                    videoElement.play().catch(e => console.log("Error reproduciendo:", e));
+                    videoElement.play();
                     this.classList.add('playing');
                 } else {
                     videoElement.pause();
                     this.classList.remove('playing');
                 }
             });
-            
             videosTrack.appendChild(card);
         });
 
@@ -1066,7 +1049,7 @@
         
         function moverCarruselVideos(direccion) {
             const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
-            videosPosition += direccion * 300; // Ancho aproximado de tarjeta
+            videosPosition += direccion * cardWidth;
             if (videosPosition < 0) videosPosition = 0;
             if (videosPosition > maxScroll) videosPosition = maxScroll;
             videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
