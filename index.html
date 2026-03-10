@@ -38,7 +38,7 @@
             width: 100%;
         }
         
-        /* Header - CORREGIDO: menú perfectamente centrado */
+        /* Header - CORREGIDO: logo más grande y pegado a la izquierda */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -58,12 +58,12 @@
             width: 100%;
         }
         
-        /* Logo - MÁS GRANDE Y MÁS PEGADO A LA IZQUIERDA */
+        /* Logo - MÁS GRANDE Y PEGADO A LA IZQUIERDA */
         .logo-link {
             display: block;
-            width: 220px; /* Aumentado de 180px a 220px */
+            width: 220px; /* Antes 180px */
             flex-shrink: 0;
-            margin-left: -20px; /* Más pegado a la izquierda */
+            margin-left: -10px; /* Pegado al borde izquierdo */
         }
         
         .logo-img {
@@ -317,7 +317,7 @@
             background-color: #a63d2a;
         }
         
-        /* Tarjetas de video - CORREGIDO para iOS */
+        /* Tarjetas de video - CORREGIDO PARA iOS */
         .video-card {
             min-width: 280px;
             max-width: 320px;
@@ -338,28 +338,7 @@
             display: block;
         }
         
-        /* Poster personalizado para iOS */
         .video-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/video-poster.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .video-card:not(.playing)::before {
-            opacity: 1;
-        }
-        
-        .video-card::after {
             content: '▶️';
             position: absolute;
             top: 50%;
@@ -370,10 +349,9 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             z-index: 2;
             pointer-events: none;
-            opacity: 0.8;
         }
         
-        .video-card.playing::after {
+        .video-card.playing::before {
             content: '⏸️';
         }
         
@@ -653,8 +631,8 @@
             }
             
             .logo-link {
-                width: 180px; /* Más grande que antes (era 130px) */
-                margin-left: -15px; /* Más pegado a la izquierda */
+                width: 160px; /* Antes 130px */
+                margin-left: -8px;
             }
             
             .nav-links {
@@ -662,7 +640,7 @@
             }
             
             .nav-links a {
-                font-size: 0.9rem;
+                font-size: 1rem; /* Antes 0.8rem */
             }
             
             .carrito-link img {
@@ -768,8 +746,8 @@
 
         @media (max-width: 480px) {
             .logo-link {
-                width: 150px; /* Más grande que antes (era 100px) */
-                margin-left: -10px; /* Más pegado a la izquierda */
+                width: 130px; /* Antes 100px */
+                margin-left: -5px;
             }
             
             .nav-links {
@@ -777,7 +755,7 @@
             }
             
             .nav-links a {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
             }
             
             .carrito-link img {
@@ -795,10 +773,10 @@
         Obtén la tuya ya!
     </div>
 
-    <!-- Header - CON MENÚ PERFECTAMENTE CENTRADO -->
+    <!-- Header - CON LOGO MÁS GRANDE Y PEGADO A LA IZQUIERDA -->
     <header>
         <nav>
-            <!-- Logo izquierda - MÁS GRANDE Y MÁS PEGADO -->
+            <!-- Logo izquierda - MÁS GRANDE Y PEGADO -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
@@ -863,14 +841,14 @@
     <!-- Espacio beige -->
     <div class="espacio-beige"></div>
 
-    <!-- Carrusel de videos -->
+    <!-- Carrusel de videos - CORREGIDO PARA iOS -->
     <section class="videos-carrusel-section">
         <div class="carrusel-wrapper">
             <button class="carrusel-arrow arrow-left" id="videos-arrow-left">←</button>
             <button class="carrusel-arrow arrow-right" id="videos-arrow-right">→</button>
             
             <div class="carrusel-track" id="videos-track">
-                <!-- Videos se cargarán con JavaScript -->
+                <!-- Videos se cargarán con JavaScript (corregido para iOS) -->
             </div>
         </div>
     </section>
@@ -1033,37 +1011,50 @@
             }
         }, 3000);
 
+        // CORREGIDO PARA iOS - videos con poster y atributos específicos
         const videos = ["Video 10.mp4", "Video 12.mp4", "Video 4.mp4", "Video 5.mp4", "Video 8.mp4"];
         const videosTrack = document.getElementById('videos-track');
+        
+        // URL base de los videos
+        const baseVideoUrl = "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/";
         
         videos.forEach(video => {
             const card = document.createElement('div');
             card.className = 'video-card';
-            card.innerHTML = `<video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline preload="metadata"></video>`;
             
-            const videoElement = card.querySelector('video');
+            // Extraer nombre sin extensión para el poster
+            const videoName = video.replace('.mp4', '');
             
-            // Para iOS: intentar cargar el poster del video
-            videoElement.addEventListener('loadedmetadata', function() {
-                // En iOS esto no siempre funciona, pero lo intentamos
-                this.currentTime = 0.1;
-            });
+            // Crear elemento video con atributos para iOS
+            const videoElement = document.createElement('video');
+            videoElement.src = baseVideoUrl + encodeURIComponent(video);
+            videoElement.setAttribute('playsinline', '');
+            videoElement.setAttribute('webkit-playsinline', '');
+            videoElement.setAttribute('preload', 'metadata');
+            videoElement.setAttribute('poster', ''); // Poster vacío para que iOS use el primer frame
             
+            card.appendChild(videoElement);
+            
+            // Evento para reproducir/pausar
             card.addEventListener('click', function() {
                 if (videoElement.paused) {
+                    // Pausar todos los demás videos
                     document.querySelectorAll('.video-card video').forEach(v => {
                         if (v !== videoElement) {
                             v.pause();
                             v.parentElement.classList.remove('playing');
                         }
                     });
-                    videoElement.play();
+                    
+                    // Reproducir este video
+                    videoElement.play().catch(e => console.log("Error reproduciendo:", e));
                     this.classList.add('playing');
                 } else {
                     videoElement.pause();
                     this.classList.remove('playing');
                 }
             });
+            
             videosTrack.appendChild(card);
         });
 
@@ -1075,7 +1066,7 @@
         
         function moverCarruselVideos(direccion) {
             const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
-            videosPosition += direccion * cardWidth;
+            videosPosition += direccion * 300; // Ancho aproximado de tarjeta
             if (videosPosition < 0) videosPosition = 0;
             if (videosPosition > maxScroll) videosPosition = maxScroll;
             videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
