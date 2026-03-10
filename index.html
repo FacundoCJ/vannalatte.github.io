@@ -317,43 +317,52 @@
             background-color: #a63d2a;
         }
         
-        /* Tarjetas de video */
-        .video-card {
-            min-width: 280px;
-            max-width: 320px;
-            background: #000;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            flex-shrink: 0;
-            cursor: pointer;
-            position: relative;
-            aspect-ratio: 9/16;
-        }
-        
-        .video-card video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .video-card::before {
-            content: '▶️';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            z-index: 2;
-            pointer-events: none;
-        }
-        
-        .video-card.playing::before {
-            content: '⏸️';
-        }
+/* Tarjetas de video - NUEVO ESTILO */
+.video-card {
+    min-width: 280px;
+    max-width: 320px;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 9/16;
+}
+
+.video-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-card::before {
+    content: '▶️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.video-card.playing::before {
+    opacity: 0;
+}
         
         /* Flechas de navegación */
         .carrusel-arrow {
@@ -1010,77 +1019,110 @@
             }
         }, 3000);
 
-// Videos con sus respectivas imágenes de portada (poster)
+// Videos - SOLUCIÓN SIMPLE para iOS y Android
 const videos = [
-    { src: "Video 10.mp4", poster: "video10-poster.png" },
-    { src: "Video 12.mp4", poster: "video12-poster.png" },
-    { src: "Video 4.mp4", poster: "video4-poster.png" },
-    { src: "Video 5.mp4", poster: "video5-poster.png" },
-    { src: "Video 8.mp4", poster: "video8-poster.png" }
+    { 
+        src: "Video 10.mp4", 
+        miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura1.png",
+        titulo: "Testimonio 1"
+    },
+    { 
+        src: "Video 12.mp4", 
+        miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura2.png",
+        titulo: "Testimonio 2"
+    },
+    { 
+        src: "Video 4.mp4", 
+        miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura3.png",
+        titulo: "Testimonio 3"
+    },
+    { 
+        src: "Video 5.mp4", 
+        miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura4.png",
+        titulo: "Testimonio 4"
+    },
+    { 
+        src: "Video 8.mp4", 
+        miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura5.png",
+        titulo: "Testimonio 5"
+    }
 ];
 
 const videosTrack = document.getElementById('videos-track');
+videosTrack.innerHTML = ''; // Limpiar contenido existente
 
 videos.forEach(video => {
+    // Crear tarjeta
     const card = document.createElement('div');
     card.className = 'video-card';
+    card.setAttribute('data-src', `https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video.src)}`);
     
-    // Crear elemento video con poster y atributos para iOS
-    const videoElement = document.createElement('video');
-    videoElement.src = `https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video.src)}`;
-    videoElement.poster = `https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video.poster)}`;
-    videoElement.setAttribute('playsinline', '');
-    videoElement.setAttribute('preload', 'metadata');
-    videoElement.setAttribute('webkit-playsinline', '');
+    // Agregar imagen de miniatura
+    const img = document.createElement('img');
+    img.src = video.miniatura;
+    img.alt = video.titulo;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
     
-    card.appendChild(videoElement);
+    card.appendChild(img);
     
-    // Evento para reproducir/pausar
-    videoElement.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (this.paused) {
-            // Pausar otros videos
-            document.querySelectorAll('.video-card video').forEach(v => {
-                if (v !== videoElement) {
-                    v.pause();
-                    v.parentElement.classList.remove('playing');
-                }
-            });
-            this.play();
-            this.parentElement.classList.add('playing');
-        } else {
-            this.pause();
-            this.parentElement.classList.remove('playing');
-        }
+    // Evento al hacer clic
+    card.addEventListener('click', function() {
+        const videoSrc = this.getAttribute('data-src');
+        
+        // Crear elemento de video
+        const videoElement = document.createElement('video');
+        videoElement.src = videoSrc;
+        videoElement.controls = true;
+        videoElement.autoplay = true;
+        videoElement.playsInline = true;
+        videoElement.style.width = '100%';
+        videoElement.style.height = '100%';
+        videoElement.style.objectFit = 'cover';
+        
+        // Reemplazar contenido
+        this.innerHTML = '';
+        this.appendChild(videoElement);
+        
+        // Quitar la clase playing de otros videos
+        document.querySelectorAll('.video-card').forEach(v => {
+            if (v !== this) {
+                v.classList.remove('playing');
+            }
+        });
+        this.classList.add('playing');
     });
     
     videosTrack.appendChild(card);
 });
 
-        const videosArrowLeft = document.getElementById('videos-arrow-left');
-        const videosArrowRight = document.getElementById('videos-arrow-right');
-        const videosCarruselTrack = document.getElementById('videos-track');
-        
-        let videosPosition = 0;
-        
-        function moverCarruselVideos(direccion) {
-            const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
-            videosPosition += direccion * cardWidth;
-            if (videosPosition < 0) videosPosition = 0;
-            if (videosPosition > maxScroll) videosPosition = maxScroll;
-            videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
-        }
-        
-        videosArrowLeft.addEventListener('click', () => moverCarruselVideos(-1));
-        videosArrowRight.addEventListener('click', () => moverCarruselVideos(1));
-        
-        setInterval(() => {
-            moverCarruselVideos(1);
-            if (videosPosition >= videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth) {
-                videosPosition = 0;
-                videosCarruselTrack.style.transform = 'translateX(0)';
-            }
-        }, 4000);
+// Resto del código del carrusel (flechas, auto-play) se mantiene igual
+const videosArrowLeft = document.getElementById('videos-arrow-left');
+const videosArrowRight = document.getElementById('videos-arrow-right');
+const videosCarruselTrack = document.getElementById('videos-track');
+const cardWidth = 320; // Ajusta según tu diseño
+
+let videosPosition = 0;
+
+function moverCarruselVideos(direccion) {
+    const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
+    videosPosition += direccion * cardWidth;
+    if (videosPosition < 0) videosPosition = 0;
+    if (videosPosition > maxScroll) videosPosition = maxScroll;
+    videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
+}
+
+videosArrowLeft.addEventListener('click', () => moverCarruselVideos(-1));
+videosArrowRight.addEventListener('click', () => moverCarruselVideos(1));
+
+setInterval(() => {
+    moverCarruselVideos(1);
+    if (videosPosition >= videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth) {
+        videosPosition = 0;
+        videosCarruselTrack.style.transform = 'translateX(0)';
+    }
+}, 4000);
 
         function actualizarContadorCarrito() {
             const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
@@ -1095,4 +1137,5 @@ videos.forEach(video => {
     </script>
 </body>
 </html>
+
 
