@@ -38,7 +38,7 @@
             width: 100%;
         }
         
-        /* Header - CONFIGURACIÓN ESTÁNDAR PARA TODAS LAS PÁGINAS */
+        /* Header - CORREGIDO: menú perfectamente centrado */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -58,12 +58,11 @@
             width: 100%;
         }
         
-        /* Logo - TAMAÑO ESTÁNDAR PARA TODAS LAS PÁGINAS */
+        /* Logo - tamaño fijo */
         .logo-link {
             display: block;
-            width: 220px;
+            width: 180px;
             flex-shrink: 0;
-            margin-left: -10px;
         }
         
         .logo-img {
@@ -72,11 +71,12 @@
             display: block;
         }
         
-        /* Menú - PERFECTAMENTE CENTRADO (estándar) */
+        /* Menú - PERFECTAMENTE CENTRADO con flex y margin auto */
         .nav-links {
             display: flex;
             gap: 2.5rem;
             align-items: center;
+            margin: 0 auto; /* Esto centra el menú */
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -96,19 +96,13 @@
             color: #c68642;
         }
         
-        .nav-links a.active {
-            color: #c68642;
-            border-bottom: 2px solid #c68642;
-            padding-bottom: 3px;
-        }
-        
-        /* Carrito - FIJO A LA DERECHA (estándar) */
+        /* Carrito - FIJO A LA DERECHA */
         .carrito-link {
             position: relative;
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-left: auto;
+            margin-left: auto; /* Empuja a la derecha */
             display: flex;
             align-items: center;
         }
@@ -417,7 +411,7 @@
             font-family: 'Merriweather', serif;
         }
         
-        /* Sección Simple y saludable */
+        /* Sección Simple y saludable - OCUPA TODO EL ANCHO */
         .simple-saludable-section {
             display: flex;
             width: 100%;
@@ -473,7 +467,7 @@
             background-color: #a63d2a;
         }
         
-        /* Sección de Servicios */
+        /* Sección de Servicios (3 columnas) */
         .servicios-section {
             background-color: #4e342e;
             padding: 5rem 2%;
@@ -630,15 +624,14 @@
             width: 100%;
         }
         
-        /* Responsive - Tablet */
+        /* Responsive */
         @media (max-width: 768px) {
             nav {
                 padding: 0.5rem 3%;
             }
             
             .logo-link {
-                width: 160px;
-                margin-left: -8px;
+                width: 130px;
             }
             
             .nav-links {
@@ -646,7 +639,7 @@
             }
             
             .nav-links a {
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
             
             .carrito-link img {
@@ -750,11 +743,10 @@
             }
         }
 
-        /* Responsive - Móvil (con logo de 80px como pediste) */
         @media (max-width: 480px) {
             .logo-link {
-                width: 80px;  /* Reducido a 80px para móvil */
-                margin-left: -0.2rem;
+                width: 80px; /* Aumentado de 100px a 140px */
+                margin-left: -0.15rem;
             }
             
             .nav-links {
@@ -780,7 +772,7 @@
         Obtén la tuya ya!
     </div>
 
-    <!-- Header - CONFIGURACIÓN ESTÁNDAR -->
+    <!-- Header - CON MENÚ PERFECTAMENTE CENTRADO -->
     <header>
         <nav>
             <!-- Logo izquierda -->
@@ -788,7 +780,7 @@
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú centrado -->
+            <!-- Menú PERFECTAMENTE CENTRADO -->
             <div class="nav-links">
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
@@ -1021,20 +1013,12 @@
         const videos = ["Video 10.mp4", "Video 12.mp4", "Video 4.mp4", "Video 5.mp4", "Video 8.mp4"];
         const videosTrack = document.getElementById('videos-track');
         
-        const baseVideoUrl = "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/";
-        
         videos.forEach(video => {
             const card = document.createElement('div');
             card.className = 'video-card';
+            card.innerHTML = `<video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline></video>`;
             
-            const videoElement = document.createElement('video');
-            videoElement.src = baseVideoUrl + encodeURIComponent(video);
-            videoElement.setAttribute('playsinline', '');
-            videoElement.setAttribute('webkit-playsinline', '');
-            videoElement.setAttribute('preload', 'metadata');
-            
-            card.appendChild(videoElement);
-            
+            const videoElement = card.querySelector('video');
             card.addEventListener('click', function() {
                 if (videoElement.paused) {
                     document.querySelectorAll('.video-card video').forEach(v => {
@@ -1043,15 +1027,13 @@
                             v.parentElement.classList.remove('playing');
                         }
                     });
-                    
-                    videoElement.play().catch(e => console.log("Error reproduciendo:", e));
+                    videoElement.play();
                     this.classList.add('playing');
                 } else {
                     videoElement.pause();
                     this.classList.remove('playing');
                 }
             });
-            
             videosTrack.appendChild(card);
         });
 
@@ -1063,7 +1045,7 @@
         
         function moverCarruselVideos(direccion) {
             const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
-            videosPosition += direccion * 300;
+            videosPosition += direccion * cardWidth;
             if (videosPosition < 0) videosPosition = 0;
             if (videosPosition > maxScroll) videosPosition = maxScroll;
             videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
