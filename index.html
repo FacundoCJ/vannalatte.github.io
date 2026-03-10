@@ -38,7 +38,7 @@
             width: 100%;
         }
         
-        /* Header - CORREGIDO: menú perfectamente centrado */
+        /* Header - CONFIGURACIÓN ESTÁNDAR PARA TODAS LAS PÁGINAS */
         header {
             background-color: #4e342e;
             position: sticky;
@@ -52,18 +52,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 2%; /* Reducido padding lateral para que el logo esté más pegado */
+            padding: 0.5rem 5%;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
         
-        /* Logo - MÁS GRANDE Y PEGADO A LA IZQUIERDA */
+        /* Logo - TAMAÑO ESTÁNDAR PARA TODAS LAS PÁGINAS */
         .logo-link {
             display: block;
-            width: 220px; /* Aumentado de 180px a 220px */
+            width: 220px;
             flex-shrink: 0;
-            margin-left: -1rem; /* Lo pega más a la izquierda */
+            margin-left: -10px;
         }
         
         .logo-img {
@@ -72,12 +72,11 @@
             display: block;
         }
         
-        /* Menú - PERFECTAMENTE CENTRADO con flex y margin auto */
+        /* Menú - PERFECTAMENTE CENTRADO (estándar) */
         .nav-links {
             display: flex;
             gap: 2.5rem;
             align-items: center;
-            margin: 0 auto; /* Esto centra el menú */
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -97,13 +96,19 @@
             color: #c68642;
         }
         
-        /* Carrito - FIJO A LA DERECHA */
+        .nav-links a.active {
+            color: #c68642;
+            border-bottom: 2px solid #c68642;
+            padding-bottom: 3px;
+        }
+        
+        /* Carrito - FIJO A LA DERECHA (estándar) */
         .carrito-link {
             position: relative;
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-left: auto; /* Empuja a la derecha */
+            margin-left: auto;
             display: flex;
             align-items: center;
         }
@@ -318,7 +323,7 @@
             background-color: #a63d2a;
         }
         
-        /* Tarjetas de video - CORREGIDO PARA iOS */
+        /* Tarjetas de video */
         .video-card {
             min-width: 280px;
             max-width: 320px;
@@ -412,7 +417,7 @@
             font-family: 'Merriweather', serif;
         }
         
-        /* Sección Simple y saludable - OCUPA TODO EL ANCHO */
+        /* Sección Simple y saludable */
         .simple-saludable-section {
             display: flex;
             width: 100%;
@@ -468,7 +473,7 @@
             background-color: #a63d2a;
         }
         
-        /* Sección de Servicios (3 columnas) */
+        /* Sección de Servicios */
         .servicios-section {
             background-color: #4e342e;
             padding: 5rem 2%;
@@ -625,15 +630,15 @@
             width: 100%;
         }
         
-        /* Responsive */
+        /* Responsive - Tablet */
         @media (max-width: 768px) {
             nav {
-                padding: 0.5rem 1%; /* Reducido aún más en móvil */
+                padding: 0.5rem 3%;
             }
             
             .logo-link {
-                width: 100px; /* Aumentado de 130px a 160px */
-                margin-left: -2rem; /* Lo pega más a la izquierda en móvil */
+                width: 160px;
+                margin-left: -8px;
             }
             
             .nav-links {
@@ -641,7 +646,7 @@
             }
             
             .nav-links a {
-                font-size: 1rem; /* Aumentado de 0.8rem a 1rem */
+                font-size: 1rem;
             }
             
             .carrito-link img {
@@ -745,9 +750,10 @@
             }
         }
 
+        /* Responsive - Móvil (con logo de 80px como pediste) */
         @media (max-width: 480px) {
             .logo-link {
-                width: 80px; /* Aumentado de 100px a 140px */
+                width: 80px;  /* Reducido a 80px para móvil */
                 margin-left: -0.2rem;
             }
             
@@ -774,15 +780,15 @@
         Obtén la tuya ya!
     </div>
 
-    <!-- Header - CON MENÚ PERFECTAMENTE CENTRADO -->
+    <!-- Header - CONFIGURACIÓN ESTÁNDAR -->
     <header>
         <nav>
-            <!-- Logo izquierda - MÁS GRANDE Y PEGADO -->
+            <!-- Logo izquierda -->
             <a href="index.html" class="logo-link">
                 <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
             </a>
             
-            <!-- Menú PERFECTAMENTE CENTRADO -->
+            <!-- Menú centrado -->
             <div class="nav-links">
                 <a href="catalogo.html">Catálogo</a>
                 <a href="recetas.html">Recetas</a>
@@ -1015,14 +1021,20 @@
         const videos = ["Video 10.mp4", "Video 12.mp4", "Video 4.mp4", "Video 5.mp4", "Video 8.mp4"];
         const videosTrack = document.getElementById('videos-track');
         
+        const baseVideoUrl = "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/";
+        
         videos.forEach(video => {
             const card = document.createElement('div');
             card.className = 'video-card';
-            // Extraemos el número del video para crear una imagen de preview
-            const videoNum = video.match(/\d+/)[0];
-            card.innerHTML = `<video src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video)}" playsinline poster="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/poster-${videoNum}.jpg"></video>`;
             
-            const videoElement = card.querySelector('video');
+            const videoElement = document.createElement('video');
+            videoElement.src = baseVideoUrl + encodeURIComponent(video);
+            videoElement.setAttribute('playsinline', '');
+            videoElement.setAttribute('webkit-playsinline', '');
+            videoElement.setAttribute('preload', 'metadata');
+            
+            card.appendChild(videoElement);
+            
             card.addEventListener('click', function() {
                 if (videoElement.paused) {
                     document.querySelectorAll('.video-card video').forEach(v => {
@@ -1031,13 +1043,15 @@
                             v.parentElement.classList.remove('playing');
                         }
                     });
-                    videoElement.play();
+                    
+                    videoElement.play().catch(e => console.log("Error reproduciendo:", e));
                     this.classList.add('playing');
                 } else {
                     videoElement.pause();
                     this.classList.remove('playing');
                 }
             });
+            
             videosTrack.appendChild(card);
         });
 
@@ -1049,7 +1063,7 @@
         
         function moverCarruselVideos(direccion) {
             const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
-            videosPosition += direccion * cardWidth;
+            videosPosition += direccion * 300;
             if (videosPosition < 0) videosPosition = 0;
             if (videosPosition > maxScroll) videosPosition = maxScroll;
             videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
@@ -1079,8 +1093,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
