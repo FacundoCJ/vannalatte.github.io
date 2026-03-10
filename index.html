@@ -76,7 +76,7 @@
             display: flex;
             gap: 2.5rem;
             align-items: center;
-            margin: 0 auto; /* Esto centra el menú */
+            margin: 0 auto;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -102,7 +102,7 @@
             color: white;
             text-decoration: none;
             flex-shrink: 0;
-            margin-left: auto; /* Empuja a la derecha */
+            margin-left: auto;
             display: flex;
             align-items: center;
         }
@@ -317,7 +317,7 @@
             background-color: #a63d2a;
         }
         
-        /* Tarjetas de video - NUEVO ESTILO CON MINIATURAS */
+        /* Tarjetas de video - CON MINIATURAS Y PLAY/PAUSA */
         .video-card {
             min-width: 280px;
             max-width: 320px;
@@ -848,7 +848,7 @@
     <!-- Espacio beige -->
     <div class="espacio-beige"></div>
 
-    <!-- Carrusel de videos - VERSIÓN CORREGIDA CON MINIATURAS -->
+    <!-- Carrusel de videos - CON PLAY/PAUSA -->
     <section class="videos-carrusel-section">
         <div class="carrusel-wrapper">
             <button class="carrusel-arrow arrow-left" id="videos-arrow-left">←</button>
@@ -1019,33 +1019,33 @@
         }, 3000);
 
         // ============================================
-        // VIDEOS CON MINIATURAS - SOLUCIÓN PARA iOS
+        // VIDEOS CON MINIATURAS Y PLAY/PAUSA
         // ============================================
         const videos = [
             { 
                 src: "Video 10.mp4", 
                 miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura10.png",
-                titulo: "Testimonio 1"
+                titulo: "Testimonio 10"
             },
             { 
                 src: "Video 12.mp4", 
                 miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura12.png",
-                titulo: "Testimonio 2"
+                titulo: "Testimonio 12"
             },
             { 
                 src: "Video 4.mp4", 
                 miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura4.png",
-                titulo: "Testimonio 3"
+                titulo: "Testimonio 4"
             },
             { 
                 src: "Video 5.mp4", 
                 miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura5.png",
-                titulo: "Testimonio 4"
+                titulo: "Testimonio 5"
             },
             { 
                 src: "Video 8.mp4", 
                 miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura8.png",
-                titulo: "Testimonio 5"
+                titulo: "Testimonio 8"
             }
         ];
 
@@ -1057,6 +1057,7 @@
             const card = document.createElement('div');
             card.className = 'video-card';
             card.setAttribute('data-src', `https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video.src)}`);
+            card.setAttribute('data-miniatura', video.miniatura);
             
             // Agregar imagen de miniatura
             const img = document.createElement('img');
@@ -1065,31 +1066,57 @@
             
             card.appendChild(img);
             
+            // Variable para saber si ya se cargó el video
+            let videoCargado = false;
+            let videoElement = null;
+            
             // Evento al hacer clic
-            card.addEventListener('click', function() {
-                const videoSrc = this.getAttribute('data-src');
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
                 
-                // Crear elemento de video
-                const videoElement = document.createElement('video');
-                videoElement.src = videoSrc;
+                // Si ya hay un video cargado
+                if (videoCargado && videoElement) {
+                    // Si está reproduciendo, pausar
+                    if (!videoElement.paused) {
+                        videoElement.pause();
+                        this.classList.remove('playing');
+                    } else {
+                        // Si está pausado, reproducir
+                        videoElement.play();
+                        this.classList.add('playing');
+                    }
+                    return;
+                }
+                
+                // Primera vez que se hace clic - cargar video
+                videoElement = document.createElement('video');
+                videoElement.src = this.getAttribute('data-src');
                 videoElement.controls = true;
-                videoElement.autoplay = true;
                 videoElement.playsInline = true;
                 videoElement.style.width = '100%';
                 videoElement.style.height = '100%';
                 videoElement.style.objectFit = 'cover';
                 
+                // Pausar otros videos
+                document.querySelectorAll('.video-card video').forEach(v => {
+                    v.pause();
+                    v.parentElement.classList.remove('playing');
+                });
+                
                 // Reemplazar contenido
                 this.innerHTML = '';
                 this.appendChild(videoElement);
                 
-                // Quitar la clase playing de otros videos
-                document.querySelectorAll('.video-card').forEach(v => {
-                    if (v !== this) {
-                        v.classList.remove('playing');
-                    }
-                });
+                videoCargado = true;
+                
+                // Reproducir automáticamente
+                videoElement.play();
                 this.classList.add('playing');
+                
+                // Evento cuando termina el video (opcional)
+                videoElement.addEventListener('ended', () => {
+                    this.classList.remove('playing');
+                });
             });
             
             videosTrack.appendChild(card);
