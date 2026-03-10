@@ -23,6 +23,9 @@
             color: #4e342e;
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         h1, h2, h3, h4 {
@@ -138,6 +141,12 @@
             font-family: 'Poppins', sans-serif;
         }
         
+        /* Contenedor principal que ocupa todo el espacio disponible */
+        main {
+            flex: 1;
+            width: 100%;
+        }
+        
         /* Título de la página - MERRIWEATHER */
         .page-title {
             text-align: center;
@@ -160,7 +169,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 0;
         }
         
         /* Tarjeta de receta */
@@ -205,7 +214,7 @@
             max-width: 250px;
         }
         
-        /* Footer con fondo marrón */
+        /* Footer con fondo marrón - AHORA OCUPA TODO EL ANCHO */
         footer {
             background-color: #4e342e;
             padding: 3rem 0 3rem 2%;
@@ -384,78 +393,82 @@
         </nav>
     </header>
 
-    <!-- Título Recetas - MERRIWEATHER -->
-    <h1 class="page-title">Recetas</h1>
+    <!-- Contenido principal -->
+    <main>
+        <!-- Título Recetas - MERRIWEATHER -->
+        <h1 class="page-title">Recetas</h1>
 
-    <!-- Grid de recetas -->
-    <div class="recetas-container">
-        <div class="recetas-grid">
-            <!-- Receta 1 -->
-            <div class="receta-card" onclick="window.location.href='receta1.html'">
-                <div class="receta-imagen">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta1.jpg" alt="Smoothie de mantequilla de maní y platano">
+        <!-- Grid de recetas -->
+        <div class="recetas-container">
+            <div class="recetas-grid">
+                <!-- Receta 1 -->
+                <div class="receta-card" onclick="window.location.href='receta1.html'">
+                    <div class="receta-imagen">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta1.jpg" alt="Smoothie de mantequilla de maní y platano">
+                    </div>
+                    <div class="receta-titulo">Smoothie de mantequilla de maní y platano</div>
                 </div>
-                <div class="receta-titulo">Smoothie de mantequilla de maní y platano</div>
-            </div>
-            
-            <!-- Receta 2 -->
-            <div class="receta-card" onclick="window.location.href='receta2.html'">
-                <div class="receta-imagen">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta2.jpeg" alt="Avena nocturna">
+                
+                <!-- Receta 2 -->
+                <div class="receta-card" onclick="window.location.href='receta2.html'">
+                    <div class="receta-imagen">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta2.jpeg" alt="Avena nocturna">
+                    </div>
+                    <div class="receta-titulo">Avena nocturna</div>
                 </div>
-                <div class="receta-titulo">Avena nocturna</div>
-            </div>
-            
-            <!-- Receta 3 -->
-            <div class="receta-card" onclick="window.location.href='receta3.html'">
-                <div class="receta-imagen">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta3.jpg" alt="Brownies saludables">
+                
+                <!-- Receta 3 -->
+                <div class="receta-card" onclick="window.location.href='receta3.html'">
+                    <div class="receta-imagen">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta3.jpg" alt="Brownies saludables">
+                    </div>
+                    <div class="receta-titulo">Brownies saludables</div>
                 </div>
-                <div class="receta-titulo">Brownies saludables</div>
-            </div>
-            
-            <!-- Receta 4 -->
-            <div class="receta-card" onclick="window.location.href='receta4.html'">
-                <div class="receta-imagen">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta4.jpg" alt="Pie de limón saludable">
+                
+                <!-- Receta 4 -->
+                <div class="receta-card" onclick="window.location.href='receta4.html'">
+                    <div class="receta-imagen">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta4.jpg" alt="Pie de limón saludable">
+                    </div>
+                    <div class="receta-titulo">Pie de limón saludable</div>
                 </div>
-                <div class="receta-titulo">Pie de limón saludable</div>
-            </div>
-            
-            <!-- Receta 5 -->
-            <div class="receta-card" onclick="window.location.href='receta5.html'">
-                <div class="receta-imagen">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta5.jpg" alt="Keke de café">
+                
+                <!-- Receta 5 -->
+                <div class="receta-card" onclick="window.location.href='receta5.html'">
+                    <div class="receta-imagen">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta5.jpg" alt="Keke de café">
+                    </div>
+                    <div class="receta-titulo">Keke de café</div>
                 </div>
-                <div class="receta-titulo">Keke de café</div>
-            </div>
-            
-            <!-- Receta 6 -->
-            <div class="receta-card" onclick="window.location.href='receta6.html'">
-                <div class="receta-imagen">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta6.webp" alt="Big cookie proteíco">
+                
+                <!-- Receta 6 -->
+                <div class="receta-card" onclick="window.location.href='receta6.html'">
+                    <div class="receta-imagen">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta6.webp" alt="Big cookie proteíco">
+                    </div>
+                    <div class="receta-titulo">Big cookie proteíco</div>
                 </div>
-                <div class="receta-titulo">Big cookie proteíco</div>
-            </div>
-            
-            <!-- Receta 7 -->
-            <div class="receta-card" onclick="window.location.href='receta7.html'">
-                <div class="receta-imagen">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta7.jpg" alt="Ferrero fit">
+                
+                <!-- Receta 7 -->
+                <div class="receta-card" onclick="window.location.href='receta7.html'">
+                    <div class="receta-imagen">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta7.jpg" alt="Ferrero fit">
+                    </div>
+                    <div class="receta-titulo">Ferrero fit</div>
                 </div>
-                <div class="receta-titulo">Ferrero fit</div>
-            </div>
-            
-            <!-- Receta 8 -->
-            <div class="receta-card" onclick="window.location.href='receta8.html'">
-                <div class="receta-imagen">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta8.jpg" alt="Bolitas de chocolate">
+                
+                <!-- Receta 8 -->
+                <div class="receta-card" onclick="window.location.href='receta8.html'">
+                    <div class="receta-imagen">
+                        <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/receta8.jpg" alt="Bolitas de chocolate">
+                    </div>
+                    <div class="receta-titulo">Bolitas de chocolate</div>
                 </div>
-                <div class="receta-titulo">Bolitas de chocolate</div>
             </div>
-   </div>
+        </div>
+    </main>
 
-    <!-- Footer -->
+    <!-- Footer (fuera del main, ocupa todo el ancho) -->
     <footer>
         <div class="footer-container">
             <div class="footer-content">
@@ -506,7 +519,4 @@
         document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
     </script>
 </body>
-
 </html>
-
-
