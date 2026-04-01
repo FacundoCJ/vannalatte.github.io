@@ -606,16 +606,18 @@
             }, 1000);
         }
 
-        // Datos de productos
+        // ============================================
+        // DATOS DE PRODUCTOS ACTUALIZADOS (8 productos)
+        // ============================================
         const productos = [
-            // Mantequilla de chocomaní - 250gr
+            // 1. Mantequilla de chocomanía - 250gr
             {
                 nombreCompleto: "Mantequilla de chocomanía – 250gr",
                 nombreSimple: "Mantequilla de chocomanía",
                 presentacion: "250gr",
                 precio: 19.00,
                 ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20chocomani.PNG",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/chocomania-250.png",
                 nutricion: {
                     porcion: "15g - 1 cucharada",
                     proteina: "3.6g",
@@ -624,14 +626,14 @@
                     energia: "87kcal"
                 }
             },
-            // Mantequilla de maní clásica - 250gr
+            // 2. Mantequilla de maní clásica - 250gr
             {
                 nombreCompleto: "Mantequilla de maní clásica – 250gr",
                 nombreSimple: "Mantequilla de maní clásica",
                 presentacion: "250gr",
                 precio: 19.00,
                 ingredientes: ["Maní tostado"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20clasica.PNG",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/clasica-250.png",
                 nutricion: {
                     porcion: "15g - 1 cucharada",
                     proteina: "3.8g",
@@ -640,14 +642,14 @@
                     energia: "88kcal"
                 }
             },
-            // Mantequilla de maní la favorita - 250gr
+            // 3. Mantequilla de maní la favorita - 250gr
             {
                 nombreCompleto: "Mantequilla de maní la favorita – 250gr",
                 nombreSimple: "Mantequilla de maní la favorita",
                 presentacion: "250gr",
                 precio: 19.00,
                 ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla%20de%20mani%20la%20favorita.PNG",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/favorita-250.png",
                 nutricion: {
                     porcion: "15g - 1 cucharada",
                     proteina: "3.7g",
@@ -656,14 +658,14 @@
                     energia: "85kcal"
                 }
             },
-            // Mantequilla de chocomaní - 400gr
+            // 4. Mantequilla de chocomanía - 420gr
             {
-                nombreCompleto: "Mantequilla de chocomanía – 400gr",
+                nombreCompleto: "Mantequilla de chocomanía – 420gr",
                 nombreSimple: "Mantequilla de chocomanía",
-                presentacion: "400gr",
+                presentacion: "420gr",
                 precio: 30.00,
                 ingredientes: ["Maní tostado", "Edulcorante", "Cacao"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla de chocomani 2.png",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/chocomania-420.png",
                 nutricion: {
                     porcion: "15g - 1 cucharada",
                     proteina: "3.6g",
@@ -672,14 +674,14 @@
                     energia: "87kcal"
                 }
             },
-            // Mantequilla de maní clásica - 400gr
+            // 5. Mantequilla de maní clásica - 420gr
             {
-                nombreCompleto: "Mantequilla de maní clásica – 400gr",
+                nombreCompleto: "Mantequilla de maní clásica – 420gr",
                 nombreSimple: "Mantequilla de maní clásica",
-                presentacion: "400gr",
+                presentacion: "420gr",
                 precio: 30.00,
                 ingredientes: ["Maní tostado"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla de mani clasica 2.png",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/clasica-420.png",
                 nutricion: {
                     porcion: "15g - 1 cucharada",
                     proteina: "3.8g",
@@ -688,14 +690,14 @@
                     energia: "88kcal"
                 }
             },
-            // Mantequilla de maní la favorita - 400gr
+            // 6. Mantequilla de maní la favorita - 420gr
             {
-                nombreCompleto: "Mantequilla de maní la favorita – 400gr",
+                nombreCompleto: "Mantequilla de maní la favorita – 420gr",
                 nombreSimple: "Mantequilla de maní la favorita",
-                presentacion: "400gr",
+                presentacion: "420gr",
                 precio: 30.00,
                 ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras"],
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequilla de mani la favorita 2.png",
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/favorita-420.png",
                 nutricion: {
                     porcion: "15g - 1 cucharada",
                     proteina: "3.7g",
@@ -703,11 +705,44 @@
                     carbohidratos: "2.0g",
                     energia: "85kcal"
                 }
+            },
+            // 7. Salted Caramel - 420gr (NUEVO)
+            {
+                nombreCompleto: "Salted Caramel – 420gr",
+                nombreSimple: "Salted Caramel",
+                presentacion: "420gr",
+                precio: 34.00,
+                ingredientes: ["Maní tostado", "Edulcorante", "Sal de maras", "Caramelo salado"],
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/caramel-420.png",
+                nutricion: {
+                    porcion: "15g - 1 cucharada",
+                    proteina: "7.5g",
+                    grasas: "3.8g",
+                    carbohidratos: "3.0g",
+                    energia: "88kcal"
+                }
+            },
+            // 8. Cashews - 420gr (NUEVO)
+            {
+                nombreCompleto: "Cashews – 420gr",
+                nombreSimple: "Cashews",
+                presentacion: "420gr",
+                precio: 58.00,
+                ingredientes: ["Nuez de la India (cashews)", "Edulcorante", "Sal de maras"],
+                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/cashews-420.png",
+                nutricion: {
+                    porcion: "15g - 1 cucharada",
+                    proteina: "2.7g",
+                    grasas: "6.6g",
+                    carbohidratos: "4.5g",
+                    energia: "83kcal"
+                }
             }
         ];
 
         // Cargar productos
         const grid = document.getElementById('productos-grid');
+        grid.innerHTML = ''; // Limpiar contenido existente
         
         productos.forEach((producto, index) => {
             const card = document.createElement('div');
