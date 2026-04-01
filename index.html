@@ -2,1278 +2,1471 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vannalatte - Mantequillas Artesanales</title>
-    
-    <!-- Fuentes Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Siempre Nuevo</title>
+    <link rel="icon" type="image/png" href="fotos/logo-sn.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Merriweather', serif;
-            background-color: #ebe5df;
-            color: #4e342e;
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'DM Sans', sans-serif;
+            background-color: #ffffff;
         }
-        
-        /* Barra superior - Obtén la tuya ya! */
-        .top-bar {
-            background-color: #c68642;
-            padding: 6px 0;
-            text-align: center;
-            font-family: 'Merriweather', serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: white;
-            letter-spacing: 0.5px;
-            width: 100%;
-        }
-        
-        /* Header - CORREGIDO: menú perfectamente centrado */
-        header {
-            background-color: #4e342e;
-            position: sticky;
+
+        /* MENU DESPLEGABLE - SIDEBAR */
+        .sidebar {
+            position: fixed;
             top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        
-        /* Logo - tamaño fijo */
-        .logo-link {
-            display: block;
-            width: 180px;
-            flex-shrink: 0;
-        }
-        
-        .logo-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Menú - PERFECTAMENTE CENTRADO con flex y margin auto */
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-            margin: 0 auto;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Merriweather', serif;
-            font-weight: 500;
-            font-size: 1.3rem;
-            transition: color 0.3s;
-            white-space: nowrap;
-        }
-        
-        .nav-links a:hover {
-            color: #c68642;
-        }
-        
-        /* Carrito - FIJO A LA DERECHA */
-        .carrito-link {
-            position: relative;
-            color: white;
-            text-decoration: none;
-            flex-shrink: 0;
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-        }
-        
-        .carrito-link img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-        
-        .carrito-contador {
-            position: absolute;
-            top: -3px;
-            right: -5px;
-            background-color: #c24a34;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: bold;
-            min-width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/fondo.png");
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            width: 100%;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            text-align: center;
-            padding-bottom: 4rem;
-        }
-        
-        /* Botón principal */
-        .btn {
-            display: inline-block;
-            padding: 14px 40px;
-            background-color: #c24a34;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        
-        .btn:hover {
-            background-color: #a63d2a;
-            transform: translateY(-2px);
-        }
-        
-        /* Botón subrayado (Comprar ahora >) */
-        .btn-subrayado {
-            display: inline-block;
-            color: #4e342e;
-            text-decoration: underline;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            transition: color 0.3s;
-            font-weight: 400;
-        }
-        
-        .btn-subrayado:hover {
-            color: #c68642;
-        }
-        
-        /* Sección Mantequillas título */
-        .mantequillas-titulo {
-            text-align: center;
-            padding: 4rem 5% 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .mantequillas-titulo h2 {
-            font-size: 2.5rem;
-            color: #4e342e;
-            margin-bottom: 0.5rem;
-            font-family: 'Merriweather', serif;
-        }
-        
-        .mantequillas-titulo p {
-            font-size: 1.1rem;
-            color: #4e342e;
-            opacity: 0.8;
-            font-family: 'Merriweather', serif;
-        }
-        
-        /* Carrusel de productos */
-        .productos-carrusel-section {
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto 2rem;
-            padding: 0 5%;
-            width: 100%;
-        }
-        
-        /* Carrusel de videos */
-        .videos-carrusel-section {
-            position: relative;
-            max-width: 1200px;
-            margin: 3rem auto 4rem;
-            padding: 0 5%;
-        }
-        
-        .carrusel-wrapper {
-            position: relative;
-            overflow: hidden;
-            padding: 1rem 0;
-        }
-        
-        .carrusel-track {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.5s ease;
-        }
-        
-        .producto-card {
-            min-width: 350px;
-            max-width: 400px;
-            background: transparent;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-        
-        .producto-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .producto-img {
-            height: 350px;
-            width: 100%;
-            overflow: hidden;
-            background-color: transparent;
-            padding: 0;
-        }
-        
-        .producto-img img {
-            width: 100%;
+            left: -320px;
+            width: 300px;
             height: 100%;
-            object-fit: contain;
+            background-color: white;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
         }
-        
-        .producto-info {
-            padding: 1.5rem 0.5rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
-        .producto-info h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.2rem;
-            color: #4e342e;
-            margin-bottom: 0.5rem;
-        }
-        
-        .producto-presentacion {
-            font-family: 'Merriweather', serif;
-            color: #4e342e;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .producto-precio {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #c24a34;
-            margin: 0.5rem 0 1rem;
-        }
-        
-        .btn-carrito {
-            background-color: #c24a34;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            width: 100%;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: background-color 0.3s;
-            margin-top: auto;
-        }
-        
-        .btn-carrito:hover {
-            background-color: #a63d2a;
-        }
-        
-        /* Tarjetas de video - CON MINIATURAS Y PLAY/PAUSA */
-        .video-card {
-            min-width: 280px;
-            max-width: 320px;
-            background: #000;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            flex-shrink: 0;
-            cursor: pointer;
-            position: relative;
-            aspect-ratio: 9/16;
-        }
-        
-        .video-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .video-card video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .video-card::before {
-            content: '▶️';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            z-index: 2;
-            pointer-events: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        
-        .video-card.playing::before {
-            opacity: 0;
-        }
-        
-        /* Flechas de navegación */
-        .carrusel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #4e342e;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: none;
-            font-size: 1.2rem;
-            transition: background-color 0.3s;
-            z-index: 10;
-            opacity: 0.8;
-        }
-        
-        .carrusel-arrow:hover {
-            background-color: #c68642;
-            opacity: 1;
-        }
-        
-        .arrow-left {
+
+        .sidebar.open {
             left: 0;
         }
-        
-        .arrow-right {
-            right: 0;
-        }
-        
-        /* Sección Nuestras mantequillas */
-        .nuestras-mantequillas-section {
-            text-align: center;
-            padding: 3rem 5% 4rem;
-            background-color: #ebe5df;
-        }
-        
-        .nuestras-mantequillas-section .small-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            color: #4e342e;
-        }
-        
-        .nuestras-mantequillas-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #4e342e;
-            font-family: 'Merriweather', serif;
-        }
-        
-        /* Sección Simple y saludable - OCUPA TODO EL ANCHO */
-        .simple-saludable-section {
+
+        .sidebar-header {
             display: flex;
-            width: 100%;
-            background-color: #4e342e;
-            margin: 0 auto;
+            justify-content: flex-end;
+            margin-bottom: 2rem;
         }
-        
-        .simple-saludable-image {
-            flex: 1;
-            width: 50%;
+
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #0c3a6a;
+            transition: transform 0.2s ease;
         }
-        
-        .simple-saludable-image img {
+
+        .close-menu:hover {
+            transform: scale(1.1);
+            color: #ff914d;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .sidebar-menu a {
+            color: #0c3a6a;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #e7f3ff;
+        }
+
+        .sidebar-menu a:hover {
+            color: #ff914d;
+            transform: translateX(5px);
+            border-bottom-color: #ff914d;
+        }
+
+        /* Overlay para cerrar el menú al hacer clic fuera */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+
+        .overlay.active {
             display: block;
         }
-        
-        .simple-saludable-content {
-            flex: 1;
-            width: 50%;
-            background-color: #4e342e;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 3rem;
+
+        /* BARRA SUPERIOR FIJA - ANCHO REDUCIDO */
+        .navbar {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(2px);
+            border-radius: 60px;
+            padding: 0.7rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
-        
-        .simple-saludable-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Merriweather', serif;
-            color: #ebe5df;
-        }
-        
-        .simple-saludable-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            font-family: 'Poppins', sans-serif;
-            color: #ebe5df;
-        }
-        
-        .simple-saludable-content .btn {
-            background-color: #c24a34;
-            color: white;
-            border: none;
-        }
-        
-        .simple-saludable-content .btn:hover {
-            background-color: #a63d2a;
-        }
-        
-        /* Sección de Servicios (3 columnas) */
-        .servicios-section {
-            background-color: #4e342e;
-            padding: 5rem 2%;
-            color: white;
+
+        .navbar-content {
             width: 100%;
-        }
-        
-        .servicios-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .servicio-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-        }
-        
-        .servicio-item:first-child {
-            justify-content: flex-start;
-        }
-        
-        .servicio-item:nth-child(2) {
-            justify-content: center;
-        }
-        
-        .servicio-item:last-child {
-            justify-content: flex-end;
-        }
-        
-        .servicio-icono {
-            width: 200px;
-            height: 200px;
-            flex-shrink: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border: 4px solid white;
-            border-radius: 50%;
-            padding: 30px;
+            justify-content: space-between;
         }
-        
-        .servicio-icono img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-        
-        .servicio-contenido {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .servicio-contenido h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-        
-        .servicio-contenido p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            color: white;
-            opacity: 0.9;
-            line-height: 1.5;
-            max-width: 300px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #ebe5df;
-            padding: 2rem 2%;
-            width: 100%;
-        }
-        
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
+
+        .menu-icon {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            min-height: 200px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
-        
-        .footer-logo {
-            width: 350px;
-            flex-shrink: 0;
-            margin-left: 0;
-            display: flex;
-            align-items: center;
+        .menu-icon:hover {
+            transform: scale(1.02);
         }
-        
-        .footer-logo img {
-            width: 100%;
+        .menu-icon img {
+            width: 60px;
             height: auto;
             display: block;
         }
-        
-        .footer-contacto {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            margin-left: 0.2rem;
-            justify-content: center;
-        }
-        
-        .contacto-item {
+
+        .logo-icon {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: #4e342e;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
             cursor: pointer;
-            transition: color 0.3s;
-            white-space: nowrap;
-            line-height: 1.2;
+            transition: transform 0.2s ease;
         }
-        
-        .contacto-item:nth-child(2) {
-            margin-top: 0;
-            margin-bottom: 0;
+        .logo-icon:hover {
+            transform: scale(1.02);
         }
-        
-        .contacto-item img {
-            width: 45px;
-            height: 45px;
-            object-fit: contain;
-            filter: brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(500%) hue-rotate(330deg);
+        .logo-icon img {
+            height: 96px;
+            width: auto;
+            display: block;
         }
-        
-        .contacto-item span {
-            color: #4e342e;
-        }
-        
-        .contacto-item:hover {
-            color: #c68642;
-        }
-        
-        .contacto-item:hover img {
-            filter: brightness(0) saturate(100%) invert(55%) sepia(80%) saturate(400%) hue-rotate(340deg);
-        }
-        
-        /* Espacio beige */
-        .espacio-beige {
-            height: 2rem;
-            background-color: #ebe5df;
+
+        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
+        .hero-section {
+            position: relative;
             width: 100%;
+            min-height: 100vh;
+            background-image: url('fotos/carro.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            padding-top: 120px;
+            margin-bottom: -1px;
         }
-        
-        /* Responsive */
+
+        /* Contenedor del texto superpuesto - MÁS PEGADO A LA IZQUIERDA */
+        .hero-text {
+            position: absolute;
+            top: 55%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .hero-title {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+        }
+
+        .hero-subtitle {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.4;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+        }
+
+        /* Optimización para móviles - texto más pequeño y compacto */
         @media (max-width: 768px) {
-            nav {
-                padding: 0.5rem 3%;
-            }
-            
-            .logo-link {
-                width: 130px;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.8rem;
-            }
-            
-            .carrito-link img {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .hero {
-                height: 60vh;
-                padding-bottom: 2rem;
-            }
-            
-            .mantequillas-titulo h2 {
-                font-size: 2rem;
-            }
-            
-            .producto-card {
-                min-width: 280px;
-            }
-            
-            .producto-img {
-                height: 280px;
-            }
-            
-            .video-card {
-                min-width: 240px;
-            }
-            
-            .simple-saludable-section {
-                flex-direction: column;
-            }
-            
-            .simple-saludable-image,
-            .simple-saludable-content {
-                width: 100%;
-            }
-            
-            .simple-saludable-content {
-                padding: 2rem;
-            }
-            
-            .simple-saludable-content h2 {
-                font-size: 2rem;
-            }
-            
-            .nuestras-mantequillas-section h2 {
-                font-size: 2rem;
-            }
-            
-            .servicios-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .servicio-item {
-                justify-content: flex-start !important;
-                flex-direction: row;
-                align-items: center;
-            }
-            
-            .servicio-icono {
-                width: 120px;
-                height: 120px;
-                padding: 25px;
-            }
-            
-            .servicio-contenido h3 {
-                font-size: 1.8rem;
-            }
-            
-            .servicio-contenido p {
-                font-size: 1rem;
-            }
-            
-            .footer-container {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 0.5rem;
+            .hero-section {
+                background-size: contain;
+                background-position: top center;
                 min-height: auto;
+                padding-top: 100px;
+                padding-bottom: 0;
             }
             
-            .footer-logo {
-                width: 280px;
+            .hero-section::after {
+                content: '';
+                display: block;
+                padding-bottom: 56.25%;
             }
             
-            .footer-contacto {
-                align-items: center;
-                margin-left: 0;
-                gap: 0.3rem;
+            .hero-text {
+                top: 50%;
+                padding: 0 1rem;
             }
             
-            .contacto-item {
-                font-size: 1.1rem;
-                justify-content: center;
+            .hero-title {
+                font-size: 0.9rem;
+                max-width: 45%;
+                margin-bottom: 0.5rem;
+                line-height: 1.3;
             }
             
-            .contacto-item img {
-                width: 35px;
-                height: 35px;
+            .hero-subtitle {
+                font-size: 0.6rem;
+                max-width: 45%;
+                line-height: 1.3;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-title {
+                font-size: 2rem;
+                max-width: 45%;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+                max-width: 40%;
+            }
+        }
+
+        /* Laptop pequeño */
+        @media (min-width: 1025px) and (max-width: 1280px) {
+            .hero-title {
+                font-size: 2.5rem;
+                max-width: 40%;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+                max-width: 35%;
             }
         }
 
         @media (max-width: 480px) {
-            .logo-link {
-                width: 80px;
-                margin-left: -0.15rem;
+            .hero-section {
+                padding-top: 80px;
             }
-            
-            .nav-links {
-                gap: 0.8rem;
+            .hero-title {
+                font-size: 0.75rem;
+                max-width: 45%;
             }
-            
-            .nav-links a {
-                font-size: 0.9rem;
+            .hero-subtitle {
+                font-size: 0.5rem;
+                max-width: 45%;
             }
-            
-            .carrito-link img {
-                width: 35px;
-                height: 35px;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* SECCIÓN AZUL */
+        .blue-section {
+            background-color: #0c3a6a;
+            width: 100%;
+            padding: 3rem 2rem;
+            margin-top: -1px;
+        }
+
+        .blue-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .form-container {
+            flex: 1;
+            min-width: 280px;
+            background-color: #e7f3ff;
+            border-radius: 32px;
+            padding: 2rem;
+        }
+
+        .form-container h2 {
+            color: #0c3a6a;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0c3a6a;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background-color: white;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff914d;
+            box-shadow: 0 0 0 3px rgba(255, 145, 77, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .privacy-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .privacy-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #ff914d;
+        }
+
+        .privacy-group label {
+            color: #0c3a6a;
+            font-weight: 500;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+
+        .privacy-group a {
+            color: #ff914d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .privacy-group a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-continuar {
+            background-color: #ff914d;
+            color: #0c3a6a;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .btn-continuar:hover:not(:disabled) {
+            transform: scale(1.02);
+            background-color: #ff7a2e;
+        }
+
+        .btn-continuar.success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-continuar.error {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-continuar:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .video-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .video-wrapper {
+            background-color: transparent;
+            border-radius: 32px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 32px;
+            background-color: transparent;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .social-section {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .social-section p {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons img {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* SECCIÓN CÓMO FUNCIONA */
+        .como-funciona-section {
+            background-color: white;
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .como-funciona-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .como-funciona-section h2 {
+            color: #0c3a6a;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .como-funciona-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .pasos-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .paso-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .paso-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .paso-numero {
+            width: 60px;
+            height: 60px;
+            background-color: #ff914d;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0 4px 12px rgba(255, 145, 77, 0.3);
+        }
+
+        .paso-card h3 {
+            color: #0c3a6a;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .paso-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* SECCIÓN BLANCA - COBERTURA */
+        .cobertura-section {
+            background-color: white;
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cobertura-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cobertura-section h2 {
+            color: #0c3a6a;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .cobertura-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .cobertura-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .cobertura-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cobertura-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cobertura-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cobertura-card h3 {
+            color: #0c3a6a;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* VIDEO GRANDE - CON MINIATURA */
+        .full-video-section {
+            width: 100%;
+            background-color: white;
+        }
+
+        .full-video-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .full-video-container video {
+            width: 100%;
+            display: block;
+            background-color: black;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* HISTORIAS REALES - CARRUSEL */
+        .historias-section {
+            background-color: white;
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .historias-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .historias-section h2 {
+            color: #0c3a6a;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .historias-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        /* CARRUSEL */
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 0 40px;
+        }
+
+        .carousel-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel-container::-webkit-scrollbar-track {
+            background: #e7f3ff;
+            border-radius: 10px;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb {
+            background: #ff914d;
+            border-radius: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .carousel-slide {
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 280px;
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: transparent;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .carousel-slide:hover {
+            transform: translateY(-5px);
+        }
+
+        .carousel-slide video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            border-radius: 24px;
+            background-color: #f0f0f0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ff914d;
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-button:hover {
+            background-color: #ff7a2e;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-button.prev {
+            left: 0;
+        }
+
+        .carousel-button.next {
+            right: 0;
+        }
+
+        /* FOOTER - NUEVO DISEÑO */
+        .footer {
+            background-color: #0c3a6a;
+            width: 100%;
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .footer-left {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo {
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 280px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
+        }
+
+        .footer-contact h3, .footer-social-title h3 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-contact h3:after, .footer-social-title h3:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .contact-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ff914d;
+        }
+
+        .footer-social {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
+        }
+
+        .footer-social-title h3 {
+            display: inline-block;
+        }
+
+        .social-icons-footer {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons-footer a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons-footer a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons-footer img {
+            width: 52px;
+            height: 52px;
+        }
+
+        .footer-links-bottom {
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-links-bottom a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin: 0 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-bottom a:hover {
+            color: #ff914d;
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 1024px) {
+            .navbar {
+                width: 95%;
+                padding: 0.6rem 1.5rem;
             }
+            .carousel-slide {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
+            .footer-logo img {
+                height: 200px;
+            }
+            .footer-contact, .footer-social {
+                padding-top: 30px;
+            }
+            .contact-item a {
+                font-size: 1rem;
+            }
+            .footer-contact h3, .footer-social-title h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                width: 92%;
+                top: 1rem;
+                padding: 0.5rem 1.2rem;
+            }
+            .menu-icon img {
+                width: 45px;
+            }
+            .logo-icon img {
+                height: 72px;
+            }
+            .hero-section {
+                padding-top: 90px;
+            }
+            .carousel-slide {
+                flex: 0 0 calc(100% - 0rem);
+            }
+            .carousel-wrapper {
+                padding: 0 20px;
+            }
+            .carousel-button {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+            .hero-container {
+                padding: 0 1rem;
+            }
+            .blue-section {
+                padding: 1.5rem 1rem;
+            }
+            .blue-section-inner {
+                gap: 1.5rem;
+            }
+            .form-container {
+                padding: 1.5rem;
+            }
+            .form-container h2 {
+                font-size: 1.4rem;
+            }
+            .social-icons img {
+                width: 40px;
+                height: 40px;
+            }
+            .paso-card {
+                min-width: 100%;
+            }
+            .cobertura-card img {
+                height: 180px;
+            }
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-left, .footer-contact, .footer-social {
+                text-align: center;
+                padding-top: 0;
+            }
+            .footer-contact h3:after, .footer-social-title h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-icons-footer {
+                justify-content: center;
+            }
+            .footer-links-bottom a {
+                display: inline-block;
+                margin: 0.5rem;
+                font-size: 0.85rem;
+            }
+            .footer-logo img {
+                height: 180px;
+                margin: 0 auto;
+            }
+            .sidebar {
+                width: 280px;
+            }
+            .footer-contact h3, .footer-social-title h3 {
+                font-size: 1.3rem;
+            }
+            .contact-item a {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                width: 90%;
+                top: 0.8rem;
+                padding: 0.4rem 1rem;
+            }
+            .menu-icon img {
+                width: 38px;
+            }
+            .logo-icon img {
+                height: 55px;
+            }
+            .hero-section {
+                padding-top: 75px;
+            }
+            .paso-numero {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .paso-card h3 {
+                font-size: 1.1rem;
+            }
+            .paso-card p {
+                font-size: 0.85rem;
+            }
+            .footer-logo img {
+                height: 140px;
+            }
+            .social-icons-footer img {
+                width: 45px;
+                height: 45px;
+            }
+            .footer-contact h3, .footer-social-title h3 {
+                font-size: 1.2rem;
+            }
+            .contact-item a {
+                font-size: 0.95rem;
+            }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(135deg, #0c3a6a, #ff914d);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
-    <link rel="icon" type="image/png" href="/logo-logo.png">
 </head>
 <body>
-    <!-- Barra superior -->
-    <div class="top-bar">
-        Obtén la tuya ya!
+    <!-- Overlay para cerrar menú -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Menú desplegable lateral -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-menu" id="closeMenuBtn">✕</button>
+        </div>
+        <div class="sidebar-menu">
+            <a href="beneficios.html">Beneficios</a>
+            <a href="planes.html">Planes</a>
+            <a href="quienes-somos.html">Quienes Somos</a>
+            <a href="por-que-siempre-nuevo.html">¿Por qué Siempre Nuevo?</a>
+            <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+            <a href="libro-de-reclamaciones.html">Libro de Reclamaciones</a>
+            <a href="politica-de-privacidad.html">Política de Privacidad</a>
+            <a href="nuestros-aliados.html">Nuestros Aliados</a>
+        </div>
     </div>
 
-    <!-- Header - CON MENÚ PERFECTAMENTE CENTRADO -->
-    <header>
-        <nav>
-            <!-- Logo izquierda -->
-            <a href="./" class="logo-link">
-                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo-blanco.png" alt="Vannalatte" class="logo-img">
-            </a>
-            
-            <!-- Menú PERFECTAMENTE CENTRADO (SIN .html) -->
-            <div class="nav-links">
-                <a href="catalogo">Catálogo</a>
-                <a href="recetas">Recetas</a>
-                <a href="sobre-mi">Sobre mí</a>
+    <!-- BARRA SUPERIOR FIJA - ANCHO REDUCIDO -->
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="menu-icon" id="menuButton">
+                <img src="fotos/menu.png" alt="Menú">
             </div>
-            
-            <!-- Carrito a la derecha (SIN .html) -->
-            <a href="carrito" class="carrito-link">
-                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-compra.png" alt="Carrito">
-                <span class="carrito-contador">0</span>
-            </a>
-        </nav>
-    </header>
-
-    <!-- Hero (SIN .html) -->
-    <section class="hero">
-        <a href="catalogo" class="btn">Comprar</a>
-    </section>
-
-    <!-- Título Mantequillas -->
-    <section class="mantequillas-titulo">
-        <h2>Mantequillas</h2>
-        <p>Orgánicas y con ingredientes naturales</p>
-    </section>
-
-    <!-- Carrusel de productos -->
-    <section class="productos-carrusel-section">
-        <div class="carrusel-wrapper">
-            <button class="carrusel-arrow arrow-left" id="productos-arrow-left">←</button>
-            <button class="carrusel-arrow arrow-right" id="productos-arrow-right">→</button>
-            
-            <div class="carrusel-track" id="productos-track">
-                <!-- Productos se cargarán con JavaScript -->
+            <div class="logo-icon" id="logoButton">
+                <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Sección Nuestras mantequillas (SIN .html) -->
-    <section class="nuestras-mantequillas-section">
-        <p class="small-text">Nuestras mantequillas</p>
-        <h2>Hecha en casa,<br>inspirada en la tradición.</h2>
-        <button class="btn-subrayado" onclick="window.location.href='catalogo'">Comprar ahora →</button>
-    </section>
-
-    <!-- Sección Simple y saludable (SIN .html) -->
-    <section class="simple-saludable-section">
-        <div class="simple-saludable-image">
-            <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/mantequillas.PNG" alt="Mantequillas">
+    <!-- SECCIÓN HERO CON TEXTO SUPERPUESTO -->
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1 class="hero-title">Protege tu auto de los daños del día a día</h1>
+            <p class="hero-subtitle">Evita usar tu seguro por raspones, golpes leves o daños comunes. Soluciones rápidas, sin complicaciones.</p>
         </div>
-        <div class="simple-saludable-content">
-            <h2>Simple y saludable</h2>
-            <p>Menos ingredientes, mejor nutrición</p>
-            <a href="catalogo" class="btn">Comprar</a>
+        <div class="hero-container">
+            <!-- La imagen de fondo está en el CSS de hero-section -->
         </div>
-    </section>
+    </div>
 
-    <!-- Espacio beige -->
-    <div class="espacio-beige"></div>
-
-    <!-- Carrusel de videos - CON PLAY/PAUSA -->
-    <section class="videos-carrusel-section">
-        <div class="carrusel-wrapper">
-            <button class="carrusel-arrow arrow-left" id="videos-arrow-left">←</button>
-            <button class="carrusel-arrow arrow-right" id="videos-arrow-right">→</button>
-            
-            <div class="carrusel-track" id="videos-track">
-                <!-- Videos se cargarán con JavaScript -->
+    <!-- SECCIÓN AZUL -->
+    <div class="blue-section">
+        <div class="blue-section-inner">
+            <div class="form-container">
+                <h2>Te contamos cómo proteger tu auto</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Nombre y Apellidos</label>
+                        <input type="text" name="nombre" required placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label>Correo</label>
+                        <input type="email" name="email" required placeholder="ejemplo@correo.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Número de teléfono / WhatsApp</label>
+                        <input type="tel" name="telefono" required placeholder="+51 999 999 999">
+                    </div>
+                    <div class="form-group">
+                        <label>Comentario (Opcional)</label>
+                        <textarea name="comentario" placeholder="Escribe aquí tu mensaje..."></textarea>
+                    </div>
+                    
+                    <div class="privacy-group">
+                        <input type="checkbox" id="privacyCheckbox" required>
+                        <label for="privacyCheckbox">
+                            Autorizo el uso de mis datos para ser contactado sobre el programa Siempre Nuevo. (<a href="politica-de-privacidad.html" id="privacyLink">Ver política de privacidad</a>)
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-continuar" id="submitBtn">👉 Quiero proteger mi auto</button>
+                </form>
             </div>
-        </div>
-    </section>
 
-    <!-- Espacio beige -->
-    <div class="espacio-beige"></div>
-
-    <!-- Sección de Servicios -->
-    <section class="servicios-section">
-        <div class="servicios-container">
-            <div class="servicio-item">
-                <div class="servicio-icono">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/carrito-pedidos.png" alt="Envío rápido">
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video id="mainVideo" controls playsinline preload="auto" poster="fotos/miniatura1.png">
+                        <source src="fotos/video1.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
                 </div>
-                <div class="servicio-contenido">
-                    <h3>Envío rápido</h3>
-                    <p>Llegamos a todo el Perú.<br>Trabajamos con Olva,<br>Rappi e Indrive</p>
-                </div>
-            </div>
-            <div class="servicio-item">
-                <div class="servicio-icono">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/hojas.png" alt="Saludable">
-                </div>
-                <div class="servicio-contenido">
-                    <h3>Saludable</h3>
-                    <p>Trabajamos con productos<br>100% naturales y<br>libres de conservantes</p>
-                </div>
-            </div>
-            <div class="servicio-item">
-                <div class="servicio-icono">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/gente-mundo.png" alt="Pedidos">
-                </div>
-                <div class="servicio-contenido">
-                    <h3>Pedidos</h3>
-                    <p>Por Whatsapp e<br>Instagram</p>
+                <div class="social-section">
+                    <p>Síguenos en nuestras redes</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank">
+                            <img src="fotos/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@siemprenuevo.pe" target="_blank">
+                            <img src="fotos/tiktok.png" alt="TikTok">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/logo%20negro.png" alt="Vannalatte">
-            </div>
-            <div class="footer-contacto">
-                <div class="contacto-item" onclick="copiarCorreo()">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/correo.png" alt="Correo">
-                    <span>vannalatte@gmail.com</span>
+    <!-- SECCIÓN ASÍ DE SIMPLE FUNCIONA SIEMPRE NUEVO -->
+    <div class="como-funciona-section">
+        <div class="como-funciona-inner">
+            <h2>Así de simple funciona Siempre Nuevo</h2>
+            <div class="pasos-grid">
+                <div class="paso-card">
+                    <div class="paso-numero">1</div>
+                    <h3>Te afilias en minutos</h3>
+                    <p>Proceso sencillo y sin papeleo desde cualquier dispositivo.</p>
                 </div>
-                <a href="https://instagram.com/vannalatte" target="_blank" class="contacto-item">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/instagram.png" alt="Instagram">
-                    <span>@vannalatte</span>
-                </a>
-                <a href="https://wa.me/51951499437" target="_blank" class="contacto-item">
-                    <img src="https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/whatsapp.png" alt="WhatsApp">
-                    <span>+51 951 499 437</span>
-                </a>
+                <div class="paso-card">
+                    <div class="paso-numero">2</div>
+                    <h3>Usas el servicio cuando lo necesites</h3>
+                    <p>Accede al servicio en el momento que lo requieras.</p>
+                </div>
+                <div class="paso-card">
+                    <div class="paso-numero">3</div>
+                    <h3>Reparamos tu auto sin que uses tu seguro</h3>
+                    <p>Sin afectar tu historial ni incurrir en deducibles.</p>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
 
+    <!-- COBERTURA DEL PROGRAMA -->
+    <div class="cobertura-section">
+        <div class="cobertura-section-inner">
+            <h2>Cobertura del programa</h2>
+            <div class="cobertura-grid">
+                <div class="cobertura-card">
+                    <img src="fotos/raspon.jpeg" alt="Raspón de pintura" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Raspón'">
+                    <h3>Raspón de pintura</h3>
+                </div>
+                <div class="cobertura-card">
+                    <img src="fotos/aros.jpeg" alt="Reparación de aros y neumáticos" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Aros+y+Neumáticos'">
+                    <h3>Reparación de aros y neumáticos</h3>
+                </div>
+                <div class="cobertura-card">
+                    <img src="fotos/parabrisas.jpeg" alt="Arreglo o reposición de parabrisas" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Parabrisas'">
+                    <h3>Arreglo o reposición de parabrisas</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO GRANDE - CON MINIATURA -->
+    <div class="full-video-section">
+        <div class="full-video-container">
+            <video controls playsinline preload="auto" poster="fotos/miniatura3.png">
+                <source src="fotos/video2.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
+
+    <!-- HISTORIAS REALES -->
+    <div class="historias-section">
+        <div class="historias-section-inner">
+            <h2>Historias reales</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-button prev" id="prevBtn">❮</button>
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <video controls playsinline preload="auto" poster="fotos/miniatura2.png">
+                                <source src="fotos/video3.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 2
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 3
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 4
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 5
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button next" id="nextBtn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER - NUEVO DISEÑO -->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <div class="footer-logo" id="footerLogo">
+                    <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h3>Contáctanos</h3>
+                <div class="contact-item">
+                    <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">+51 997281159</a>
+                </div>
+                <div class="contact-item">
+                    <a href="mailto:contacto@akinnova.com?subject=Información%20sobre%20Siempre%20Nuevo&body=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20Siempre%20Nuevo.">contacto@akinnova.com</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <div class="footer-social-title">
+                    <h3>Síguenos</h3>
+                </div>
+                <div class="social-icons-footer">
+                    <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank">
+                        <img src="fotos/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@siemprenuevo.pe" target="_blank">
+                        <img src="fotos/tiktok.png" alt="TikTok">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links-bottom">
+            <a href="libro-de-reclamaciones.html">Libro de reclamaciones</a>
+            <a href="politica-de-privacidad.html">Política de privacidad</a>
+            <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-        function copiarCorreo() {
-            navigator.clipboard.writeText('vannalatte@gmail.com');
-            alert('📧 Correo copiado al portapapeles');
-        }
-
-        function agregarAlCarrito(producto) {
-            let carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
+        (function() {
+            // EmailJS Config
+            const EMAILJS_PUBLIC_KEY = 'GExj5Fp2jmCjSsKEE';
+            const EMAILJS_SERVICE_ID = 'service_ygxlbye';
+            const EMAILJS_TEMPLATE_ID = 'template_c7ltsb8';
             
-            const existente = carrito.find(item => 
-                item.nombre === producto.nombre && 
-                item.presentacion === producto.presentacion
-            );
+            emailjs.init(EMAILJS_PUBLIC_KEY);
             
-            if (existente) {
-                existente.cantidad += 1;
-            } else {
-                carrito.push({
-                    ...producto,
-                    cantidad: 1,
-                    id: Date.now() + Math.random()
+            // Elementos del menú
+            const menuBtn = document.getElementById('menuButton');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            
+            // Función para abrir menú
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Función para cerrar menú
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Eventos del menú
+            if (menuBtn) {
+                menuBtn.addEventListener('click', openMenu);
+            }
+            
+            if (closeMenuBtn) {
+                closeMenuBtn.addEventListener('click', closeMenu);
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+            
+            const logoBtn = document.getElementById('logoButton');
+            const footerLogo = document.getElementById('footerLogo');
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const privacyCheckbox = document.getElementById('privacyCheckbox');
+            
+            if (logoBtn) {
+                logoBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
             
-            localStorage.setItem('vannalatte-carrito', JSON.stringify(carrito));
-            
-            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-            document.querySelectorAll('.carrito-contador').forEach(el => {
-                el.textContent = totalItems;
-            });
-            
-            const btn = event.target;
-            const textoOriginal = btn.textContent;
-            btn.textContent = '✓ Añadido';
-            btn.style.backgroundColor = '#4CAF50';
-            setTimeout(() => {
-                btn.textContent = textoOriginal;
-                btn.style.backgroundColor = '#c24a34';
-            }, 1000);
-        }
-
-        // ============================================
-        // PRODUCTOS ACTUALIZADOS - 250gr y 420gr (8 productos)
-        // ============================================
-        const productos = [
-            // 250gr
-            { 
-                nombre: "Mantequilla de chocomanía", 
-                presentacion: "250gr", 
-                precio: 19.00, 
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/chocomania-250.png" 
-            },
-            { 
-                nombre: "Mantequilla de maní clásica", 
-                presentacion: "250gr", 
-                precio: 19.00, 
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/clasica-250.png" 
-            },
-            { 
-                nombre: "Mantequilla de maní la favorita", 
-                presentacion: "250gr", 
-                precio: 19.00, 
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/favorita-250.png" 
-            },
-            // 420gr originales
-            { 
-                nombre: "Mantequilla de chocomanía", 
-                presentacion: "420gr", 
-                precio: 30.00, 
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/chocomania-420.png" 
-            },
-            { 
-                nombre: "Mantequilla de maní clásica", 
-                presentacion: "420gr", 
-                precio: 30.00, 
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/clasica-420.png" 
-            },
-            { 
-                nombre: "Mantequilla de maní la favorita", 
-                presentacion: "420gr", 
-                precio: 30.00, 
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/favorita-420.png" 
-            },
-            // NUEVOS PRODUCTOS
-            { 
-                nombre: "Salted Caramel", 
-                presentacion: "420gr", 
-                precio: 34.00, 
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/caramel-420.png" 
-            },
-            { 
-                nombre: "Cashews", 
-                presentacion: "420gr", 
-                precio: 58.00, 
-                imagen: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/cashews-420.png" 
+            if (footerLogo) {
+                footerLogo.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             }
-        ];
 
-        const productosTrack = document.getElementById('productos-track');
-        productosTrack.innerHTML = ''; // Limpiar contenido existente
-
-        // Agregar productos al carrusel
-        productos.forEach(producto => {
-            const card = document.createElement('div');
-            card.className = 'producto-card';
-            const productoStr = JSON.stringify(producto).replace(/"/g, '&quot;');
-            
-            card.innerHTML = `
-                <div class="producto-img">
-                    <img src="${producto.imagen}" alt="${producto.nombre}">
-                </div>
-                <div class="producto-info">
-                    <h3>${producto.nombre}</h3>
-                    <div class="producto-presentacion">${producto.presentacion}</div>
-                    <div class="producto-precio">S/ ${producto.precio.toFixed(2)}</div>
-                    <button class="btn-carrito" onclick='agregarAlCarrito(${productoStr})'>
-                        Añadir
-                    </button>
-                </div>
-            `;
-            productosTrack.appendChild(card);
-        });
-
-        // ============================================
-        // CARRUSEL DE PRODUCTOS - VERSIÓN CORREGIDA
-        // ============================================
-
-        const productosArrowLeft = document.getElementById('productos-arrow-left');
-        const productosArrowRight = document.getElementById('productos-arrow-right');
-        const productosCarruselTrack = document.getElementById('productos-track');
-
-        let productosPosition = 0;
-        let autoPlayInterval = null;
-        let isAnimating = false;
-
-        // Función para obtener el ancho real de una tarjeta (incluyendo gap)
-        function getCardWidth() {
-            const firstCard = document.querySelector('.producto-card');
-            if (!firstCard) return 370; // valor por defecto
-            
-            // Obtener el ancho total de la tarjeta
-            const cardRect = firstCard.getBoundingClientRect();
-            const containerStyle = getComputedStyle(productosCarruselTrack);
-            const gap = parseFloat(containerStyle.gap) || 32; // 2rem = 32px
-            
-            return cardRect.width + gap;
-        }
-
-        // Función para mover el carrusel con validación de límites
-        function moverCarruselProductos(direccion) {
-            if (isAnimating) return;
-            isAnimating = true;
-            
-            const cardWidth = getCardWidth();
-            const maxScroll = productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth;
-            
-            let newPosition = productosPosition + (direccion * cardWidth);
-            
-            // Validar límites
-            if (newPosition < 0) newPosition = 0;
-            if (newPosition > maxScroll) newPosition = maxScroll;
-            
-            productosPosition = newPosition;
-            productosCarruselTrack.style.transform = `translateX(-${productosPosition}px)`;
-            
-            // Pequeño retraso para permitir que termine la animación
-            setTimeout(() => {
-                isAnimating = false;
-            }, 500);
-        }
-
-        // Función para reiniciar el auto-play
-        function startAutoPlay() {
-            if (autoPlayInterval) clearInterval(autoPlayInterval);
-            autoPlayInterval = setInterval(() => {
-                moverCarruselProductos(1);
-                // Si llegamos al final, volver al inicio
-                const maxScroll = productosCarruselTrack.scrollWidth - productosCarruselTrack.parentElement.offsetWidth;
-                if (productosPosition >= maxScroll) {
-                    productosPosition = 0;
-                    productosCarruselTrack.style.transform = 'translateX(0)';
-                }
-            }, 3000);
-        }
-
-        // Función para detener el auto-play temporalmente al hacer clic en flechas
-        function stopAutoPlayTemporarily() {
-            if (autoPlayInterval) {
-                clearInterval(autoPlayInterval);
-                setTimeout(startAutoPlay, 5000); // Reiniciar después de 5 segundos
-            }
-        }
-
-        // Eventos de flechas
-        productosArrowLeft.addEventListener('click', () => {
-            moverCarruselProductos(-1);
-            stopAutoPlayTemporarily();
-        });
-        productosArrowRight.addEventListener('click', () => {
-            moverCarruselProductos(1);
-            stopAutoPlayTemporarily();
-        });
-
-        // Iniciar auto-play
-        startAutoPlay();
-
-        // Recalcular al redimensionar la ventana (responsive)
-        window.addEventListener('resize', () => {
-            // Recalcular posición actual basada en el nuevo ancho
-            const cardWidth = getCardWidth();
-            const currentIndex = Math.round(productosPosition / cardWidth);
-            productosPosition = currentIndex * cardWidth;
-            productosCarruselTrack.style.transform = `translateX(-${productosPosition}px)`;
-        });
-
-        // ============================================
-        // VIDEOS CON MINIATURAS Y PLAY/PAUSA
-        // ============================================
-        const videos = [
-            { 
-                src: "Video 10.mp4", 
-                miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura12.png",
-                titulo: "Testimonio 10"
-            },
-            { 
-                src: "Video 12.mp4", 
-                miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura10.png",
-                titulo: "Testimonio 12"
-            },
-            { 
-                src: "Video 4.mp4", 
-                miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura4.png",
-                titulo: "Testimonio 4"
-            },
-            { 
-                src: "Video 5.mp4", 
-                miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura5.png",
-                titulo: "Testimonio 5"
-            },
-            { 
-                src: "Video 8.mp4", 
-                miniatura: "https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/Fotos/miniatura8.png",
-                titulo: "Testimonio 8"
-            }
-        ];
-
-        const videosTrack = document.getElementById('videos-track');
-        videosTrack.innerHTML = ''; // Limpiar contenido existente
-
-        videos.forEach(video => {
-            // Crear tarjeta
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            card.setAttribute('data-src', `https://raw.githubusercontent.com/FacundoCJ/FacundoCJ.github.io/main/videos/${encodeURIComponent(video.src)}`);
-            card.setAttribute('data-miniatura', video.miniatura);
-            
-            // Agregar imagen de miniatura
-            const img = document.createElement('img');
-            img.src = video.miniatura;
-            img.alt = video.titulo;
-            
-            card.appendChild(img);
-            
-            // Variable para saber si ya se cargó el video
-            let videoCargado = false;
-            let videoElement = null;
-            
-            // Evento al hacer clic
-            card.addEventListener('click', function(e) {
-                e.stopPropagation();
-                
-                // Si ya hay un video cargado
-                if (videoCargado && videoElement) {
-                    // Si está reproduciendo, pausar
-                    if (!videoElement.paused) {
-                        videoElement.pause();
-                        this.classList.remove('playing');
-                    } else {
-                        // Si está pausado, reproducir
-                        videoElement.play();
-                        this.classList.add('playing');
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    if (!privacyCheckbox.checked) {
+                        alert('⚠️ Por favor, autoriza el uso de tus datos para continuar.');
+                        return;
                     }
-                    return;
-                }
-                
-                // Primera vez que se hace clic - cargar video
-                videoElement = document.createElement('video');
-                videoElement.src = this.getAttribute('data-src');
-                videoElement.controls = true;
-                videoElement.playsInline = true;
-                videoElement.style.width = '100%';
-                videoElement.style.height = '100%';
-                videoElement.style.objectFit = 'cover';
-                
-                // Pausar otros videos
-                document.querySelectorAll('.video-card video').forEach(v => {
-                    v.pause();
-                    v.parentElement.classList.remove('playing');
+                    
+                    submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
+                    submitBtn.disabled = true;
+                    submitBtn.classList.remove('success', 'error');
+                    
+                    const nombre = form.querySelector('input[name="nombre"]').value;
+                    const email = form.querySelector('input[name="email"]').value;
+                    const telefono = form.querySelector('input[name="telefono"]').value;
+                    const comentario = form.querySelector('textarea[name="comentario"]').value;
+                    const fecha = new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' });
+                    
+                    try {
+                        const templateParams = {
+                            nombre: nombre,
+                            email: email,
+                            telefono: telefono,
+                            comentario: comentario || 'Sin comentario',
+                            fecha: fecha,
+                            acepto_terminos: 'Sí',
+                            para: 'contacto@akinnova.com'
+                        };
+                        
+                        const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                        
+                        if (response.status === 200) {
+                            submitBtn.innerHTML = '✓ ¡Enviado con éxito!';
+                            submitBtn.classList.add('success');
+                            form.reset();
+                            privacyCheckbox.checked = false;
+                            
+                            setTimeout(() => {
+                                submitBtn.innerHTML = '👉 Quiero proteger mi auto';
+                                submitBtn.classList.remove('success');
+                                submitBtn.disabled = false;
+                            }, 3000);
+                        } else {
+                            throw new Error('Error al enviar');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        submitBtn.innerHTML = '❌ Error, intenta de nuevo';
+                        submitBtn.classList.add('error');
+                        
+                        setTimeout(() => {
+                            submitBtn.innerHTML = '👉 Quiero proteger mi auto';
+                            submitBtn.classList.remove('error');
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    }
                 });
-                
-                // Reemplazar contenido
-                this.innerHTML = '';
-                this.appendChild(videoElement);
-                
-                videoCargado = true;
-                
-                // Reproducir automáticamente
-                videoElement.play();
-                this.classList.add('playing');
-                
-                // Evento cuando termina el video (opcional)
-                videoElement.addEventListener('ended', () => {
-                    this.classList.remove('playing');
-                });
-            });
-            
-            videosTrack.appendChild(card);
-        });
-
-        const videosArrowLeft = document.getElementById('videos-arrow-left');
-        const videosArrowRight = document.getElementById('videos-arrow-right');
-        const videosCarruselTrack = document.getElementById('videos-track');
-        
-        let videosPosition = 0;
-        const cardWidth = 320;
-        
-        function moverCarruselVideos(direccion) {
-            const maxScroll = videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth;
-            videosPosition += direccion * cardWidth;
-            if (videosPosition < 0) videosPosition = 0;
-            if (videosPosition > maxScroll) videosPosition = maxScroll;
-            videosCarruselTrack.style.transform = `translateX(-${videosPosition}px)`;
-        }
-        
-        videosArrowLeft.addEventListener('click', () => moverCarruselVideos(-1));
-        videosArrowRight.addEventListener('click', () => moverCarruselVideos(1));
-        
-        setInterval(() => {
-            moverCarruselVideos(1);
-            if (videosPosition >= videosCarruselTrack.scrollWidth - videosCarruselTrack.parentElement.offsetWidth) {
-                videosPosition = 0;
-                videosCarruselTrack.style.transform = 'translateX(0)';
             }
-        }, 4000);
 
-        function actualizarContadorCarrito() {
-            const carrito = JSON.parse(localStorage.getItem('vannalatte-carrito')) || [];
-            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-            document.querySelectorAll('.carrito-contador').forEach(el => {
-                el.textContent = totalItems;
-                el.style.display = totalItems > 0 ? 'flex' : 'none';
+            // CARRUSEL
+            const carouselContainer = document.getElementById('carouselContainer');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn && nextBtn && carouselContainer) {
+                prevBtn.addEventListener('click', () => {
+                    carouselContainer.scrollBy({
+                        left: -350,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    carouselContainer.scrollBy({
+                        left: 350,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Error handler para videos
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.addEventListener('error', function() {
+                    console.log('Video no encontrado:', this.querySelector('source')?.src);
+                });
             });
-        }
-        
-        document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
+        })();
     </script>
 </body>
 </html>
